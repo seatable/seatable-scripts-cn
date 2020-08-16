@@ -26,8 +26,8 @@ if (view.groupbys && view.groupbys.length > 0) {
     	const currentNumber = row[numberColumn.key];
       	if (!currentNumber) return;
         // caculate increment
-				const previousRow = rows[index - 1];
-				// if there is no previousRow, set increaseCount to 0
+        const previousRow = rows[index - 1];
+        // if there is no previousRow, set increaseCount to 0
         const previousNumber = previousRow ? previousRow[numberColumn.key] : currentNumber;
       	const increaseCount = currentNumber - previousNumber;
         // set caculated increment to row
@@ -36,16 +36,16 @@ if (view.groupbys && view.groupbys.length > 0) {
   });
 } else {
     // get current view rows
-	const rows = base.getViewRows(view, table);
-  	rows.map((row, rowIndex, rows) => {
-      	//  caculate increment
-      	const currentNumber = row[numberColumn.key];
-      	if (!currentNumber) return;
-				const previousRow = rows[rowIndex - 1];
-				// if there is no previousRow, set increaseCount to 0
-    	  const previousNumber = previousRow ? previousRow[numberColumn.key] : currentNumber;
-      	const increaseCount = currentNumber - previousNumber;
-      	// set caculated increment to row
-      	base.modifyRow(table, row, {[incrementalColumnName]: increaseCount});
-    });
+    const rows = base.getViewRows(view, table);
+    rows.map((row, rowIndex, rows) => {
+    // caculate increment
+    const currentNumber = row[numberColumn.key];
+    if (!currentNumber) return;
+    const previousRow = rows[rowIndex - 1];
+    // if there is no previousRow, set increaseCount to 0
+    const previousNumber = previousRow ? previousRow[numberColumn.key] : currentNumber;
+    const increaseCount = currentNumber - previousNumber;
+    // set caculated increment to row
+    base.modifyRow(table, row, {[incrementalColumnName]: increaseCount});
+  });
 }
