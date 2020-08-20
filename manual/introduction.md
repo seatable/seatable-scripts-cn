@@ -335,7 +335,7 @@ output.text(formatDate); // 2020-08-20
 
 ### formatDateWithMinutes
 
-格式化日期, 返回一个 ‘YYYY-MM-DD hh:mm’ 格式的日期
+格式化日期, 返回一个 ‘YYYY-MM-DD HH:mm’ 格式的日期
 
 ##### 例子
 
@@ -343,7 +343,7 @@ output.text(formatDate); // 2020-08-20
 let date = new Date();
 let formatDate = base.utils.formatDateWithMinutes(date);
 
-output.text(formatDate); // 2020-08-20 10:00
+output.text(formatDate); // 2020-08-20 14:00
 ```
 
 
