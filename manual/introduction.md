@@ -318,7 +318,7 @@ const groupViewRows = base.getGroupRows(view, table);
 
 ```
 
-## base.utils 对象
+## base.utils 工具对象
 
 ### formatDate
 
@@ -328,7 +328,7 @@ const groupViewRows = base.getGroupRows(view, table);
 
 ```javascript
 let date = new Date();
-let formatDate = utils.formatDate(date);
+let formatDate = base.utils.formatDate(date);
 
 output.text(formatDate); // 2020-08-20
 ```
@@ -341,7 +341,7 @@ output.text(formatDate); // 2020-08-20
 
 ```javascript
 let date = new Date();
-let formatDate = utils.formatDateWithMinutes(date);
+let formatDate = base.utils.formatDateWithMinutes(date);
 
 output.text(formatDate); // 2020-08-20 10:00
 ```
