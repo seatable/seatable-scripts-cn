@@ -287,6 +287,22 @@ base.addRow('table');
 
 ```
 
+### appendRow
+
+在一个子表中添加一行
+
+```javascript
+base.appendRow(tableName: String, rowData: Object, view?: Object)
+
+// use case
+base.appendRow('Table1', {'名称': '小强', '年龄': '18'});
+
+// use case
+let table = base.getTableByName('Table1');
+let view = base.getViewByName(table, '模式视图');
+base.appendRow('Table1', {'名称': '小强', '年龄': '18'}, view);
+```
+
 #### modifyRow
 
 修改表格中的某一行
