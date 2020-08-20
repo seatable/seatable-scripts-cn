@@ -318,6 +318,36 @@ const groupViewRows = base.getGroupRows(view, table);
 
 ```
 
+## base.utils 工具对象
+
+### formatDate
+
+格式化日期, 返回一个 ‘YYYY-MM-DD’ 格式的日期
+
+##### 例子
+
+```javascript
+let date = new Date();
+let formatDate = base.utils.formatDate(date);
+
+output.text(formatDate); // 2020-08-20
+```
+
+### formatDateWithMinutes
+
+格式化日期, 返回一个 ‘YYYY-MM-DD hh:mm’ 格式的日期
+
+##### 例子
+
+```javascript
+let date = new Date();
+let formatDate = base.utils.formatDateWithMinutes(date);
+
+output.text(formatDate); // 2020-08-20 10:00
+```
+
+
+
 ## output 对象
 
 output 对象用于输出内容。支持输出 text 和 Markdown 两种格式。
