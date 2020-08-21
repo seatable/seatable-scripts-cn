@@ -7,7 +7,9 @@ SeaTable 脚本使用 Javascript 语言编写。一个脚本一般用于表格�
 1. base 对象。一个 base 代表了 SeaTable 中的一个表格。通过 base 对象可以操作表格中的数据。
 2. output 对象。用于输出结果。
 
-一个 base 包含多个子表 (Table)。每个子表包含多个行。行中的单元格由对应的列类型来规定数据格式。具体可以参考 [数据结构](data-structure.md)
+一个 base 包含多个子表 (Table)。每个子表包含多个行。行中的单元格由对应的列类型来规定数据格式。具体可以参考
+
+* [数据结构](data-structure.md)
 
 ## base 对象
 
