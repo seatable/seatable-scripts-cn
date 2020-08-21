@@ -274,7 +274,7 @@ base.deleteRowById(table: Object, rowId: String);
 
 ```
 
-### addRow
+#### addRow
 
 在一个子表中添加一行
 
