@@ -1,8 +1,8 @@
-# SeaTable 脚本编写手册和例子
+# SeaTable 脚本编程手册和例子
 
 ## 编写手册
 
-[编写手册](manual/introduction.md)
+[编程手册](manual/introduction.md)
 
 ## 例子
 
