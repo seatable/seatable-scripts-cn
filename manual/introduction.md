@@ -278,15 +278,16 @@ base.deleteRowById(table: Object, rowId: String);
 
 #### addRow
 
-在一个子表中添加一个空行
-
-##### 例子
+在一个子表中添加一行
 
 ```javascript
-base.addRow(tableName: String);
-// 在名称为 table 的子表中添加一个空行
-base.addRow('table');
+base.addRow(tableName: String, rowData: Object, viewName?: String)
 
+// use case
+base.addRow('Table1', {'名称': '小强', '年龄': '18'});
+
+// use case
+base.addRow('Table1', {'名称': '小强', '年龄': '18'}, 'Default View');
 ```
 
 #### modifyRow
