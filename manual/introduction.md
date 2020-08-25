@@ -238,14 +238,29 @@ output.text(column.length);
 
 ### 行
 
-#### getViewRows
+#### getRows
 
 获取一个视图所有的行，返回一个数组
 
 ##### 例子
 
 ```javascript
-const rows = base.getViewRows(view: Object, table: Object);
+const rows = base.getRows(table: Object, view: Object);
+
+```
+
+#### getGroupedRows
+
+获取分组视图中的行分组数据
+
+##### 例子
+
+```javascript
+base.getGroupedRows(table: Object, view: Object);
+// 获取某个分组视图的分组数据
+const table = base.getTableByName('table');
+const view = base.getViewByName(table, '分组视图');
+const groupViewRows = base.getGroupedRows(table, view);
 
 ```
 
@@ -306,21 +321,6 @@ base.modifyRow(table, lastRow, {'名称': '1111', number: 100});
 
 ```
 
-#### getGroupRows
-
-获取分组视图中的行分组数据
-
-##### 例子
-
-```javascript
-base.getGroupRows(view: Object, table: Object);
-// 获取某个分组视图的分组数据
-const table = base.getTableByName('table');
-const view = base.getViewByName(table, '分组视图');
-const groupViewRows = base.getGroupRows(view, table);
-
-```
-
 ## base.utils 工具对象
 
 ### formatDate
@@ -348,8 +348,6 @@ let formatDate = base.utils.formatDateWithMinutes(date);
 
 output.text(formatDate); // 2020-08-20 14:00
 ```
-
-
 
 ## output 对象
 
