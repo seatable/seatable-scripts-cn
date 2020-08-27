@@ -1,0 +1,43 @@
+site_name: seatable-scripts-cn
+site_author: seatable
+docs_dir: ./manual
+site_url: https://seatable.github.io/seatable-scripts-cn/
+
+
+repo_name: seatable/seatable-scripts-cn
+repo_url: https://github.com/seatable/seatable-scripts-cn/
+
+copyright: Copyright &copy; 2020 seatable
+
+theme:
+  name: material
+  # icon:
+  logo: assets/seatable-favicon.ico
+  favicon: assets/seatable-favicon.ico
+  features:
+    - tabs
+  palette:
+    primary: deep orange
+    accent:
+
+plugins:
+  - search # necessary for search to work
+  - awesome-pages
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/seatable/seatable-scripts-cn/
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.codehilite:
+      guess_lang: true
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
