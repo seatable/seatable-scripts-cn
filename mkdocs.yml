@@ -1,4 +1,4 @@
-site_name: seatable-scripts-cn
+site_name: SeaTable 脚本编程手册
 site_author: seatable
 docs_dir: ./manual
 site_url: https://seatable.github.io/seatable-scripts-cn/
@@ -12,10 +12,10 @@ copyright: Copyright &copy; 2020 seatable
 theme:
   name: material
   # icon:
-  logo: assets/seatable-favicon.ico
+  logo: assets/logo32_32.png
   favicon: assets/seatable-favicon.ico
-  features:
-    - tabs
+  # features:
+    # - tabs
   palette:
     primary: deep orange
     accent:
@@ -41,3 +41,10 @@ markdown_extensions:
   - markdown.extensions.meta
   - markdown.extensions.toc:
       permalink: true
+      toc_depth: "1-4"
+
+
+# Page tree
+nav:
+  - Home: README.md
+  - SeaTable 中对象的数据结构: data-structure.md
