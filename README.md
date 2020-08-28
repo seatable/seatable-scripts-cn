@@ -2,7 +2,7 @@
 
 ## 编写手册
 
-[编程手册](manual/introduction.md)
+[编程手册](https://seatable.github.io/seatable-scripts-cn/)
 
 ## 例子
 
