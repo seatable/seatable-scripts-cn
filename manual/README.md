@@ -27,7 +27,6 @@ base 对象提供了一个提供操作表格的入口。
 
 ```javascript
  const table = base.getActiveTable();
- // 打印当前表格的名称 
  output.markdown(`#### ${table.name}`);
 
 ```
@@ -40,8 +39,6 @@ base 对象提供了一个提供操作表格的入口。
 
 ```javascript
 const tables = base.getTables();
-
-// 打印表格的数量
 output.text(tables.length);
 
 ```
@@ -50,11 +47,14 @@ output.text(tables.length);
 
 通过一个表格的名称获取一个 table 对象
 
+```javascript
+const table = base.getTableByName(tableName: String);
+```
+
 ##### 例子
 
 ```javascript
-const table = base.getTableByName(tableName: String);
-// 打印表格的 id
+const table = base.getTableByName('Table1');
 output.text(table._id);
 
 ```
@@ -63,11 +63,15 @@ output.text(table._id);
 
 添加一个子表
 
+```javascript
+base.addTable(tableName: String);
+
+```
+
 ##### 例子
 
 ```javascript
-// 添加一个名称为 new table 的字表
-base.addTable('new table');
+base.addTable('New table');
 
 ```
 
@@ -75,12 +79,15 @@ base.addTable('new table');
 
 重命名一个子表
 
+```javascript
+base.renameTable(oldName: String, newName: String);
+
+```
+
 ##### 例子
 
 ```javascript
-base.renameTable(currentTableName: String, nextTableName: String);
-// 将名称为 new table 的字表重命名为 old table
-base.renameTable('new table', 'old table');
+base.renameTable('Old name', 'New name');
 
 ```
 
@@ -88,12 +95,15 @@ base.renameTable('new table', 'old table');
 
 删除一个子表
 
+```javascript
+base.deleteTable(tableName: String);
+
+```
+
 ##### 例子
 
 ```javascript
-base.deleteTable(tableName: String);
-// 删除一个名称为 old table 的子表
-base.deleteTable('old table');
+base.deleteTable('Old table');
 
 ```
 
@@ -107,7 +117,6 @@ base.deleteTable('old table');
 
 ```javascript
 const view  = base.getActiveView();
-// 打印当前 view 的 id
 output.text(view._id);
 
 ```
@@ -116,11 +125,16 @@ output.text(view._id);
 
 获取当前表格的所有视图，并以一个数组的形式返回所有的视图
 
+```javascript
+const views = base.getViews(table: Object);
+
+```
+
 ##### 例子
 
 ```javascript
-const views = base.getViewByName(table: Object);
-// 打印当前表的的 view 的数量
+const table  = base.getTableByName('Table1');
+const views = base.getViews(table);
 output.text(views.length);
 
 ```
@@ -129,12 +143,17 @@ output.text(views.length);
 
 通过视图的名称获取表格中的一个视图对象，并返回一个视图对象
 
+```javascript
+const view = base.getViewByName(table: Object, viewName: String);
+
+```
+
 ##### 例子
 
 ```javascript
-const view = base.getViewByName(table: Object, viewName: String);
-// 打印当前 view 的 id
-output.text(views.length);
+const table  = base.getTableByName('Table1'); 
+const view = base.getViewByName(table, 'view 1');
+output.text(view.name);
 
 ```
 
@@ -142,25 +161,31 @@ output.text(views.length);
 
 一个子表中添加一个视图
 
+```javascript
+base.addView(table: Object, viewName: String);
+```
+
 ##### 例子
 
 ```javascript
-base.addView(tableName: String, viewName: String);
-// 在名称为 table 的子表中添加一个 view1 的视图
-base.addView('table', 'view1');
-
+const table  = base.getTableByName('Table1');
+base.addView(table, 'view 2');
 ```
 
 #### renameView
 
-重命名一个字表中的一个视图
+重命名一个子表中的一个视图
+
+```javascript
+base.renameView(table: Object, currentViewName: String, nextViewName: String);
+
+```
 
 ##### 例子
 
 ```javascript
-base.renameView(tableName: String, currentViewName: String, nextViewName: String);
-// 将 table 子表中的视图 view1 重命名为 view2
-base.renameView('table', 'view1', 'view2');
+const table  = base.getTableByName('Table1');
+base.renameView(table, 'view1', 'view2');
 
 ```
 
@@ -168,12 +193,15 @@ base.renameView('table', 'view1', 'view2');
 
 删除一个视图
 
+```javascript
+base.deleteView(table: Object, viewName: String);
+```
+
 ##### 例子
 
 ```javascript
-base.deleteView(tableName: String, viewName: String);
-// 将视图 view2 删除
-base.deleteView('table', 'view2');
+const table  = base.getTableByName('Table1');
+base.deleteView(table, 'view2');
 
 ```
 
@@ -183,12 +211,17 @@ base.deleteView('table', 'view2');
 
 获取一个表格中的所有列，并以一个数组的形式返回所有的列对象
 
-###### 例子
-
 ```javascript
 const columns = base.getColumns(table: Object);
 
-// 打印表格中每一列的名称
+```
+
+###### 例子
+
+```javascript
+const table  = base.getTableByName('Table1');
+const columns = base.getColumns(table);
+
 column.forEach((column) => {
 	output.text(column.name);
 })
@@ -199,11 +232,16 @@ column.forEach((column) => {
 
 获取一个视图中所有显示的列，不包含该视图中已经被隐藏的列, 返回一个数组
 
+```javascript
+const columns = base.getShownColumns(table: Object, view: Object);
+```
+
 ##### 例子
 
 ```javascript
-const columns = base.getShownColumns(table: Object, view: Object);
-// 打印表格中没有隐藏的每一列的名称
+const table  = base.getTableByName('Table1');
+const view = base.getViewByName(table, 'view 1');
+const columns = base.getShownColumns(table, view);
 column.forEach((column) => {
 	output.text(column.name);
 })
@@ -214,11 +252,14 @@ column.forEach((column) => {
 
 通过列的名称获取该列对象
 
+```javascript
+const column = base.getColumnByName(table: Object, name: String);
+```
+
 ##### 例子
 
 ```javascript
-const column = base.getColumnByName(table: Object, name: String);
-// 打印该列的名称
+const column = base.getColumnByName(table, 'Column name');
 output.text(column.name);
 
 ```
@@ -227,11 +268,15 @@ output.text(column.name);
 
 获取该表格中所有特定种类的列
 
+```javascript
+const columns = base.getColumnsByType(table: Object, type: String);
+```
+
 ##### 例子
 
 ```javascript
-const columns = base.getColumnsByType(table: Object, type: String);
-// 查看表格中某一类型列的数量
+const table  = base.getTableByName('Table1');
+const columns = base.getColumnsByType(table, 'text');
 output.text(column.length);
 
 ```
@@ -242,23 +287,32 @@ output.text(column.length);
 
 获取一个视图所有的行，返回一个数组
 
-##### 例子
-
 ```javascript
 const rows = base.getRows(table: Object, view: Object);
 
+```
+
+##### 例子
+
+```javascript
+
+const table = base.getTableByName('Table1');
+const view = base.getViewByName(table, 'view1');
+const rows = base.getRows(table, view);
 ```
 
 #### getGroupedRows
 
 获取分组视图中的行分组数据
 
+```javascript
+base.getGroupedRows(table: Object, view: Object);
+```
+
 ##### 例子
 
 ```javascript
-base.getGroupedRows(table: Object, view: Object);
-// 获取某个分组视图的分组数据
-const table = base.getTableByName('table');
+const table = base.getTableByName('Table1');
 const view = base.getViewByName(table, '分组视图');
 const groupViewRows = base.getGroupedRows(table, view);
 
@@ -268,27 +322,30 @@ const groupViewRows = base.getGroupedRows(table, view);
 
 通过一个行的 id 获取行，返回一个行对象
 
+```javascript
+const row = base.getRowById(table: Object, rowId: String);
+```
+
 ##### 例子
 
 ```javascript
-const row = base.getRowById(table: Object, rowId: String);
-
-// 获取该行中'名称'列的内容
-const column = base.getColumnByName(table: Object, '名称');
-const columnKey = column.key;
-const value = row.columnKey;
-
+const table = base.getTableByName('Table1');
+const row = base.getRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
 #### deleteRowById
 
 通过一个行的 id 删除当前表格中的该行
 
+```javascript
+base.deleteRowById(table: Object, rowId: String);
+```
+
 ##### 例子
 
 ```javascript
-base.deleteRowById(table: Object, rowId: String);
-
+const table = base.getTableByName('Table1');
+base.deleteRowById(table, 'M_lSEOYYTeuKTaHCEOL7nw');
 ```
 
 #### addRow
@@ -296,29 +353,31 @@ base.deleteRowById(table: Object, rowId: String);
 在一个子表中添加一行
 
 ```javascript
-base.addRow(tableName: String, rowData: Object, viewName?: String)
+base.addRow(table: Object, rowData: Object, viewName?: String)
+```
 
-// use case
-base.addRow('Table1', {'名称': '小强', '年龄': '18'});
+##### 例子
+```javascript
+const table = base.getTableByName('Table1');
+base.addRow(table, {'名称': '小强', '年龄': '18'});
+base.addRow(table, {'名称': '小强', '年龄': '18'}, 'Default View');
 
-// use case
-base.addRow('Table1', {'名称': '小强', '年龄': '18'}, 'Default View');
 ```
 
 #### modifyRow
 
 修改表格中的某一行
 
+```javascript
+base.modifyRow(table: Object, row: Object, updateRowData: Object);
+```
+
 ##### 例子
 
 ```javascript
-base.modifyRow(table: Object, row: Object, updateRowData: Object);
-// 修改名称为 table 的表格中最后一行的名称列和 number 列的内容为 '1111', 和 100
-const table = base.getTableByName('table');
-const rows = table.rows;
-const lastRow = rows[rows.length - 1];
-base.modifyRow(table, lastRow, {'名称': '1111', number: 100});
-
+const table = base.getTableByName('Table1');
+const row = base.getRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
+base.modifyRow(table, row, {'Name': 'new name', 'number': 100});
 ```
 
 ## base.utils 工具对象
