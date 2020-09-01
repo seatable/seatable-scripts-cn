@@ -7,7 +7,7 @@ SeaTable 脚本使用 Javascript 语言编写。一个脚本一般用于表格�
 1. base 对象。通过 base 对象可以操作表格中的数据。
 2. output 对象。用于输出结果。
 
-可以通过这个链接找到一些容易理解的例子[https://github.com/seatable/seatable-scripts/tree/master/examples](https://github.com/seatable/seatable-scripts/tree/master/examples)
+可以通过这个链接找到一些容易理解的例子[https://github.com/seatable/seatable-scripts-cn/tree/master/examples](https://github.com/seatable/seatable-scripts/tree/master/examples)
 
 SeaTable 脚本中用到的一些对象的数据结构:
 
