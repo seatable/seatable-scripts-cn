@@ -46,5 +46,8 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Home: README.md
-  - SeaTable 中对象的数据结构: data-structure.md
+  - 引言: README.md
+  - 对象数据结构: data-structure.md
+  - Base: base.md
+  - Output: output.md
+  - Utils: utils.md

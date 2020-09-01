@@ -9,7 +9,8 @@ SeaTable 脚本使用 Javascript 语言编写。一个脚本一般用于表格�
 
 可以通过这个链接找到一些容易理解的例子[https://github.com/seatable/seatable-scripts/tree/master/examples](https://github.com/seatable/seatable-scripts/tree/master/examples)
 
-base 的数据结构
+SeaTable 脚本中用到的一些对象的数据结构:
+
 * [数据结构](data-structure.md)
 
 编程参考:
