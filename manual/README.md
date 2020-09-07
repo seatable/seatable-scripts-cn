@@ -23,5 +23,5 @@ SeaTable 脚本中用到的一些对象的数据结构:
 
 具体如下
 
-* [get-incremental.js](https://github.com/seatable/seatable-scripts/tree/master/examples/get-incremental.js): 从一个累计列计算出增量数据
-* [auto-add-rows.js](https://github.com/seatable/seatable-scripts/tree/master/examples/auto-add-rows.js): 自动往一个记账表中添加每月重复的项目。
+* [get-incremental.js](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/get-incremental.js): 从一个累计列计算出增量数据
+* [auto-add-rows.js](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/auto-add-rows.js): 自动往一个记账表中添加每月重复的项目。
