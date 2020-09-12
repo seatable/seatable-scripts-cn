@@ -15,8 +15,7 @@ SeaTable 脚本使用 Javascript 语言编写。一个脚本一般用于表格�
 
 ```
 const tables = base.getTables();
-// `${tables.length}` 把变量 tables.length 的值变成一个字符串
-output.text(`${tables.length}`);
+output.text(tables.length);
 ```
 
 下面我们来看另一个简单的例子，就是取出一个子表中的所有行，然后把 Name 列的值输出出来:
