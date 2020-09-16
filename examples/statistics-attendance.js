@@ -1,4 +1,4 @@
-const originTableName = 'Table1';
+const originTableName = '原始表';
 const originViewName = '默认视图';
 const originNameColumnName = '名称';
 const originDepartmentColumnName = '部门';
@@ -6,7 +6,7 @@ const originDateColumnName = '日期';
 const originTimeColumnName = '打卡时间';
 
 const targetTableName = '考勤统计表';
-const targetNameColumnName = 'Name';
+const targetNameColumnName = '名称';
 const targetDepartmentColumnName = '部门';
 const targetDateColumnName = '日期';
 const targetStartTimeColumnName = '上班打卡';
@@ -17,7 +17,7 @@ const table = base.getTableByName(originTableName);
 const view = base.getViewByName(table, originViewName);
 const rows = base.getRows(table, view);
 
-// sort rows by date;
+// 将表格中的行按照日期列进行排序;
 rows.sort((row1, row2) => {
 	if (row1[originDateColumnName] < row2[originDateColumnName]) {
       return -1;
@@ -29,8 +29,8 @@ rows.sort((row1, row2) => {
 });
 
 /*
- group rows by date
- return an object formated as {'2020-09-01': [row1, ...], '2020-09-02': [row1, ...]}
+ 将所有的行按照日期进行分组保存到 groupedRows，对象中
+ 格式为 {'2020-09-01': [row, ...], '2020-09-02': [row, ...]}
 */
 const groupedRows = {};
 rows.forEach((row) => {
@@ -43,18 +43,20 @@ rows.forEach((row) => {
 
 const dateKeys = Object.keys(groupedRows);
 
-// traverse the groups to statistic daily work hours of staffs
+// 遍历 groupedRows 中的所有的组
 dateKeys.forEach((dateKey) => { 
+  // 获取当前日期的所有算工的所有打卡数据
   const dateRows = groupedRows[dateKey];
   const staffDateStatItem = {};
-  // traverse rows of each date to calculate the start and end time per person per day 
-  // and save to the staffDateStatItem, formatted as 
-  // {'name1': { 名称: name, 日期: 'date', 部门: 'department name', 下班打卡: 'end time', 上班打卡: 'start time'}, name2: ...}
+  // 遍历这些行数据并且以员工的名称进行分组，获取每个员工，当天的上班打卡和下班打卡时间，保存到 staffDateStatItem 中
+  // 格式为 { a1: {姓名: 'a1', 日期: '2020-09-01', 上班打卡: '08:00', 下班打卡: '18:00'},... }
   dateRows.forEach((row)=> {
     const name = row[originNameColumnName];
     if (!staffDateStatItem[name]) {
+      // 去原始数据中的 名称列，部门列，日期列中的数据，并且添加上班打卡，下班打卡列来生成一个新行，
       staffDateStatItem[name] = { [targetNameColumnName]: name, [targetDateColumnName]: row[originDateColumnName], [targetDepartmentColumnName]: row[originDepartmentColumnName], [targetEndTimeColumnName]: row[originTimeColumnName], [targetStartTimeColumnName]: row[originTimeColumnName]};
     } else {
+      // 当行的名称列重复时，进行时间比较，选择最大的作为下班打卡时间，做小的作为上班打卡时间
       const time = row[originTimeColumnName];
       const staffItem = staffDateStatItem[name];
       if (compareTime(staffItem[targetStartTimeColumnName], time)) {
@@ -65,12 +67,13 @@ dateKeys.forEach((dateKey) => {
     }
   });
   
-  // write the result of the date of all staffs to the new table
+  // 将当前日期的所有员工的考勤数据写入表格
   Object.keys(staffDateStatItem).forEach((name) => {
     base.addRow(targetTable, staffDateStatItem[name]);
   });  
 });
 
+// 比较两个字符串格式时间的大小
 function compareTime(time1, time2) {
   const t1 = time1.split(':');
   const t2 = time2.split(':');
