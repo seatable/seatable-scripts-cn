@@ -41,11 +41,7 @@ rows.forEach((row) => {
   groupedRows[date].push(row);
 });
 
-console.log(groupedRows);
-
 const dateKeys = Object.keys(groupedRows);
-
-console.log(dateKeys);
 
 // 遍历 groupedRows 中的所有的组
 dateKeys.forEach((dateKey) => { 
