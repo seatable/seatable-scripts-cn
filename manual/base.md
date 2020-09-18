@@ -112,7 +112,6 @@ output.text(view._id);
 
 ```javascript
 const views = base.getViews(table: Object/String);
-
 ```
 
 ##### 例子
@@ -134,7 +133,6 @@ output.text(views.length);
 
 ```javascript
 const view = base.getViewByName(table: Object/String, viewName: String);
-
 ```
 
 ##### 例子
@@ -143,13 +141,11 @@ const view = base.getViewByName(table: Object/String, viewName: String);
 const table  = base.getTableByName('Table1'); 
 const view = base.getViewByName(table, 'view 1');
 output.text(view.name);
-
 ```
 
 ```javascript
 const view = base.getViewByName('Table1', 'view 1');
 output.text(view.name);
-
 ```
 
 #### addView
@@ -177,7 +173,6 @@ base.addView('Table1', 'view 2');
 
 ```javascript
 base.renameView(table: Object/String, currentViewName: String, nextViewName: String);
-
 ```
 
 ##### 例子
@@ -185,12 +180,10 @@ base.renameView(table: Object/String, currentViewName: String, nextViewName: Str
 ```javascript
 const table  = base.getTableByName('Table1');
 base.renameView(table, 'view1', 'view2');
-
 ```
 
 ```javascript
 base.renameView('Table1', 'view1', 'view2');
-
 ```
 
 #### deleteView
@@ -206,12 +199,10 @@ base.deleteView(table: Object/String, viewName: String);
 ```javascript
 const table  = base.getTableByName('Table1');
 base.deleteView(table, 'view2');
-
 ```
 
 ```javascript
 base.deleteView('Table1', 'view2');
-
 ```
 
 ## 列
@@ -222,7 +213,6 @@ base.deleteView('Table1', 'view2');
 
 ```javascript
 const columns = base.getColumns(table: Object/String);
-
 ```
 
 ###### 例子
@@ -258,7 +248,6 @@ const columns = base.getShownColumns(table, view);
 column.forEach((column) => {
 	output.text(column.name);
 })
-
 ```
 
 ```javascript
@@ -278,7 +267,6 @@ const column = base.getColumnByName(table: Object/String, name: String);
 ```javascript
 const column = base.getColumnByName(table, 'Column name');
 output.text(column.name);
-
 ```
 
 ```javascript
@@ -299,13 +287,11 @@ const columns = base.getColumnsByType(table: Object/String, type: String);
 const table  = base.getTableByName('Table1');
 const columns = base.getColumnsByType(table, 'text');
 output.text(column.length);
-
 ```
 
 ```javascript
 const columns = base.getColumnsByType('Table1', 'text');
 output.text(column.length);
-
 ```
 
 ## 行
@@ -316,7 +302,6 @@ output.text(column.length);
 
 ```javascript
 const rows = base.getRows(table: Object/String, view: Object/String);
-
 ```
 
 ##### 例子
@@ -346,12 +331,10 @@ base.getGroupedRows(table: Object/String, view: Object/String);
 const table = base.getTableByName('Table1');
 const view = base.getViewByName(table, '分组视图');
 const groupViewRows = base.getGroupedRows(table, view);
-
 ```
 
 ```javascript
 const groupViewRows = base.getGroupedRows('Table1', '分组视图');
-
 ```
 
 ##### getRowById
@@ -405,14 +388,11 @@ base.addRow(table: Object/String, rowData: Object, viewName?: String)
 const table = base.getTableByName('Table1');
 base.addRow(table, {'名称': '小强', '年龄': '18'});
 base.addRow(table, {'名称': '小强', '年龄': '18'}, 'Default View');
-
 ```
 
 ```javascript
-const table = base.getTableByName('Table1');
 base.addRow('Table1', {'名称': '小强', '年龄': '18'});
 base.addRow('Table1', {'名称': '小强', '年龄': '18'}, 'Default View');
-
 ```
 
 #### modifyRow
