@@ -31,7 +31,7 @@ output.text(formatDate); // 2020-08-20 14:00
 ### lookupAndCopy（）
 
 ```javascript
-base.lookupAndCopy(srcTableName, srcColumnName, srcColumnToCompare, dstTable, dstColumn, dstColumnToCompare = null);
+base.lookupAndCopy(sourceTableName, sourceColumnName, sourceColumnToCompare, targetTable, targetColumn, targetColumnToCompare = null);
 ```
 
 查找一个子表中的某一列中特定的数据, 将另一个表中指定列的特定数据依次替换为这些数据, 如果方法中没有指明要替换的内容, 查找到的数据会以新行的形式插入到表格中
