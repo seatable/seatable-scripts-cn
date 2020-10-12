@@ -42,6 +42,6 @@ base.lookupAndCopy(sourceTableName, sourceColumnName, sourceColumnToCompare, tar
   // 将 Table1 中的 Name 列中内容为 'name1' 的单元格插入到 Table2 的 Name 列.
   base.lookupAndCopy('Table1', 'Name', 'name1', 'Table2', 'Name');
 
-  // 将 Table2 的 Name 列中内容为 'name2' 的单元格依次替换成 Table1 中 Name 列内容为 'name1'的单元格.
+  // 用 Table1 中 Name 列中内容为 name1 的单元格依次替换 Table2 中 Name 列中内容为 name2 的单元格.
   base.lookupAndCopy('Table1', 'Name', 'name1', 'Table2', 'Name', 'name2');
 ```
