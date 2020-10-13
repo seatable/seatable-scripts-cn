@@ -41,8 +41,8 @@ base.lookupAndCopy(targetTable, targetColumn, targetColumnToCompare, sourceTable
 ```javascript
   
   // 匹配出 Table1 和 Table2 中 Name 列的内容相同的行, 将 Table1 中的行的 Email 列的内容到 Table2 中对应行的 Email 列
-  base.lookupAndCopy('Table2', 'Name', 'Email', 'Table1', 'Name');
+  base.lookupAndCopy('Table2', 'Email', 'Name', 'Table1', 'Name');
   
   // 匹配出 Table1 中 Name 列和 Table2 中 Name1 列的内容相同的行, 将 Table1 中的行的 Email 列的内容到 Table2 中对应行的 Email1 列
-  base.lookupAndCopy('Table2', 'Name1', 'Email1', 'Table1', 'Name', 'Email');
+  base.lookupAndCopy('Table2', 'Email1', 'Name1', 'Table1', 'Email', 'Name');
 ```
