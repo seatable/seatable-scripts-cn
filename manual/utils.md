@@ -31,17 +31,18 @@ output.text(formatDate); // 2020-08-20 14:00
 ### lookupAndCopy（）
 
 ```javascript
-base.lookupAndCopy(sourceTableName, sourceColumnName, sourceColumnToCompare, targetTable, targetColumn, targetColumnToCompare = null);
+base.lookupAndCopy(targetTable, targetColumn, targetColumnToCompare, sourceTableName, sourceColumnName, sourceColumnToCompare = null);
 ```
 
-查找一个子表中的某一列中特定的数据, 将另一个表中指定列的特定数据依次替换为这些数据, 如果方法中没有指明要替换的内容, 查找到的数据会以新行的形式插入到表格中
+搜索表格中指定的某一列的数据, 找到符合条件的数据, 并填写到表格中
 
 ##### 例子
 
 ```javascript
-  // 将 Table1 中的 Name 列中内容为 'name1' 的单元格插入到 Table2 的 Name 列.
-  base.lookupAndCopy('Table1', 'Name', 'name1', 'Table2', 'Name');
-
-  // 用 Table1 中 Name 列中内容为 name1 的单元格依次替换 Table2 中 Name 列中内容为 name2 的单元格.
-  base.lookupAndCopy('Table1', 'Name', 'name1', 'Table2', 'Name', 'name2');
+  
+  // 匹配出 Table1 和 Table2 中 Name 列的内容相同的行, 将 Table1 中的行的 Email 列的内容到 Table2 中对应行的 Email 列
+  base.lookupAndCopy('Table2', 'Name', 'Email', 'Table1', 'Name');
+  
+  // 匹配出 Table1 中 Name 列和 Table2 中 Name1 列的内容相同的行, 将 Table1 中的行的 Email 列的内容到 Table2 中对应行的 Email1 列
+  base.lookupAndCopy('Table2', 'Name1', 'Email1', 'Table1', 'Name', 'Email');
 ```
