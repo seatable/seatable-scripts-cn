@@ -48,6 +48,13 @@ markdown_extensions:
 nav:
   - 引言: README.md
   - 对象数据结构: data-structure.md
-  - Base: base.md
-  - Output: output.md
-  - Utils: utils.md
+  - JavaScript:
+    - Start: javascript/README.md
+    - Base: javascript/base.md
+    - Output: javascript/output.md
+    - Utils: javascript/utils.md
+  - Python:
+    - Start: python/README.md
+    - Base: python/base.md
+    - Constants: python/constants.md
+
