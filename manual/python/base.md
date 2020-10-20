@@ -6,7 +6,7 @@ Base 提供了授权、操作数据等方法
 
 ### auth
 
-使用API Token进行登录，与SeaTable进行操作前必须进行此操作
+使用 API Token 进行登录，与 SeaTable 进行操作前必须进行此操作
 
 ##### 例子
 

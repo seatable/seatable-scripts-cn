@@ -7,7 +7,7 @@
 列类型，继承了Python的Enum类，当插入/追加列、更改列类型时等情况需要使用到，且必须使用
 
 ```python
-lass ColumnTypes(Enum):
+class ColumnTypes(Enum):
     NUMBER = 'number'
     TEXT = 'text'
     CHECKBOX = 'checkbox'
