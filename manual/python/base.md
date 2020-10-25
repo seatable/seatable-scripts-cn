@@ -260,3 +260,60 @@ base.delete_column(table_name, column_key)
 ```python
 base.delete_column('Table1', 'bsKL')
 ```
+
+## 下载/上传文件
+
+#### download file
+
+下载文件
+
+```python
+base.download_file(file_url, save_path)
+```
+
+##### 例子
+
+```python
+# 将文件下载到目录files下
+base.download_file('https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/screen%20(3).png', 'files')
+```
+
+#### upload file in memory
+
+```python
+# name: 上传后的文件名
+# content: 文件内容，是一个bytes对象
+# relative_path: 上传的相对路径，是该base附件文件下的路径
+# file_type: image or file，默认为file
+# relative_path和file_type不能同时为None，如果relative_path为None，则其值为 {file_type}s/{today-month} 如 files/2020-09
+# replace: 如果目录下有同名文件是否替换
+base.upload_bytes_file(name, content: bytes, relative_path=None, file_type=None, replace=False)
+```
+
+##### 例子
+
+```python
+reponse = requests.get('http://xxxxxx.png')
+base.upload_bytes_file('file.png', response.content, relative_path=None, file_type='file', replace=False)
+with open('file.png', 'rb') as f:
+    content = f.read()
+base.upload_bytes_file('file.png', content, relative_path=None, file_type='file', replace=False)
+```
+
+#### upload local file
+
+```python
+# file_path: 文件路径
+# name: 上传后的文件名，如果为None, 则是文件的名字
+# relative_path: 上传的相对路径，是该base附件文件下的路径
+# file_type: image or file，默认为file
+# relative_path和file_type不能同时为None，如果relative_path为None，则其值为 {file_type}s/{today-month} 如 files/2020-09
+# replace: 如果目录下有同名文件是否替换
+base.upload_local_file(file_path, name=None, relative_path=None, file_type=None, replace=False)
+```
+
+##### 例子
+
+```python
+base.upload_local_file('files/file.png', name='upload.png', relative_path=None, file_type='image', replace=True)
+```
