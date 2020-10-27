@@ -2,7 +2,7 @@
 
 Javascript 脚本来当前的浏览器中直接运行，适合于对数据进行简单的处理。Python 脚本在服务器端运行，而且可以设置自动周期性运行，适合于更复杂的数据处理场景。
 
-Python 脚本也可以在你的本地机器上运行，也可以上传到 SeaTable 云端运行。本地运行方便你开发调试。
+Python 脚本也可以在你的本地机器上运行，也可以上传到 SeaTable 云端运行。本地运行方便你开发调试，可方便把脚本集成到更大的项目中。
 
 ## 如何让脚本同时支持本地云端中运行
 
@@ -21,10 +21,23 @@ base = Base(api_token, server_url)
 base.auth()
 ```
 
+## 本地运行需要安装的库
+
+脚本在本地运行的时候需要安装 `seatable-api`。
+
+```
+pip3 install seatable-api
+```
+
+要求
+
+* Python >= 3.5
+* requests
+* socketIO-client-nexus
 
 ## 编程参考
 
-SeaTable 一般对象的数据结构:
+SeaTable 中对象的数据结构:
 
 * [数据结构](../data-structure.md)
 
@@ -32,4 +45,4 @@ SeaTable API 库介绍:
 
 * [Base](base.md)
 * [Context](context.md)
-
+* [constants](constants.md): 一些常量定义
