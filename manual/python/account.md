@@ -6,7 +6,7 @@ Account 提供了授权，列出Workspace，新增/复制Base，获取Base对象
 
 ### auth
 
-使用 用户名/密码 进行登录
+使用 用户名/密码 进行登录，如果要进行其他Account下API的操作，请先进行登录操作
 
 ##### 例子
 
@@ -113,5 +113,6 @@ account.get_base(workspace_id, base_name)
 ```python
 base = account.get_base(35, 'img-file')
 base.auth()
-# 对base的操作
+# 其他对base的操作
+# xxxxxx
 ```
