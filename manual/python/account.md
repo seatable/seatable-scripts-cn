@@ -73,17 +73,16 @@ Account对象操作Base，并不是改变Base内部数据，指Base的增删改�
 添加一个Base对象到一个Workspace内
 
 ```python
-# owner: 用于区别您个人的workspace或者群组的workspace
-# 如果为None则添加到您自己的workspace中，
-# 如果要添加到群组的workspace，则owner应为该workspace的owner字段，详情请参照 list workspaces 返回结果
-account.add_base(name, owner=None)
+# group_id: 如果要添加到自己的workspace则为None即可
+# 如果要添加到群组的workspace，则需要传递group_id参数，即群组id
+account.add_base(name, group_id=None)
 ```
 
 ##### 例子
 
 ```python
 account.add_base('new-base')
-account.add_base('new-base', '35@seafile_group')
+account.add_base('new-base', 35)
 ```
 
 #### copy a base
