@@ -58,6 +58,30 @@ row_data = {
 base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
+#### batch append rows
+
+批量追加到表格
+
+```python
+base.batch_append_rows(table_name, rows_data)
+```
+
+##### 例子
+
+```python
+rows_data = [{
+                'Name': 'test batch',
+                'content': 'Yes'
+            }, {
+                'Name': 'test batch',
+                'content': 'Yes'
+            }, {
+                'Name': 'test batch',
+                'content': 'Yes'
+            }]
+base.batch_append_rows('Table6', rows_data)
+```
+
 #### update row
 
 更新一行
