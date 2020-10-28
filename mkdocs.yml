@@ -56,6 +56,10 @@ nav:
   - Python:
     - Start: python/README.md
     - Base: python/base.md
+    - Rows: python/rows.md
+    - Links: python/links.md
+    - Columns: python/columns.md
+    - Files: python/files.md
     - Constants: python/constants.md
     - Context: python/context.md
 

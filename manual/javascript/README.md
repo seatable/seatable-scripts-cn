@@ -11,13 +11,13 @@ Javascript 脚本来当前的浏览器中直接运行，适合于对数据进行
 
 SeaTable 一般对象的数据结构:
 
-* [数据结构](data-structure.md)
+* [数据结构](../data-structure.md)
 
 对象提供的方法:
 
-* [base](javascript/base.md)
-* [output](javascript/output.md)
-* [utilities](javascript/utils.md)
+* [base](base.md)
+* [output](output.md)
+* [utilities](utils.md)
 
 ## 例子
 
