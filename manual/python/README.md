@@ -44,5 +44,9 @@ SeaTable 中对象的数据结构:
 SeaTable API 库介绍:
 
 * [Base](base.md)
+* [Rows](rows.md)
+* [Links](links.md)
+* [Columns](columns.md)
+* [Files](files.md)
 * [Context](context.md)
 * [constants](constants.md): 一些常量定义
