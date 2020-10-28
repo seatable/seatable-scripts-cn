@@ -22,9 +22,10 @@ base = Base(api_token, server_url)
 base.auth()
 ```
 
-Base对象提供了操作行列的方法，请参考文档
+Base对象提供了操作行列，上传下载文件等的接口，请参考文档
 
 * [Rows](rows.md)
+* [Links](links.md)
 * [Columns](columns.md)
 * [Files](files.md)
 
