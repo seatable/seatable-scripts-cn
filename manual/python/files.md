@@ -6,6 +6,68 @@
 
 * [Base](base.md)
 
+#### get downlaod link by path
+
+获取文件下载链接
+
+```python
+# path: 文件在该Base下的相对路径
+base.get_file_download_link(path)
+```
+
+##### 例子
+
+```python
+# 假如您从Base的数据中获取到一个文件url为
+# https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip
+# 则获取链接为
+download_link = base.get_file_download_link('files/2020-10/aur7e-jqc19.zip')
+# 如果您想要下载则使用该链接下载，例子中使用requests库，您可以使用其他库操作
+response = requests.get(download_link)
+```
+
+#### get file upload link
+
+获取上传链接以上传文件，返回一个字典，上传链接在其中
+上传时，需要两个参数，parent_dir和relative_path，详情请见例子
+
+```python
+# 返回字典
+# {
+#     "parent_path": "xxxxx",
+#     "upload_link": "https://xxxxxx"
+# }
+base.get_file_upload_link()
+```
+
+##### 例子
+
+```python
+upload_link_dict = base.get_file_upload_link()
+# 上传文件，使用的requests库，您可以使用其他库操作
+parent_dir = upload_link_dict['parent_path']
+upload_link = upload_link_dict['upload_link'] + '?ret-json=1'
+response = requests.post(upload_link, data={
+    'parent_dir': parent_dir,
+    'relative_path': relative_path,
+    'replace': 1 if replace else 0  # 如果上传过同名文件是否要替换
+}, files={
+    'file': (name, open(file_path, 'rb'))  # 要上传的文件
+})
+```
+
+单纯的API操作很简单，但是如果完整的操作
+
+截取path，获取下载链接，下载，保存
+
+或者
+
+获取上传链接，读取文件，组建参数，上传
+
+如果代码严谨一些，还要加上中间检查每个请求的状态等
+
+非常繁琐，所以下面将会展示将上述过程封装后的下载/上传文件的API供您使用
+
 #### download file
 
 下载文件
@@ -32,6 +94,12 @@ base.download_file('https://dev.seafile.com/dtable-web/workspace/74/asset-previe
 # relative_path和file_type不能同时为None，如果relative_path为None，则其值为 {file_type}s/{today-month} 如 files/2020-09
 # replace: 如果目录下有同名文件是否替换
 # return: 返回被上传文件的信息dict
+# {
+#     'type': str,
+#     'size': int,
+#     'name': str,
+#     'url': str
+# }
 base.upload_bytes_file(name, content: bytes, relative_path=None, file_type=None, replace=False)
 ```
 
@@ -76,6 +144,12 @@ base.append_row('real-img-files', row)
 # relative_path和file_type不能同时为None，如果relative_path为None，则其值为 {file_type}s/{today-month} 如 files/2020-09
 # replace: 如果目录下有同名文件是否替换
 # return: 返回被上传文件的信息dict
+# {
+#     'type': str,
+#     'size': int,
+#     'name': str,
+#     'url': str
+# }
 base.upload_local_file(file_path, name=None, relative_path=None, file_type=None, replace=False)
 ```
 
