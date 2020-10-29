@@ -51,4 +51,4 @@ SeaTable API 库介绍:
 * [Account](account.md)
 * [Context](context.md)
 * [Constants](constants.md): 一些常量定义
-* [Libs](libs.md): SeaTable 脚本支持的库
+* [云端环境下支持的库](libs.md): 云端环境下支持导入的 Python 库列表
