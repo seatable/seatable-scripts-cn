@@ -1,34 +1,31 @@
-# Account 对象
+# Account
 
-Account 提供了授权，列出Workspace，新增/复制Base，获取Base对象
+Account 提供了列出所有的 Workspace，新增/复制/删除 Base，获取一个 Base 访问权限的接口。
 
 ## 授权登录
 
-### auth
-
-使用 用户名/密码 进行登录，如果要进行其他Account下API的操作，请先进行登录操作
+使用 邮箱/密码 进行登录，如果要调用 Account 提供的其他 API，需要先进行登录
 
 ##### 例子
 
 ```python
 from seatable_api import Account
 
-login_name = 'xiongxxx@xxx.com'
+email = 'xiongxxx@xxx.com'
 password = 'xxxxxxx'
 server_url = 'https://cloud.seatable.cn/'
-account = Account(login_name, password, server_url)
+account = Account(email, password, server_url)
 account.auth()
 ```
 
-Base对象提供了获取操作Workspace和Base的方法，具体如下
 
 ## Workspace
 
-一个Workspace是本人Base的集合或者一个群组Base的集合
+一个 Workspace 是本人的 Base 的集合或者一个群组 Base 的集合
 
 #### list workspaces
 
-获取您所有workspaces与其下bases
+获取您所有 workspace 与其下的 base
 
 ```python
 account.list_workspaces()
@@ -66,15 +63,15 @@ account.list_workspaces()
 
 ## Base
 
-Account对象操作Base，并不是改变Base内部数据，指Base的增删改查
+新增/复制/删除 Base，获取一个 Base 访问权限的接口
 
 #### add a base
 
-添加一个Base对象到一个Workspace内
+添加一个 base 到一个 Workspace 
 
 ```python
-# group_id: 如果要添加到自己的workspace则为None即可
-# 如果要添加到群组的workspace，则需要传递group_id参数，即群组id
+# group_id: 如果要添加到自己的 workspace 则为 None 即可
+# 如果要添加到群组的 workspace，则需要传递 group_id 参数，即群组的 id
 account.add_base(name, group_id=None)
 ```
 
@@ -87,10 +84,10 @@ account.add_base('new-base', 35)
 
 #### copy a base
 
-复制一个Base到一个Workspace中
+复制一个 base 到一个 workspace 中
 
 ```python
-# 将名为base_name的bae从src_workspace复制到dst_workspace中
+# 将名为 base_name 的 basee 从 src_workspace 复制到 dst_workspace 中
 account.copy_base(src_workspace_id, base_name, dst_workspace_id)
 ```
 
@@ -102,16 +99,14 @@ account.copy_base(35, 'img-file', 74)
 
 #### get a base
 
-获取一个Base对象
+获取一个 base 对象
 
 ```python
-# 获取存在于id为workspac_id的workspace中名为base_name的Base对象
+# 获取存在于 id 为 workspac_id 的 workspace 中名为 base_name 的 Base 对象
 account.get_base(workspace_id, base_name)
 ```
 
 ```python
 base = account.get_base(35, 'img-file')
 base.auth()
-# 其他对base的操作
-# xxxxxx
 ```
