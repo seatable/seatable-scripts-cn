@@ -54,7 +54,7 @@ nav:
     - Output: javascript/output.md
     - Utils: javascript/utils.md
   - Python:
-    - Start: python/README.md
+    - 引言: python/README.md
     - Base: python/base.md
     - Rows: python/rows.md
     - Links: python/links.md
@@ -63,5 +63,5 @@ nav:
     - Account: python/account.md
     - Constants: python/constants.md
     - Context: python/context.md
-    - Libs: python/libs.md
+    - 云端环境下支持的库: python/libs.md
 
