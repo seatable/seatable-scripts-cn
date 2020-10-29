@@ -52,3 +52,12 @@ SeaTable API 库介绍:
 * [Context](context.md)
 * [Constants](constants.md): 一些常量定义
 * [云端环境下支持的库](libs.md): 云端环境下支持导入的 Python 库列表
+
+
+## 例子
+
+可以通过这个链接找到一些容易理解的例子[https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python](https://github.com/seatable/seatable-scripts/tree/master/examples/python)
+
+具体如下
+
+* [send_email.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/send_email.py): 读取一个表中的图片/文件作为附件发送邮件给另一个表中的联系人
