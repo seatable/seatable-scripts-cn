@@ -63,4 +63,5 @@ nav:
     - Account: python/account.md
     - Constants: python/constants.md
     - Context: python/context.md
+    - Libs: python/libs.md
 
