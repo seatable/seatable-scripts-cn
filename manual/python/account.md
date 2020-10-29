@@ -70,9 +70,9 @@ account.list_workspaces()
 添加一个 base 到一个 Workspace 
 
 ```python
-# group_id: 如果要添加到自己的 workspace 则为 None 即可
-# 如果要添加到群组的 workspace，则需要传递 group_id 参数，即群组的 id
-account.add_base(name, group_id=None)
+# workspace_id: 如果为None默认添加到自己的workspace
+# 如果指定workspace_id则添加到该workspace下
+account.add_base(name, workspace_id=None)
 ```
 
 ##### 例子
