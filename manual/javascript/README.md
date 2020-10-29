@@ -21,9 +21,9 @@ SeaTable 一般对象的数据结构:
 
 ## 例子
 
-可以通过这个链接找到一些容易理解的例子[https://github.com/seatable/seatable-scripts-cn/tree/master/examples](https://github.com/seatable/seatable-scripts/tree/master/examples)
+可以通过这个链接找到一些容易理解的例子[https://github.com/seatable/seatable-scripts-cn/tree/master/examples/javascript](https://github.com/seatable/seatable-scripts/tree/master/examples/javascript)
 
 具体如下
 
-* [get-incremental.js](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/get-incremental.js): 从一个累计列计算出增量数据
-* [auto-add-rows.js](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/auto-add-rows.js): 自动往一个记账表中添加每月重复的项目
+* [get-incremental.js](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/javascript/get-incremental.js): 从一个累计列计算出增量数据
+* [auto-add-rows.js](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/javascript/auto-add-rows.js): 自动往一个记账表中添加每月重复的项目
