@@ -105,7 +105,7 @@ account.copy_base(35, 'img-file', 74)
 # 获取存在于 id 为 workspac_id 的 workspace 中名为 base_name 的 Base 对象
 # Base对象已获得授权，所以不需要调用base.auth()
 # with_socket_io: 缺省时False，是否创建socket连接
-account.get_base(workspace_id, base_name, with_socket_io=False)
+account.get_base(workspace_id, base_name)
 ```
 
 ```python
