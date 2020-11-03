@@ -53,7 +53,7 @@ dateKeys.forEach((dateKey) => {
   dateRows.forEach((row)=> {
     const name = row[originNameColumnName];
     if (!staffDateStatItem[name]) {
-      // 去原始数据中的 名称列，部门列，日期列中的数据，并且添加上班打卡，下班打卡列来生成一个新行，
+      // 根据原始的行数据生成生成一个新的行, 并在新生成的行中添加上班打卡，下班打卡列
       staffDateStatItem[name] = { [targetNameColumnName]: name, [targetDateColumnName]: row[originDateColumnName], [targetDepartmentColumnName]: row[originDepartmentColumnName], [targetEndTimeColumnName]: row[originTimeColumnName], [targetStartTimeColumnName]: row[originTimeColumnName]};
     } else {
       // 当行的名称列重复时，进行时间比较，选择最大的作为下班打卡时间，做小的作为上班打卡时间
