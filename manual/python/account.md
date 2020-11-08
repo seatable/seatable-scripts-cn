@@ -1,10 +1,14 @@
 # Account
 
-Account 提供了列出所有的 Workspace，新增/复制/删除 Base，获取一个 Base 访问权限的接口。
+Account 类提供了操作全局 API 的接口，包括
 
-## 授权登录
+* 列出所有的 Workspace
+* 新增/复制/删除 Base
+* 获取单个 Base 的访问权限
 
-使用 邮箱/密码 进行登录，如果要调用 Account 提供的其他 API，需要先进行登录
+## 认证
+
+使用 邮箱/密码 进行认证，在调用 Account 提供的 API 前，需要先进行认证
 
 ##### 例子
 
@@ -21,7 +25,8 @@ account.auth()
 
 ## Workspace
 
-一个 Workspace 是本人的 Base 的集合或者一个群组 Base 的集合
+在 SeaTable 中，一个 workspace 是个人的表格的集合或者一个群组的表格的集合。Base 存储在 workspace 中。SeaTable 会为每个账号生成一个个人的 workspace, 每个群组也有一个 workspace。
+
 
 #### list workspaces
 
