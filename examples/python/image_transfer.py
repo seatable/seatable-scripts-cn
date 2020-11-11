@@ -3,31 +3,33 @@ import uuid
 import requests
 import time
 import os
+
 """
-该脚本用户图片链接对图片数据进行写入   IMG_URL_COL--->IMG_COL
-实现方式： 
-1. 从IMG_URL_COL列中下载链接保存至本地 LOCAL_FILE_PATH
-2. 再从本地读取数据上传到IMG_COL列中
+该脚本用于从图片链接下载图片到图片列。你可以在一个文本列中记录图片的地址，然后用这个
+脚本自动下载图片并上传到图片列中。
 """
+
 ###################---基本信息配置---###################
-SERVER_URL      = context.server_url or 'https://dev.seafile.com/dtable-web'
+SERVER_URL      = context.server_url or 'https://cloud.seatable.cn/'
 API_TOKEN       = context.api_token  or 'cacc42497886e4d0aa8ac0531bdcccb1c93bd0f5'
 TABLE_NAME      = 'Table1'
-IMAGE_FILE_TYPE = ['jpg', 'png', 'jpeg', 'bmp', 'gif']      #图片的大众格式
+IMAGE_FILE_TYPE = ['jpg', 'png', 'jpeg', 'bmp', 'gif']      # 图片的格式
 
-IMG_URL_COL     = '图片链接'                                 #图片链接列名  url或text等数据类型
-IMG_COL         = 'img'                                     #图片列名， 图片数据类型
-IMG_NAME_PRE    = 'image'                                   #下载到本地的图片名称前缀
+IMG_URL_COL     = '图片链接'                                 # 包含图片链接的列名，需要是 URL 或者文本类型 
+IMG_COL         = 'img'                                     # 用于存储图片的列名，需要是图片类型
+
+IMG_NAME_PRE    = 'image'                                   # 图片上传后使用的文件名称前缀
 ###################---基本信息配置---###################
 
 def get_time_stamp():
     return str(int(time.time()*100000))
     
 def img_transfer():
-    #1. 获取base obj并且认证
+    # 1. 创建 base 对象并且认证
     base = Base(API_TOKEN, SERVER_URL)
     base.auth()    
-    #2. 获取行信息, 数据结构--列表嵌套字典
+
+    # 2. 获取行信息, 数据结构--列表嵌套字典
     """
     数据结构例子：其中'img', '图片链接是用户自定义的列名'
     [{
@@ -82,9 +84,9 @@ def img_transfer():
             os.remove(img_name)
 
         except Exception as err_msg:
-            print('count%s-%s-%s-message: %s'%(count, row['_id'],img_url, err_msg))      #发现异常打印行数等信息方便回查
+            print('count%s-%s-%s-message: %s' % (count, row['_id'], img_url, err_msg))      #发现异常打印行数等信息方便回查
             continue
-        count+=1
+        count += 1
         
 if __name__ == "__main__":
     img_transfer()
