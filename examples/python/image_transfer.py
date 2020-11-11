@@ -1,5 +1,4 @@
 from seatable_api import Base, context
-import uuid
 import requests
 import time
 import os
