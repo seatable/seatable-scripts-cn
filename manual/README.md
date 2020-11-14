@@ -42,7 +42,7 @@ for (var i=0; i<rows.length; i++) {
 
 ### Python 脚本入门
 
-编写脚本时，需要从 seatable_api 导入 Base 对象并对其初始化，然后就可以调用其中的函数来操作表格了。下面为一键简单的例子，用于往一个表格中添加一个新行:
+编写脚本时，需要从 seatable_api 导入 Base 对象并对其初始化，然后就可以调用其中的函数来操作表格了。下面为一个简单的例子，用于往一个表格中添加一个新行:
 
 ```
 from seatable_api import Base
