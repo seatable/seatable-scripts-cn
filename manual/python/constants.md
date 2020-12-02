@@ -7,7 +7,7 @@
 列类型，当插入/追加列、更改列类型时等情况需要使用到
 
 ```python
-from seatable_api import ColumnTypes
+from seatable_api.constants import ColumnTypes
 
 ColumnTypes.NUMBER              # 数字
 ColumnTypes.TEXT                # 文本
