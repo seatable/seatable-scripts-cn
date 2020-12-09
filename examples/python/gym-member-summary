@@ -3,25 +3,19 @@ import datetime
 from pytz import timezone
 from seatable_api import Base, context, constants
 
-########## Base Config ################################
 SERVER_URL = "https://dev.seafile.com/dtable-web/"
 API_TOKEN = "7010c3fde8a2639b385f2a3f258a5a27cbdfe1fb"
 
-# Orginal table list all the infomations of member
 RAW_TABLE = "Table1"
 RAW_TABLE_NAME = "名称"
 RAW_TABLE_TIME = "创建时间"
 
 COL_NAME = "标记"
 
-HOUR_LIMIT_MAX = 21  # before 9 o'clock
-HOUR_LIMIT_MIN = 18  # after 6 o'clock
+HOUR_LIMIT_MAX = 21  # before 9pm
+HOUR_LIMIT_MIN = 18  # after 6pm
 
 TIMEZONE = "Asia/Shanghai"
-
-
-########## Base Config ################################
-
 
 def _format_time(time_str_utc):
     """
