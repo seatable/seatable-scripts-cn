@@ -35,7 +35,6 @@ def _format_time(time_str_utc):
 def invalid_info_marker():
     '''
     Mark the invalid member clock-in information in the extra column
-    :return:
     '''
     base = Base(API_TOKEN, SERVER_URL)
     base.auth()
