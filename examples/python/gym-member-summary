@@ -1,29 +1,25 @@
-from seatable_api import Base, context, constants
 import datetime
-from pytz import timezone
 
+from pytz import timezone
+from seatable_api import Base, context, constants
 
 ########## Base Config ################################
-SERVER_URL      = "https://dev.seafile.com/dtable-web/"
-API_TOKEN       = "7010c3fde8a2639b385f2a3f258a5a27cbdfe1fb"
+SERVER_URL = "https://dev.seafile.com/dtable-web/"
+API_TOKEN = "7010c3fde8a2639b385f2a3f258a5a27cbdfe1fb"
 
 # Orginal table list all the infomations of member
-RAW_TABLE       = "Table1"
-RAW_TABLE_NAME  = "名称"
-RAW_TABLE_TIME  = "创建时间"
+RAW_TABLE = "Table1"
+RAW_TABLE_NAME = "名称"
+RAW_TABLE_TIME = "创建时间"
 
-# New table list the summary of calculated result
-NEW_TABLE       = "Table2"
-NEW_TABLE_NAME  = "名称"
-NEW_TABLE_COUNT = "打卡次数"
-NEW_TABLE_PASS  = "是否通过"
+COL_NAME = "标记"
 
-TIMEDELTA       = 30   
-THRESHOLD       = 30   # a threshold by which to evaluate if pass or not
-HOUR_LIMIT_MAX  = 9    # before 9 o'clock
-HOUR_LIMIT_MIN  = 6    # after 6 o'clock
+HOUR_LIMIT_MAX = 21  # before 9 o'clock
+HOUR_LIMIT_MIN = 18  # after 6 o'clock
 
-TIMEZONE        = "Asia/Shanghai"
+TIMEZONE = "Asia/Shanghai"
+
+
 ########## Base Config ################################
 
 
@@ -45,83 +41,26 @@ def pass_calculate():
     base = Base(API_TOKEN, SERVER_URL)
     base.auth()
     rows = base.list_rows(RAW_TABLE)
-    """
-    data_structure of table:
-    [{
-	'_id': 'YN759g08SoidjOLeZMFKgg',
-	'_mtime': '2020-12-09T02:56:51.684+00:00',
-	'名称': 'High',
-	'打卡项目（报名费 / 满卡奖励）': 'C ( 0.99 X 1.5 ) 饮水打卡',
-	'微信': 'quality products',
-	'创建时间': '2020-12-09T02:56:48.780+00:00',
-	'报名费': '29.7',
-	'是否付费': False
-    }, {
-	'_id': 'UwL8A9UrR0GQTMHvQ4uJUA',
-	'_mtime': '2020-12-09T02:56:51.684+00:00',
-	'名称': 'dodoro',
-	'打卡项目（报名费 / 满卡奖励）': 'D ( 0.69 X 2.0 ) 绿叶打卡',
-	'微信': 'dorothy_yang55',
-	'创建时间': '',
-	'报名费': '20.7',
-	'是否付费': True
-    }, ...]
-    """
 
+    # Create a new column to mark the invalid clock-in
+    try:
+        base.insert_column(RAW_TABLE, COL_NAME, constants.ColumnTypes.TEXT)
+    except:
+        pass
 
-    # 1. Handle the original table with raw data
-    '''
-    initiate a data structure like
-    {
-        'name1':[time1, time2, .....],
-        'name2':[time1, time2, .....]    
-    }
-    '''
     res_dict = {}
-    time_limit = datetime.datetime.now() - datetime.timedelta(days=TIMEDELTA)
     for row in rows:
         create_time = _format_time(row.get(RAW_TABLE_TIME))
         name = row.get(RAW_TABLE_NAME)
         time_list = res_dict.get(name) or []
-        # Clock in before 9 within 30 days
-        if create_time and create_time >= time_limit and create_time.hour < HOUR_LIMIT_MAX and create_time.hour >= HOUR_LIMIT_MIN:
-            if create_time.date() in time_list: #exclude the same day
-                continue
+        if create_time and create_time.hour in range(HOUR_LIMIT_MIN, HOUR_LIMIT_MAX):
+            if create_time.date() in time_list:  # invalid clock-in more than one time within one day
+                base.update_row(RAW_TABLE, row['_id'], {COL_NAME: '无效'})
             time_list.append(create_time.date())
             res_dict[name] = time_list
         else:
-            continue
+            base.update_row(RAW_TABLE, row['_id'], {COL_NAME: '无效'})
 
-
-    # 2. Handle the new table which is a summary of raw data
-    """
-    initiate a new data structure saved into new table
-     batch_rows = [
-            {'名称': 'High', '打卡次数': 1, '是否通过': ''}, 
-            {'名称': 'dodoro', '打卡次数': 1, '是否通过': ''}, 
-    ...]
-    """
-    batch_rows = [{
-        NEW_TABLE_NAME  :k,
-        NEW_TABLE_COUNT :len(res_dict.get(k)),
-        NEW_TABLE_PASS  :'pass' if len(res_dict.get(k)) >= THRESHOLD else ''
-    } for k in res_dict.keys()]
-    print(batch_rows)
-
-    # Insert columns of new table, this can be operated through this script or through web page
-    # Try-except to ignore the column already exists
-    try:
-        base.insert_column(NEW_TABLE,NEW_TABLE_COUNT,constants.ColumnTypes.TEXT)
-    except:
-        pass
-    try:
-        base.insert_column(NEW_TABLE,NEW_TABLE_PASS, constants.ColumnTypes.TEXT)
-    except:
-        pass
-
-    # Insert the result into new table
-    base.batch_append_rows(NEW_TABLE, batch_rows)
 
 if __name__ == "__main__":
     pass_calculate()
-
