@@ -20,7 +20,8 @@ NEW_TABLE_PASS  = "是否通过"
 
 TIMEDELTA       = 30   
 THRESHOLD       = 30   # a threshold by which to evaluate if pass or not
-HOUR_LIMIT      = 9    # before 9 o'clock
+HOUR_LIMIT_MAX  = 9    # before 9 o'clock
+HOUR_LIMIT_MIN  = 6    # after 6 o'clock
 
 TIMEZONE        = "Asia/Shanghai"
 ########## Base Config ################################
@@ -83,7 +84,7 @@ def pass_calculate():
         name = row.get(RAW_TABLE_NAME)
         time_list = res_dict.get(name) or []
         # Clock in before 9 within 30 days
-        if create_time and create_time >= time_limit and create_time.hour < HOUR_LIMIT:
+        if create_time and create_time >= time_limit and create_time.hour < HOUR_LIMIT_MAX and create_time.hour >= HOUR_LIMIT_MIN:
             if create_time.date() in time_list: #exclude the same day
                 continue
             time_list.append(create_time.date())
