@@ -1,10 +1,9 @@
-import uuid
-
-import requests
 from seatable_api import Base, context, constants
 import datetime
 from pytz import timezone
 
+
+########## Base Config ################################
 SERVER_URL      = "https://dev.seafile.com/dtable-web/"
 API_TOKEN       = "7010c3fde8a2639b385f2a3f258a5a27cbdfe1fb"
 
@@ -24,6 +23,7 @@ THRESHOLD       = 30   # a threshold by which to evaluate if pass or not
 HOUR_LIMIT      = 9    # before 9 o'clock
 
 TIMEZONE        = "Asia/Shanghai"
+########## Base Config ################################
 
 
 def _format_time(time_str_utc):
