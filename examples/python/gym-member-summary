@@ -3,8 +3,8 @@ import datetime
 from pytz import timezone
 from seatable_api import Base, context, constants
 
-SERVER_URL = "https://dev.seafile.com/dtable-web/"
-API_TOKEN = "7010c3fde8a2639b385f2a3f258a5a27cbdfe1fb"
+SERVER_URL = context.server_url or "https://dev.seafile.com/dtable-web/"
+API_TOKEN = context.api_token or "7010c3fde8a2639b385f2a3f258a5a27cbdfe1fb"
 
 RAW_TABLE = "Table1"
 RAW_TABLE_NAME = "名称"
@@ -50,6 +50,7 @@ def pass_calculate():
         if create_time and create_time.hour in range(HOUR_LIMIT_MIN, HOUR_LIMIT_MAX):
             if create_time.date() in time_list:  # invalid clock-in more than one time within one day
                 base.update_row(RAW_TABLE, row['_id'], {COL_NAME: '无效'})
+                continue
             time_list.append(create_time.date())
             res_dict[name] = time_list
         else:
