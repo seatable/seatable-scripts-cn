@@ -3,6 +3,7 @@ import uuid
 import requests
 from seatable_api import Base, context, constants
 import datetime
+from pytz import timezone
 
 SERVER_URL      = "https://dev.seafile.com/dtable-web/"
 API_TOKEN       = "7010c3fde8a2639b385f2a3f258a5a27cbdfe1fb"
@@ -20,22 +21,30 @@ NEW_TABLE_PASS  = "是否通过"
 
 TIMEDELTA       = 30   
 THRESHOLD       = 30   # a threshold by which to evaluate if pass or not
+HOUR_LIMIT      = 9    # before 9 o'clock
+
+TIMEZONE        = "Asia/Shanghai"
 
 
-def _format_time(time_str):
+def _format_time(time_str_utc):
     """
-    Transfer the time such as 2020-12-09T02:56:48.780+00:00 into datetime obj
+    Transfer the utc time string such as 2020-12-09T02:56:48.780+00:00 into localtime
     """
-    time_short = time_str and time_str.split("T")[0] or None # 2020-12-09
-    if not time_short:
+    try:
+        n_time = datetime.datetime.strptime(time_str_utc, '%Y-%m-%dT%H:%M:%S.%f+00:00')
+        utctime = datetime.datetime(n_time.year, n_time.month, n_time.day, n_time.hour, n_time.minute, n_time.second,
+                                    tzinfo=timezone('UTC'))
+        local_time = utctime.astimezone(timezone(TIMEZONE))
+    except:
         return None
-    return datetime.datetime.strptime(time_short,"%Y-%m-%d")
+    return local_time.replace(tzinfo=None)
 
 
 def pass_calculate():
     base = Base(API_TOKEN, SERVER_URL)
     base.auth()
     rows = base.list_rows(RAW_TABLE)
+    print(rows)
     """
     data_structure of table:
     [{
@@ -74,10 +83,11 @@ def pass_calculate():
         create_time = _format_time(row.get(RAW_TABLE_TIME))
         name = row.get(RAW_TABLE_NAME)
         time_list = res_dict.get(name) or []
-        if create_time and create_time >= time_limit:
-            if create_time in time_list: #exclude the same day
+        # Clock in before 9 within 30 days
+        if create_time and create_time >= time_limit and create_time.hour < HOUR_LIMIT:
+            if create_time.date() in time_list: #exclude the same day
                 continue
-            time_list.append(create_time)
+            time_list.append(create_time.date())
             res_dict[name] = time_list
         else:
             continue
