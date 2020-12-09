@@ -44,7 +44,6 @@ def pass_calculate():
     base = Base(API_TOKEN, SERVER_URL)
     base.auth()
     rows = base.list_rows(RAW_TABLE)
-    print(rows)
     """
     data_structure of table:
     [{
