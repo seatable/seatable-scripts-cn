@@ -61,3 +61,5 @@ SeaTable API 库介绍:
 具体如下
 
 * [send_email.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/send_email.py): 读取一个表中的图片/文件作为附件发送邮件给另一个表中的联系人
+* [image_transfer.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/image_transfer.py): 从一个记录图片 URL 列表列下载图片并添加到表格中
+* [verify_records.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/verify_records.py): 根据记录的创建时间判断记录的有效性，并写到一列上
