@@ -32,7 +32,7 @@ def _format_time(time_str_utc):
     return local_time_obj
 
 
-def invalid_info_marker():
+def mark_invalid_rows():
     '''
     Mark the invalid member clock-in information in the extra column
     '''
@@ -55,4 +55,4 @@ def invalid_info_marker():
 
 
 if __name__ == "__main__":
-    invalid_info_marker()
+    mark_invalid_rows()
