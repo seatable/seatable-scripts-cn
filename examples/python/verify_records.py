@@ -41,6 +41,8 @@ def mark_invalid_rows():
     rows = base.list_rows(TABLE_NAME)
     member_valid_time_dict = {}
     for row in rows:
+        if row.get(IS_VALID_COLUMN) == '无效':
+            continue
         create_time = _format_time(row.get(TIME_COLUMN))
         name = row.get(NAME_COLUMN)
         valid_time_list = member_valid_time_dict.get(name) or []
