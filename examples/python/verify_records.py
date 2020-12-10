@@ -2,7 +2,7 @@ import datetime
 import pytz
 from seatable_api import Base, context
 
-SERVER_URL = context.server_url or "https://dev.seafile.com/dtable-web/"
+SERVER_URL = context.server_url or "https://cloud.seatable.cn"
 API_TOKEN = context.api_token or "7010c3fde8a2639b385f2a3f258a5a27cbdfe1fb"
 
 TABLE_NAME = "Table1"
@@ -11,8 +11,8 @@ TIME_COLUMN = "创建时间"
 
 IS_VALID_COLUMN = "标记"
 
-HOUR_LIMIT_MAX = 21  # before 9pm
 HOUR_LIMIT_MIN = 18  # after 6pm
+HOUR_LIMIT_MAX = 21  # before 9pm
 
 TIMEZONE = "Asia/Shanghai"
 
@@ -54,5 +54,4 @@ def mark_invalid_rows():
             base.update_row(TABLE_NAME, row['_id'], {IS_VALID_COLUMN: '无效'})
 
 
-if __name__ == "__main__":
-    mark_invalid_rows()
+mark_invalid_rows()
