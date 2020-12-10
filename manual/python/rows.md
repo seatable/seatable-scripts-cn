@@ -113,6 +113,22 @@ base.delete_row(table_name, row_id)
 base.delete_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
+#### batch delete rows
+
+批量删除行
+
+```python
+base.batch_delete_rows(table_name, row_ids)
+```
+
+##### 例子
+
+```python
+del_rows = rows[:3]
+row_ids = [row['_id'] for row in del_rows]
+base.batch_delete_rows('Table1', row_ids)
+```
+
 #### filter rows
 
 过滤行
