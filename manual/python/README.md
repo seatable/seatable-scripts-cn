@@ -56,7 +56,7 @@ SeaTable API 库介绍:
 
 ## 例子
 
-可以通过这个链接找到一些容易理解的例子[https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python](https://github.com/seatable/seatable-scripts/tree/master/examples/python)
+可以通过这个链接找到一些容易理解的例子[https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python](https://github.com/seatable/seatable-scripts-/tree/master/examples/python)
 
 具体如下
 
