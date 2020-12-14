@@ -3,7 +3,7 @@ import OpenSSL
 from datetime import datetime
 from seatable_api import Base, context
 
-SERVER_URL = context.server_url or "https://dev.seafile.com/dtable-web/"
+SERVER_URL = context.server_url or "https://cloud.seatable.cn"
 API_TOKEN = context.api_token or "32225b0988e0fe8e87bfa99be3d2879ba9a84925"
 
 
