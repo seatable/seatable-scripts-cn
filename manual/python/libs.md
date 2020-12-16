@@ -13,3 +13,4 @@
 * SeaTable API 库, [seatable-api](https://pypi.org/project/seatable-api/)
 * 日期/时间运算的工具库, [dateutils](https://pypi.org/project/dateutils/)
 * http 请求库, [requests](https://pypi.org/project/requests/)
+* OpenSSL 库, [pyOpenSSL](https://pypi.org/project/pyOpenSSL/)
