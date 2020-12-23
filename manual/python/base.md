@@ -14,7 +14,7 @@ Base 代表一个表格。你可以用两种方法来获取读写一个 base 的
 from seatable_api import Base, context
 
 server_url = context.server_url or 'https://cloud.seatable.cn'
-apt_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
+api_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
 
 base = Base(api_token, server_url)
 base.auth()
