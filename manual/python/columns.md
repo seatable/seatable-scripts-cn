@@ -38,7 +38,7 @@ column_type请参考 [constants](../constants)
 ```python
 from seatable_api.constants import ColumnTypes
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT)
-base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, column_key=ColumnTypes.TEXT)
+base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, '0000')
 ```
 
 #### rename column
