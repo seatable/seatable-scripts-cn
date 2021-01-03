@@ -35,6 +35,25 @@ pip3 install seatable-api
 * requests
 * socketIO-client-nexus
 
+## 一个简单的例子
+
+下面的例子展示怎么在一个 base 中查询数据和更新数据。
+
+```
+base = Base(api_token, server_url)
+base.auth()
+
+queryset = base.filter('Table1', "age>18 and gender='male'")
+elder_queryset = queryset.filter("age > 70")
+for row in elder_queryset:
+    print(row)
+
+update_row_data = {'paid': True}
+updated_rows = elder_queryset.update(update_row_data)
+
+deleted_count = elder_queryset.delete()
+```
+
 ## 编程参考
 
 SeaTable 中对象的数据结构:
@@ -44,11 +63,11 @@ SeaTable 中对象的数据结构:
 SeaTable API 库介绍:
 
 * [Base](base.md)
+* [QuerySet](queryset.md)
 * [Rows](rows.md)
 * [Links](links.md)
 * [Columns](columns.md)
 * [Files](files.md)
-* [QuerySet](queryset.md)
 * [Account](account.md)
 * [Context](context.md)
 * [Constants](constants.md): 一些常量定义

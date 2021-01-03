@@ -57,6 +57,7 @@ nav:
   - Python:
     - 引言: python/README.md
     - Base: python/base.md
+    - QuerySet: python/queryset.md
     - Rows: python/rows.md
     - Links: python/links.md
     - Columns: python/columns.md

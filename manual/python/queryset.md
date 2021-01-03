@@ -1,10 +1,10 @@
 # QuerySet
 
-本文档将展示通过QuerySet对象如何对行进行操作
+QuerySet 可以简化对数据的操作。
 
 #### get a queryset
 
-获取QuerySet，并过滤行
+根据删选条件获取特定的记录，返回一个 QuerySet。
 
 ```python
 base.filter(table_name, conditions="", view_name=None)
