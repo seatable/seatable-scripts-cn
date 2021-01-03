@@ -48,6 +48,7 @@ SeaTable API 库介绍:
 * [Links](links.md)
 * [Columns](columns.md)
 * [Files](files.md)
+* [QuerySet](queryset.md)
 * [Account](account.md)
 * [Context](context.md)
 * [Constants](constants.md): 一些常量定义
