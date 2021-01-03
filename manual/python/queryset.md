@@ -1,6 +1,6 @@
 # QuerySet
 
-QuerySet 可以简化对数据的操作。
+QuerySet 可以简化对记录的操作。
 
 #### get a queryset
 

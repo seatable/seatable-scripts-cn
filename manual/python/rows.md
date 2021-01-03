@@ -131,19 +131,4 @@ base.batch_delete_rows('Table1', row_ids)
 
 #### filter rows
 
-过滤行
-
-```python
-base.filter_rows(table_name, filters, view_name=None, filter_conjunction='And')
-```
-
-##### 例子
-
-```python
-filters = [{
-    "column_name":"姓名",  
-    "filter_predicate":"contains", # 有“contains“和”is“两种，其中”contains“是模糊查找，”is“是精确查找过滤
-    "filter_term":"a"
-}],
-base.filter_rows('Table1', filters=filters) # 筛选出姓名中包含“a”的row
-```
+最新的版本请用 Queryset 提供的 filter 功能来根据条件删选出记录。
