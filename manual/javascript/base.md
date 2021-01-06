@@ -421,7 +421,7 @@ base.modifyRow('Table1', row, {'Name': 'new name', 'number': 100});
 一次性修改表格中的多行
 
 ```javascript
-base.modifyRow(table: Object/String, rows: Array, updateRows: Array);
+base.modifyRow(table: Object/String, rows: Array, updatedRows: Array);
 ```
 
 ##### 例子
