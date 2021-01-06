@@ -433,8 +433,8 @@ const selectedColumnName = '名称';
 const selectedRows = [], updatedRows = [];
 
 rows.forEach((row) => {
-	if (row[columnName] === 'name') {
-    selectedRows.push(row);
+  if (row[columnName] === 'name') {
+    selectedRosws.push(row);
     updatedRows.push({columnName: 'name1'});
   }
 });
