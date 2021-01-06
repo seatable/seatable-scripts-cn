@@ -415,3 +415,28 @@ base.modifyRow(table, row, {'Name': 'new name', 'number': 100});
 const row = base.getRowById('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
 base.modifyRow('Table1', row, {'Name': 'new name', 'number': 100});
 ```
+
+#### modifyRows
+
+一次性修改表格中的多行
+
+```javascript
+base.modifyRow(table: Object/String, rows: Array, updateRows: Array);
+```
+
+##### 例子
+
+```javascript
+const table = base.getTableByName('Table1');
+const rows = base.getRows('Table1', '默认视图');
+const selectedColumnName = '名称';
+const selectedRows = [], updatedRows = [];
+
+rows.forEach((row) => {
+	if (row[columnName] === 'name') {
+    selectedRows.push(row);
+    updatedRows.push({columnName: 'name1'});
+  }
+});
+base.modifyRow(table, selectedRows, updatedRows);
+```
