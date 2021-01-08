@@ -1,11 +1,5 @@
 # Column
 
-本文档将展示通过Base对象如何对列进行操作
-
-如果您对Base对象还未了解，请参考
-
-* [Base](base.md)
-
 #### list columns
 
 列出表/视图所有行
@@ -29,9 +23,11 @@ base.list_columns('Table1', view_name='default')
 base.insert_column(table_name, column_name, column_type, column_key=None)
 ```
 
-`column_key`为要插入的位置的前一列的key，如若省略则默认追加为最后一列
+其中
 
-column_type请参考 [constants](../constants)
+* column_key：要插入的位置的前一列的key，如若省略则默认追加为最后一列
+
+* column_type：请参考 [constants](../constants)
 
 ##### 例子
 
@@ -93,9 +89,11 @@ base.freeze_column('Table1', '0000', True)
 base.move_column(table_name, column_key, target_column_key)
 ```
 
-column_key为要移动的列的key
+其中
 
-target_column_key为锚定列的key，被移动的列将会被移动到该列右边
+* column_key：要移动的列的key
+
+* target_column_key： 锚定列的key，被移动的列将会被移动到该列右边
 
 ##### 例子
 
@@ -113,7 +111,9 @@ base.move_column('Table1', 'loPx', '0000')
 base.modify_column_type(table_name, column_key, new_column_type)
 ```
 
-column_type请参考 [constants](../constants)
+其中
+
+* column_type：请参考 [constants](../constants)
 
 ##### 例子
 
