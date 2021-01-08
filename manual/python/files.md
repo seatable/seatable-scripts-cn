@@ -26,7 +26,7 @@ base.download_file(file_url, save_path)
 
 #### 分步方式
 
-1. 通过文件的url获取下载链接， **get download link by path**
+通过文件的url获取下载链接， **get download link by path**
 
 ```python
 # 假如您从Base的数据中获取到一个文件url为
@@ -35,7 +35,7 @@ base.download_file(file_url, save_path)
 download_link = base.get_file_download_link('files/2020-10/aur7e-jqc19.zip')
 ```
 
-2. 请求下载链接进行文件下载， **requests库**
+请求下载链接进行文件下载， **requests库**
 
 ```python
 import requests
@@ -45,7 +45,7 @@ response = requests.get(download_link)
 ### 文件上传
 #### 便捷方式
 
-1. 上传bytes文件 ，**upload bytes file**
+上传bytes文件 ，**upload bytes file**
 
 ```python
 base.upload_bytes_file(name, content, file_type=None, replace=False)
@@ -75,7 +75,7 @@ with open (local_img_file, 'rb') as f:
 info_dict = base.upload_bytes_file = ('my_uploaded_img.png', content, file_type='image', replace=False)
 ```
 
-2. 根据本地文件名上传， **upload local file**
+根据本地文件名上传， **upload local file**
 
 ```python
 base.upload_local_file(file_path, name=None, file_type=None, replace=False)
@@ -87,7 +87,7 @@ local_file = '/Users/Desktop/a.png'
 info_dict = base.upload_local_file(local_file, name='my_uploaded_img.png', file_type='image', replace=True)
 ```
 
-3. 更新表格
+更新表格
 
 利用上述的返回字典info_dict， 将图片更新到表格中指定文件/图片列中， 例如更新到base子表名称为“Table1”的表格中
 
@@ -118,7 +118,7 @@ base.append_row('Table1', row)
 
 #### 分步方式
 
-1. 获取base的文件上传链接以及上传路径， **get file upload link**
+获取base的文件上传链接以及上传路径， **get file upload link**
 
 ```python
 base.get_file_upload_link()
@@ -129,7 +129,7 @@ base.get_file_upload_link()
 # }
 ```
 
-2. 通过上传链接进行文件上传， **requests库**
+通过上传链接进行文件上传， **requests库**
 
 ```python
 # 如需要将本地/User/Desktop/file.txt文件上传至服务器
@@ -148,5 +148,3 @@ response = requests.post(upload_link, data={
     'file': (upload_file_name, open('/User/Desktop/file.txt', 'rb'))  # 要上传的文件
 })
 ```
-
-
