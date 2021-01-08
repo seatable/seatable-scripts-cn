@@ -135,7 +135,7 @@ base.update_row('Table1', row['_id'], row)
 
 ### 分步方式上传文件
 
-获取 base 的文件上传链接以及上传路径
+获取文件上传链接以及上传路径
 
 ```python
 base.get_file_upload_link()
