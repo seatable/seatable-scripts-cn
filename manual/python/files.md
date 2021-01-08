@@ -75,7 +75,7 @@ with open (local_img_file, 'rb') as f:
 info_dict = base.upload_bytes_file = ('my_uploaded_img.png', content, file_type='image', replace=False)
 ```
 
-2. 根据本地文件名上传， **upload_local_file**
+2. 根据本地文件名上传， **upload local file**
 
 ```python
 base.upload_local_file(file_path, name=None, file_type=None, replace=False)
