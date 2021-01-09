@@ -11,11 +11,11 @@ base.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
 
 其中
 
-* link_id: 链接列data属性下的link_id
+* link_id: 链接列data属性下的 link_id
 * table_name: 链接表的名字
 * other_table_name: 被链接表的名字
-* row_id: 链接行id
-* other_row_id: 被链接行的id
+* row_id: 链接行 id
+* other_row_id: 被链接行的 id
 
 ##### 例子
 

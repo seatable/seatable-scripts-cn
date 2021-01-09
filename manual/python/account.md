@@ -82,7 +82,7 @@ account.add_base(name, workspace_id=None)
 
 其中
 
-* workspace_id: 添加到指定的工作区，如果为None则默认添加到自己的工作区
+* workspace_id: 添加到指定的工作区，如果为 None 则默认添加到自己的工作区
 
 ##### 例子
 
@@ -101,11 +101,11 @@ account.copy_base(src_workspace_id, base_name, dst_workspace_id)
 
 其中
 
-* src_workspace_id: 主工作区id
-* dst_workspace_id: 目标工作区id
-* base_name: base的名称
+* src_workspace_id: 源工作区 id
+* dst_workspace_id: 目标工作区 id
+* base_name: base 的名称
 
-即将名为base_name的base从主工作区复制copy到目标工作区
+即将名为 base_name 的 base 从源工作区复制到目标工作区
 
 ##### 例子
 
@@ -119,7 +119,7 @@ account.copy_base(35, 'img-file', 74)
 
 ```python
 # 获取存在于 id 为 workspac_id 的 workspace 中名为 base_name 的 Base 对象
-# Base对象已获得授权，所以不需要调用base.auth()
+# Base对象已获得授权，所以不需要调用 base.auth()
 account.get_base(workspace_id, base_name)
 ```
 

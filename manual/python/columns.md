@@ -25,7 +25,7 @@ base.insert_column(table_name, column_name, column_type, column_key=None)
 
 其中
 
-* column_key：要插入的位置的前一列的key，如若省略则默认追加为最后一列
+* column_key：要插入的位置的前一列的 key，如若省略则默认追加为最后一列
 
 * column_type：请参考 [constants](../constants)
 
@@ -91,9 +91,9 @@ base.move_column(table_name, column_key, target_column_key)
 
 其中
 
-* column_key：要移动的列的key
+* column_key：要移动的列的 key
 
-* target_column_key： 锚定列的key，被移动的列将会被移动到该列右边
+* target_column_key： 锚定列的 key，被移动的列将会被移动到该列右边
 
 ##### 例子
 

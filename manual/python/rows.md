@@ -43,7 +43,7 @@ base.insert_row(table_name, row_data, anchor_row_id)
 
 其中
 
-* anchor_row_id: 锚定的行的id，将会把新行插入到这行下方
+* anchor_row_id: 锚定的行的 id，将会把新行插入到这行下方
 
 ##### 例子
 
