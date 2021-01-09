@@ -8,7 +8,6 @@
 
 ```python
 from seatable_api.constants import ColumnTypes
-
 ColumnTypes.NUMBER              # 数字
 ColumnTypes.TEXT                # 文本
 ColumnTypes.LONG_TEXT           # 长文本

@@ -1,11 +1,5 @@
 # Row
 
-本文档将展示通过Base对象如何对行进行操作
-
-如果您对Base对象还未了解，请参考
-
-* [Base](base.md)
-
 #### list rows
 
 获取表格的所有行
@@ -45,8 +39,11 @@ base.append_row('Table1', row_data)
 
 ```python
 base.insert_row(table_name, row_data, anchor_row_id)
-# anchor_row_id为锚定的行的id，将会把新行插入到这行下方
 ```
+
+其中
+
+* anchor_row_id: 锚定的行的 id，将会把新行插入到这行下方
 
 ##### 例子
 

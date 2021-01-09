@@ -32,39 +32,41 @@ account.auth()
 
 获取您所有 workspace 与其下的 base
 
-```python
-account.list_workspaces()
-```
-
 ##### 例子
 
 ```python
 account.list_workspaces()
-# 返回结果
-# {
-# 	"workspace_list": [{
-# 		"id": 13740,      // workspace的id
-# 		"repo_id": "cd9a97a6-9214-4eeb-b609-4295530b9018",
-# 		"table_list": [{  // base对象
-# 			"id": 24022,
-# 			"workspace_id": 13740,
-# 			"uuid": "69771c2e-b51e-4fe4-b721-01cd1950e68c",
-# 			"name": "q",
-# 			"creator": "122",
-# 			"modifier": "122",
-# 			"created_at": "2020-10-26T14:43:02+08:00",
-# 			"updated_at": "2020-10-26T14:43:02+08:00",
-# 			"color": null,
-# 			"text_color": null,
-# 			"icon": null,
-# 			"starred": false
-# 		}],
-# 		"owner_name": "122",
-# 		"owner_type": "Personal"
-# 	}],
-# 	"starred_dtable_list": []
-# }
 ```
+
+返回结果
+
+```python
+{
+ "workspace_list": [{
+ 		"id": 13740,      # workspace的id
+ 		"repo_id": "cd9a97a6-9214-4eeb-b609-4295530b9018",
+ 		"table_list": [{  # base对象
+ 			"id": 24022,
+ 			"workspace_id": 13740,
+ 			"uuid": "69771c2e-b51e-4fe4-b721-01cd1950e68c",
+			"name": "q",
+ 			"creator": "122",
+ 			"modifier": "122",
+ 			"created_at": "2020-10-26T14:43:02+08:00",
+ 			"updated_at": "2020-10-26T14:43:02+08:00",
+ 			"color": null,
+ 			"text_color": null,
+ 			"icon": null,
+ 			"starred": false
+ 		}],
+ 		"owner_name": "122",
+ 		"owner_type": "Personal"
+ 	}],
+ 	"starred_dtable_list": []
+}
+```
+
+
 
 ## Base
 
@@ -75,10 +77,12 @@ account.list_workspaces()
 添加一个 base 到一个 Workspace 
 
 ```python
-# workspace_id: 如果为None默认添加到自己的workspace
-# 如果指定workspace_id则添加到该workspace下
 account.add_base(name, workspace_id=None)
 ```
+
+其中
+
+* workspace_id: 添加到指定的工作区，如果为 None 则默认添加到自己的工作区
 
 ##### 例子
 
@@ -92,9 +96,16 @@ account.add_base('new-base', 35)
 复制一个 base 到一个 workspace 中
 
 ```python
-# 将名为 base_name 的 basee 从 src_workspace 复制到 dst_workspace 中
 account.copy_base(src_workspace_id, base_name, dst_workspace_id)
 ```
+
+其中
+
+* src_workspace_id: 源工作区 id
+* dst_workspace_id: 目标工作区 id
+* base_name: base 的名称
+
+即将名为 base_name 的 base 从源工作区复制到目标工作区
 
 ##### 例子
 
@@ -108,11 +119,13 @@ account.copy_base(35, 'img-file', 74)
 
 ```python
 # 获取存在于 id 为 workspac_id 的 workspace 中名为 base_name 的 Base 对象
-# Base对象已获得授权，所以不需要调用base.auth()
-# with_socket_io: 缺省时False，是否创建socket连接
+# Base对象已获得授权，所以不需要调用 base.auth()
 account.get_base(workspace_id, base_name)
 ```
+
+##### 例子
 
 ```python
 base = account.get_base(35, 'img-file')
 ```
+
