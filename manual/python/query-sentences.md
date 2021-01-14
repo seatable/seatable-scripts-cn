@@ -68,17 +68,19 @@ base.filter('Table1',"column_name=''")
 
 ### 日期数据结构列
 
-* 包括日期，创建时间，修改时间等
+* 包括日期，创建时间，修改时间等, 
 
 ~~~python
 # 1. 大小比较
 base.filter('Table1', "column_name>2020-1-30")
-base.filter('Table1', "column_name>=2019-1-1 5:30 and column_name<=2019-5-1 6")
+base.filter('Table1', "column_name>='2019-1-1 5:30' and column_name<='2019-5-1 6'")
 
 # 2.相异比较
-base.filter('Table1', "column_name=2020-1-1 10:59:59")
+base.filter('Table1', "column_name='2020-1-1 10:59:59'")
 base.filter('Table1', "column_name!=''")
 ~~~
+
+**注意：日期比较需要把查询的日期加上引号**
 
 ### 布尔数据结构列
 
