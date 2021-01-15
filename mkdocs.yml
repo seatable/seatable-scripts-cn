@@ -66,4 +66,5 @@ nav:
     - Constants: python/constants.md
     - Context: python/context.md
     - 云端环境下支持的库: python/libs.md
+    - 查询语句规范: python/query-sentences.md
 
