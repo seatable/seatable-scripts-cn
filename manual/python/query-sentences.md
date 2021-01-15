@@ -72,7 +72,7 @@ base.filter('Table1',"column_name=''")
 
 ~~~python
 # 1. 大小比较
-base.filter('Table1', "column_name>2020-1-30")
+base.filter('Table1', "column_name>'2020-1-30'")
 base.filter('Table1', "column_name>='2019-1-1 5:30' and column_name<='2019-5-1 6'")
 
 # 2.相异比较
