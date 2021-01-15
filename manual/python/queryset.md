@@ -1,6 +1,6 @@
 # QuerySet
 
-QuerySet 通过调用filter函数，并且传入类sql的查询语句，可以简化对记录的操作。关于查询语句的规范请参考
+QuerySet 通过调用 filter 函数，并且传入类 sql 的查询语句，可以简化对记录的操作。关于查询语句的规范请参考
 
 * [查询语句规范](query-sentences.md)
 
