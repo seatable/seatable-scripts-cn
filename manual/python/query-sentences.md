@@ -4,13 +4,15 @@
 
 ## 操作符说明
 
-1. **大小比较:**  >， >， =， <， <=
-2. **相异比较:**  =， !=， <>(同!=)
-3. **模糊比较:**  like
+* **大小比较:**  >， >， =， <， <=
+
+* **相异比较:**  =， !=， <>(同!=)
+
+* **模糊比较:**  like
 
 ## 汇总
 
-以`queryset = base.filter("Table1", "age>18")`中的语句为例：
+以 `queryset = base.filter("Table1", "age>18")` 中的语句为例：
 
 * age: 列名，以下用 column_name 代替
 * \> : 操作符
@@ -36,8 +38,8 @@ base.filter('Table1', "column_name=hello world")
 base.filter('Table1', "column_name!=''")
 
 # 2. 模糊比较
-base.filter('Table1', "column_name like 百度%") #找到以“百度”开头的文本的行
-base.filter('Table1', "column_name like %建议%") #找到包含“建议”两个字的文本的行
+base.filter('Table1', "column_name like 百度%") # 找到以“百度”开头的文本的行
+base.filter('Table1', "column_name like %建议%") # 找到包含“建议”两个字的文本的行
 ```
 
 ### 列表数据结构列
