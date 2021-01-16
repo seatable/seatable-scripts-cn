@@ -1,6 +1,6 @@
 # Row
 
-#### list rows
+#### List rows
 
 获取表格的所有行
 
@@ -15,7 +15,7 @@ rows = base.list_rows('Table1')
 rows = base.list_rows('Table1', view_name='default')
 ```
 
-#### append row
+#### Append row
 
 追加表格
 
@@ -33,7 +33,7 @@ row_data = {
 base.append_row('Table1', row_data)
 ```
 
-#### insert row
+#### Insert row
 
 插入表格
 
@@ -55,7 +55,7 @@ row_data = {
 base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
-#### batch append rows
+#### Batch append rows
 
 批量追加到表格
 
@@ -79,7 +79,7 @@ rows_data = [{
 base.batch_append_rows('Table6', rows_data)
 ```
 
-#### update row
+#### Update row
 
 更新一行
 
@@ -96,7 +96,7 @@ row_data = {
 base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
 ```
 
-#### delete row
+#### Delete row
 
 删除一行
 
@@ -110,7 +110,7 @@ base.delete_row(table_name, row_id)
 base.delete_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
-#### batch delete rows
+#### Batch delete rows
 
 批量删除行
 
@@ -126,6 +126,6 @@ row_ids = [row['_id'] for row in del_rows]
 base.batch_delete_rows('Table1', row_ids)
 ```
 
-#### filter rows
+#### Filter rows
 
 最新的版本请用 Queryset 提供的 filter 功能来根据条件删选出记录。

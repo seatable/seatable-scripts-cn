@@ -1,6 +1,6 @@
 # Column
 
-#### list columns
+#### List columns
 
 列出表/视图所有行
 
@@ -15,7 +15,7 @@ base.list_columns('Table1')
 base.list_columns('Table1', view_name='default')
 ```
 
-#### insert column
+#### Insert column
 
 插入/追加列
 
@@ -37,7 +37,7 @@ base.insert_column('Table1', 'python-api', ColumnTypes.TEXT)
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, '0000')
 ```
 
-#### rename column
+#### Rename column
 
 重命名列
 
@@ -51,7 +51,7 @@ base.rename_column(table_name, column_key, new_column_name)
 base.rename_column('Table1', 'kSiR', 'new-python-api')
 ```
 
-#### resize column
+#### Resize column
 
 设置列宽
 
@@ -67,7 +67,7 @@ base.resize_column(table_name, column_key, new_column_width)
 base.resize('Table1', 'asFV', 500)
 ```
 
-#### freeze column
+#### Freeze column
 
 冻结列
 
@@ -83,7 +83,7 @@ frozon: True/False
 base.freeze_column('Table1', '0000', True)
 ```
 
-#### move column
+#### Move column
 
 ```python
 base.move_column(table_name, column_key, target_column_key)
@@ -103,7 +103,7 @@ base.move_column('Table1', 'loPx', '0000')
 
 此例中，`loPx`列将会被移动到`0000`列的右边
 
-#### modify column type
+#### Modify column type
 
 转换列类型
 
@@ -123,7 +123,7 @@ from seatable_api.constants import ColumnTypes
 base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
 ```
 
-#### delete column
+#### Delete column
 
 删除列
 

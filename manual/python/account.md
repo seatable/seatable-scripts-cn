@@ -28,7 +28,7 @@ account.auth()
 在 SeaTable 中，一个 workspace 是个人的表格的集合或者一个群组的表格的集合。Base 存储在 workspace 中。SeaTable 会为每个账号生成一个个人的 workspace, 每个群组也有一个 workspace。
 
 
-#### list workspaces
+#### List workspaces
 
 获取您所有 workspace 与其下的 base
 
@@ -72,7 +72,7 @@ account.list_workspaces()
 
 新增/复制/删除 Base，获取一个 Base 访问权限的接口
 
-#### add a base
+#### Add a base
 
 添加一个 base 到一个 Workspace 
 
@@ -91,7 +91,7 @@ account.add_base('new-base')
 account.add_base('new-base', 35)
 ```
 
-#### copy a base
+#### Copy a base
 
 复制一个 base 到一个 workspace 中
 
@@ -113,7 +113,7 @@ account.copy_base(src_workspace_id, base_name, dst_workspace_id)
 account.copy_base(35, 'img-file', 74)
 ```
 
-#### get a base
+#### Get a base
 
 获取一个 base 对象
 
