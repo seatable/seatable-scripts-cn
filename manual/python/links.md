@@ -1,7 +1,7 @@
 # Links
 
 
-#### add link
+#### Add link
 
 添加链接，链接其他表记录
 
@@ -23,7 +23,7 @@ base.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
 base.add_link('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 'PALm2wPKTCy-jdJNv_UWaQ')
 ```
 
-#### remove link
+#### Remove link
 
 添加链接，链接其他表记录
 
