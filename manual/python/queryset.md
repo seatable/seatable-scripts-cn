@@ -12,6 +12,9 @@ QuerySet 通过调用 filter 函数，并且传入类 sql 的查询语句，可�
 base.filter(table_name, conditions="", view_name=None)
 ```
 
+**注意，如果你不指定 view name 的话，会使用表格中的第一个 view**
+
+
 ##### 例子
 
 ```python
