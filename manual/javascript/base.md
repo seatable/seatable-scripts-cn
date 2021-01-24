@@ -451,7 +451,7 @@ base.modifyRow(table, selectedRows, updatedRows);
 
 ```javascript
 // 过滤出 number列 等于 5 的行, 返回一个 querySet 对象
-const querySet = base.utils.filter('Table1', '默认视图', 'number = 5');
+const querySet = base.filter('Table1', '默认视图', 'number = 5');
 ```
 
 #### querySet 对象
