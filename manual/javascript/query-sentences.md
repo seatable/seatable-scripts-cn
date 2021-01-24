@@ -6,7 +6,7 @@
 
 * **大小比较:**  >， >=， =， \<， \<=
 * **相异比较:**  =， \<>
-* **数学运算: **+, -, \*, /
+* **数学运算: **+, -, \*, /, ^, %
 
 ## 汇总
 
@@ -70,7 +70,8 @@ base.filter('Table1', 'view_name', "column_name+3>18")
 base.filter('Table1', 'view_name', "column_name*=18")
 base.filter('Table1', 'view_name', "column_name-2=18")
 base.filter('Table1', 'view_name', "column_name/2=18")
-
+base.filter('Table1', 'view_name', "column_name^2=18")
+base.filter('Table1', 'view_name', "column_name%2=1")
 ```
 
 ### 日期数据结构列
