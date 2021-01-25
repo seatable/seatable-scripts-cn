@@ -67,7 +67,7 @@ base.filter('Table1', 'view_name', "column_name=''")
 
 ```javascript
 base.filter('Table1', 'view_name', "column_name+3>18")
-base.filter('Table1', 'view_name', "column_name*=18")
+base.filter('Table1', 'view_name', "column_name*2=18")
 base.filter('Table1', 'view_name', "column_name-2=18")
 base.filter('Table1', 'view_name', "column_name/2=18")
 base.filter('Table1', 'view_name', "column_name^2=18")
@@ -91,7 +91,7 @@ base.filter('Table1', 'view_name', "column_name!=''")
 
 **注意: 日期比较需要把查询的日期加上引号**
 
-### 布尔数据结构列s
+### 布尔数据结构列
 
 * **勾选**类型
 
