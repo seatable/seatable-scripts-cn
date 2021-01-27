@@ -128,4 +128,4 @@ base.batch_delete_rows('Table1', row_ids)
 
 #### Filter rows
 
-最新的版本请用 Queryset 提供的 filter 功能来根据条件删选出记录。
+最新的版本请用 Queryset 提供的 filter 功能来根据条件筛选出记录。
