@@ -26,12 +26,19 @@ def format_msg(current_row, columns):
     current_row: 光标所在表格的行
     columns:  需要发送消息列
     '''
-    return "\n".join(["%s: %s" % (column, current_row.get(column, '')) for column in columns])
+    if not current_row:
+        return ""
+    else:
+        msg_list = ["%s: %s" % (column, current_row.get(column)) for column in columns if current_row.get(column)]
+        return msg_list and "\n".join(msg_list) or ""
 
 def send_msg():
     current_row = context.current_row # 只能在表格脚本环境中运行
     msg = format_msg(current_row, COLUMNS)
-    requests.post(url=WEBHOOK_URL, json=json_text_msg(msg), headers=HEADERS)
+    if msg:
+        requests.post(url=WEBHOOK_URL, json=json_text_msg(msg), headers=HEADERS)
+    else:
+        raise ValueError('There is no data formatted in current row, please check the data in colums "%s"' % (", ".join(COLUMNS)))
 
 
 send_msg()
