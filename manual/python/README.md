@@ -86,4 +86,5 @@ SeaTable API 库介绍:
 * [verify_records.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/verify_records.py): 根据记录的创建时间判断记录的有效性，并写到一列上
 * [sync_mysql.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/sync_mysql.py): 将mysql数据库中的信息同步至表格中
 * [update_certification_expiration.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/update_certification_expiration.py): 更新网站证书过期时间
+* [send_wechat_msg.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/send_wechat_msg.py): 通过企业微信群机器人推送群消息
 
