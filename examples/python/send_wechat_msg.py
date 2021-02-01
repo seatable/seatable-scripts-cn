@@ -5,7 +5,6 @@ from seatable_api import context
 该脚本展示利用企业微信群组机器人进行表格中数据的发送。
 """
 WEBHOOK_URL = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=39f5cb53-b909-4e30-9d99-75782"  # 建立群机器人之后自动生成的webhook地址，可以通过post请求该地址进行消息发送
-# 表格的api token
 HEADERS = {
     "Content-Type": "application/json"
 }
@@ -30,7 +29,7 @@ def format_msg(current_row, columns):
     return "\n".join(["%s: %s" % (column, current_row.get(column, '')) for column in columns])
 
 def send_msg():
-    current_row = context.current_row
+    current_row = context.current_row # 只能在表格脚本环境中运行
     msg = format_msg(current_row, COLUMNS)
     requests.post(url=WEBHOOK_URL, json=json_text_msg(msg), headers=HEADERS)
 
