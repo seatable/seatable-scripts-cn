@@ -38,7 +38,6 @@ def send_msg():
     if msg:
         requests.post(url=WEBHOOK_URL, json=json_text_msg(msg), headers=HEADERS)
     else:
-        raise ValueError('There is no data formatted in current row, please check the data in colums "%s"' % (", ".join(COLUMNS)))
-
+        print('please click a row or check the data in columns "%s" of clicked row' % (", ".join(COLUMNS)))
 
 send_msg()
