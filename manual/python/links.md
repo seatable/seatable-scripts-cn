@@ -25,7 +25,7 @@ base.add_link('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 'PA
 
 #### Remove link
 
-添加链接，链接其他表记录
+移除某个链接
 
 ```python
 base.remove_link(link_id, table_name, other_table_name, row_id, other_row_id)

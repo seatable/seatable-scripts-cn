@@ -455,3 +455,74 @@ base.modifyRow(table, selectedRows, updatedRows);
 // 过滤出 number列 等于 5 的行, 返回一个 querySet 对象
 const querySet = base.filter('Table1', '默认视图', 'number = 5');
 ```
+
+## Links
+
+
+#### addLink
+
+添加链接，链接其他表记录
+
+
+```javascript 
+base.addLink(linkId, tableName, linkedTableName, rowId, linkedRowId)
+```
+
+其中
+
+* linkId: 链接列data属性下的 link_id
+* tableName: 链接表的名字
+* linkedTableName: 被链接表的名字
+* rowId: 链接行 id
+* linkedRowId: 被链接行的 id
+
+##### 例子
+
+```javascript
+base.addLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 'PALm2wPKTCy-jdJNv_UWaQ')
+```
+
+#### removeLink
+
+移除某个链接
+
+```javascript
+base.removeLink(linkId, tableName, linkedTableName, rowId, linkedRowId)
+```
+
+##### 例子
+
+```javascript
+base.removeLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 'PALm2wPKTCy-jdJNv_UWaQ')
+```
+
+#### getColumnLinkId
+
+通过列名来获取链接的id
+
+```javascript
+base.getColumnLinkId(table_name, column_name)
+```
+
+##### 例子
+
+```javascript
+base.getColumnLinkId('Table1', '记录')
+```
+
+#### updateLinks
+
+移除现有的所有的行的链接, 并添加新链接
+
+```javascript
+base.utils.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedRowIds)
+```
+
+##### 例子
+
+```javascript
+const rows = base.getRows('contact', '默认视图');
+
+// 更新行的链接为 [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id]
+base.utils.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
+```
