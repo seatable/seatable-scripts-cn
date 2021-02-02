@@ -516,7 +516,7 @@ base.getColumnLinkId('Table1', '记录')
 
 ```javascript
 base.utils.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedRowIds)
-````
+```
 
 ##### 例子
 
