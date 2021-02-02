@@ -12,17 +12,28 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 
 不同的列类型的单元格的值有不同的数据类型，如下:
 
+基本列类型:
+
 * `simple-text` : string
 * `number` : number
-* `single-select` : option name, string
+* `checkbox` : boolean
 * `date` : string, in format `2020-01-01` or `2020-01-01 10:00` 
-* `check` : boolean
-* `long-text` : Markdown string
+* `single-select` : option name, string
+* `long-text` : markdown string
 * `image` : array, each element of the array is the URL of image
-* `multi-select` : array, each element of the array is an option name
-* `collaborator` : array, each element of the array is a collaborator's ID
-* `link` : array, each element of the array is a link name
 * `file` : array, each element of the array is a file object  `[{name: string, url: string, size: number, type: 'file'}]`
+* `multi-select` : array, each element of the array is an option name
+* `collaborator` : array, each element of the array is a collaborator's email
+* `URL` : string
+* `email` :  string
+* `duration` : string, in format `h:mm(1:30)` or `h:mm:ss(0:20:30)` 
+
+高级列类型:
+
+* `formula` : string
+* `geolocation` : object, in format `{province: xxx, city: xxx, district: xxx, detail: xxx}`
+* `link` : array, each element of the array is a link name
+* `auto-number` : number, auto increase
 
 ## Column (列)
 
