@@ -512,7 +512,7 @@ base.getColumnLinkId('Table1', '记录')
 
 #### updateLinks
 
-移除现有的所有的行的链接, 并更新
+移除现有的所有的行的链接, 并添加新链接
 
 ```javascript
 base.utils.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedRowIds)
