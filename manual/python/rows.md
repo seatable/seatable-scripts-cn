@@ -17,7 +17,7 @@ rows = base.list_rows('Table1', view_name='default')
 
 #### Append row
 
-追加表格
+追加行
 
 ```python
 base.append_row(table_name, row_data)
@@ -35,7 +35,7 @@ base.append_row('Table1', row_data)
 
 #### Insert row
 
-插入表格
+插入行
 
 ```python
 base.insert_row(table_name, row_data, anchor_row_id)
@@ -57,7 +57,7 @@ base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
 
 #### Batch append rows
 
-批量追加到表格
+批量追加行
 
 ```python
 base.batch_append_rows(table_name, rows_data)
