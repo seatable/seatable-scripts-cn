@@ -515,7 +515,7 @@ base.getColumnLinkId('Table1', '记录')
 移除现有的所有的行的链接, 并添加新链接
 
 ```javascript
-base.utils.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedRowIds)
+base.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedRowIds)
 ```
 
 ##### 例子
@@ -524,5 +524,5 @@ base.utils.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedR
 const rows = base.getRows('contact', '默认视图');
 
 // 更新行的链接为 [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id]
-base.utils.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
+base.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
 ```
