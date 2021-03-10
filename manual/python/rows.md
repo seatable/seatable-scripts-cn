@@ -15,6 +15,20 @@ rows = base.list_rows('Table1')
 rows = base.list_rows('Table1', view_name='default')
 ```
 
+#### Get row
+
+获取表格的某一行
+
+```python
+base.get_row(table_name, row_id)
+```
+
+##### 例子
+
+```python
+row = base.get_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
+```
+
 #### Append row
 
 追加行
