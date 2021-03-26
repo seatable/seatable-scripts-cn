@@ -35,6 +35,7 @@ base.insert_column(table_name, column_name, column_type, column_key=None)
 from seatable_api.constants import ColumnTypes
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT)
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, '0000')
+base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, '体重')
 ```
 
 #### Rename column
