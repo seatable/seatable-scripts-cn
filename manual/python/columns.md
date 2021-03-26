@@ -25,7 +25,7 @@ base.insert_column(table_name, column_name, column_type, column_key=None)
 
 其中
 
-* column_key：要插入的位置的前一列的 key，如若省略则默认追加为最后一列
+* column_key：要插入的位置的前一列的 key 或者列名，如若省略则默认追加为最后一列
 
 * column_type：请参考 [constants](../constants)
 
@@ -35,6 +35,7 @@ base.insert_column(table_name, column_name, column_type, column_key=None)
 from seatable_api.constants import ColumnTypes
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT)
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, '0000')
+base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, '体重')
 ```
 
 #### Rename column
@@ -49,6 +50,7 @@ base.rename_column(table_name, column_key, new_column_name)
 
 ```python
 base.rename_column('Table1', 'kSiR', 'new-python-api')
+base.rename_column('Table1', 'python-api', 'new-python-api')
 ```
 
 #### Resize column
@@ -65,6 +67,7 @@ base.resize_column(table_name, column_key, new_column_width)
 
 ```python
 base.resize('Table1', 'asFV', 500)
+base.resize('Table1', '部门', 300)
 ```
 
 #### Freeze column
@@ -81,6 +84,7 @@ frozon: True/False
 
 ```python
 base.freeze_column('Table1', '0000', True)
+base.freeze_column('Table1', '年龄', True)
 ```
 
 #### Move column
@@ -91,14 +95,15 @@ base.move_column(table_name, column_key, target_column_key)
 
 其中
 
-* column_key：要移动的列的 key
+* column_key：要移动的列的 key 或列名
 
-* target_column_key： 锚定列的 key，被移动的列将会被移动到该列右边
+* target_column_key： 锚定列的 key 或列名，被移动的列将会被移动到该列右边
 
 ##### 例子
 
 ```python
 base.move_column('Table1', 'loPx', '0000')
+base.move_column('Table1', '姓名', '兴趣爱好')
 ```
 
 此例中，`loPx`列将会被移动到`0000`列的右边
@@ -121,6 +126,7 @@ base.modify_column_type(table_name, column_key, new_column_type)
 from seatable_api.constants import ColumnTypes
 
 base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
+base.modify_column_type('Table1', '详情', ColumnTypes.TEXT)
 ```
 
 #### Delete column
@@ -135,5 +141,6 @@ base.delete_column(table_name, column_key)
 
 ```python
 base.delete_column('Table1', 'bsKL')
+base.delete_column('Table1', '性别')
 ```
 
