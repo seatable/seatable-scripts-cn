@@ -63,6 +63,7 @@ nav:
     - Links: python/links.md
     - Columns: python/columns.md
     - Files: python/files.md
+    - Message: python/message.md
     - Account: python/account.md
     - Constants: python/constants.md
     - Context: python/context.md

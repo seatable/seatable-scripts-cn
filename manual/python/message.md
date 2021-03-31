@@ -36,7 +36,6 @@ base.send_email(account_name, msg, **kwargs)
     * from：发件人, 如果未设置，默认邮箱服务器的 host_user
     * copy_to: 抄送方邮件， 可以是列表包含多个邮件
     * reply_to: 回复邮件
-    * quit_after_send: True 或者 False， 默认是 False。 发送完成之后是否关闭与服务器的链接。
 
 **例子**
 
