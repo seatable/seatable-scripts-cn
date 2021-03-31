@@ -71,6 +71,6 @@ base.utils.lookupAndCopy(targetTable, targetColumn, targetColumnToCompare, sourc
 
 ```javascript
  // 过滤出 number, number1, number2 这三列的和大于5的行, 并对这些行中的 number, number2 列分别求和, 返回结果 {number: 12, number2: 23}
- base.utils.query('Table1', 'View_name', s'select sum(number), sum(number2) where number + number1 + number2 > 5');
+ base.utils.query('Table1', 'View_name', 'select sum(number), sum(number2) where number + number1 + number2 > 5');
   
 ```
