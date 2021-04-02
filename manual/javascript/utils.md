@@ -28,7 +28,7 @@ let formatDate = base.utils.formatDateWithMinutes(date);
 output.text(formatDate); // 2020-08-20 14:00
 ```
 
-### lookupAndCopy（）
+### lookupAndCopy
 
 ```javascript
 base.utils.lookupAndCopy(targetTable, targetColumn, targetColumnToCompare, sourceTableName, sourceColumnName, sourceColumnToCompare = null);
