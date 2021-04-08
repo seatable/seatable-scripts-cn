@@ -175,7 +175,52 @@ class Shop(object):
                              release_time_to = create_time_to
                              )
 
+class MoneyExchange(object):
 
+    """
+    汇率换算功能类，从 https://currencylayer.com/ 中注册获取的免费接口
+    人民币与其他货币的汇率换算通过美元作为中介实现
+    目前该免费接口只能获取实时数据
+    """
+    access_key = "b8ce91d3168c6d3588576d073f580cfd"
+
+    def __init__(self):
+        self.data_init()
+
+    def data_init(self):
+        self.get_exchange_rates_to_CNY()
+
+    def get_exchange_rates_to_USD(self):
+        # 获取世界各国货币同美元的比率
+        url = "http://api.currencylayer.com/live?access_key=%s" % self.access_key
+        resp = requests.get(url)
+        resp_dict = resp.json()
+        return resp_dict.get('quotes')
+
+    def get_exchange_rates_to_CNY(self):
+        # 通过美元的比率换算世界各国货币同中国RMB的比率字典
+        exchange_rates_to_USD = self.get_exchange_rates_to_USD()
+        USD_TO_CNY = exchange_rates_to_USD.get('USDCNY')
+        d = {}
+        for k, v in exchange_rates_to_USD.items():
+            d[k] = v / USD_TO_CNY
+        self.pool = d
+        return d
+
+    def get_exchange_rates_to_CNY_by_cur(self, currency='THB'):
+        # 获取中国人民币RMB和其他国家货币的比率
+        exchange_rates = self.pool
+
+        return exchange_rates.get("USD%s" % currency)
+
+    def exchange_to_CNY(self, money, currency='THB'):
+        # 转换currency的money数值为RMB数值
+        exchange_rates = self.get_exchange_rates_to_CNY_by_cur(currency)
+        money_exchange = money / exchange_rates
+        return float("%.2f" % money_exchange)
+
+    def exchange_to_CNY_history(self, money, currency='THB', timestamp=None):
+        pass
 
 def _get_authed_shop_id(limits=-1):
     """
@@ -192,7 +237,7 @@ def timestamp2str(timest):
     time_str = time.strftime("%Y-%m-%d %H:%M", time_obj)
     return time_str
 
-def insert_valid_infos_to_table(base, shop_limits=2, n_days_before=2, shop_id_list = None):
+def insert_valid_infos_to_table(base, shop_limits=2, n_days_before=2, shop_id_list = None, currency_exchanger=None):
     """
     数据同步至seatable中指定的base
     """
@@ -220,6 +265,7 @@ def insert_valid_infos_to_table(base, shop_limits=2, n_days_before=2, shop_id_li
             order_sn = order_detail.get('ordersn')
             currency = order_detail.get('currency')
             time_order = timestamp2str(order_detail.get('create_time'))
+            total_amount = order_detail.get('total_amount')
             if (order_sn, time_order) in row_infos:
                 #如果订单已经存在， 跳过
                 continue
@@ -234,7 +280,8 @@ def insert_valid_infos_to_table(base, shop_limits=2, n_days_before=2, shop_id_li
                 '订单编号': order_sn,  # 订单编号
                 '下单时间': time_order,  # 生成时间， 时间戳 int
                 '币种': currency,  # 交易货币，
-                '实收金额': order_detail.get('total_amount'),  # 该订单的交易价格
+                '实收金额': total_amount,  # 该订单的交易价格
+                '实收金额RMB': currency.exchange_to_CNY(float(total_amount), currency),  # 该订单的交易价格RMB
             }
 
             row_order = base.append_row(ORDER_TABLE, row_data_order)
@@ -253,12 +300,14 @@ def insert_valid_infos_to_table(base, shop_limits=2, n_days_before=2, shop_id_li
                 order_item_detail_item = item_detail.get('item')
                 image_url = order_item_detail_item.get('images')[0]
                 item_image_list.append(image_url)
+                original_price = order_item_detail.get('variation_original_price')
                 row_data_order_item = {
                     # 商品信息
                     '商品标题': order_item_detail.get('item_name'),  # 商品名称
                     '商品规格': order_item_detail.get('variation_name'),  # 商品细化标题
                     '商品折扣价': order_item_detail.get('variation_discounted_price'),  # 商品价格，折后
-                    '商品单价': order_item_detail.get('variation_original_price'),     # 商品价格， 原价
+                    '商品单价': original_price,  # 商品价格， 原价
+                    '商品单价RMB': currency_exchanger.exchange_to_CNY(float(original_price), currency),  # 商品价格RMB， 原价
                     '购买数量': order_item_detail.get('variation_quantity_purchased'),  # 商品购买数量
 
                     '商品图片': [image_url],
@@ -297,5 +346,5 @@ if __name__ == '__main__':
 
     base = Base(api_token, server_url)
     base.auth()
-
-    insert_valid_infos_to_table(base, shop_limits, n_days_before, shop_id_list)
+    me = MoneyExchange()
+    insert_valid_infos_to_table(base, shop_limits, n_days_before, shop_id_list, currency_exchanger=me)
