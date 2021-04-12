@@ -88,4 +88,5 @@ SeaTable API 库介绍:
 * [update_certification_expiration.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/update_certification_expiration.py): 更新网站证书过期时间
 * [send_wechat_msg.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/send_wechat_msg.py): 通过企业微信群机器人推送群消息
 * [sync_stock_price.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/sync_stock_price.py): 更新股票价格信息
+* [shopee_integration.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/shopee_integration.py): 电商网站销售数据同步
 
