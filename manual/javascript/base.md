@@ -342,18 +342,19 @@ const groupViewRows = base.getGroupedRows('Table1', '分组视图');
 通过一个行的 id 获取行，返回一个行对象
 
 ```javascript
-const row = base.getRowById(table: Object/String, rowId: String);
+const row = base.getRowById(table: Object/String, view: Object/String, rowId: String);
 ```
 
 ##### 例子
 
 ```javascript
 const table = base.getTableByName('Table1');
-const row = base.getRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
+const view = base.getViewByName(table, '默认视图');
+const row = base.getRowById(table, view, "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
 ```javascript
-const row = base.getRowById('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
+const row = base.getRowById('Table1', '默认视图', "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
 #### deleteRowById
@@ -407,12 +408,12 @@ base.modifyRow(table: Object/String, row: Object, updateRowData: Object);
 
 ```javascript
 const table = base.getTableByName('Table1');
-const row = base.getRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
+const row = base.getRowById(table, '默认视图', "M_lSEOYYTeuKTaHCEOL7nw");
 base.modifyRow(table, row, {'Name': 'new name', 'number': 100});
 ```
 
 ```javascript
-const row = base.getRowById('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
+const row = base.getRowById('Table1', '默认视图', "M_lSEOYYTeuKTaHCEOL7nw");
 base.modifyRow('Table1', row, {'Name': 'new name', 'number': 100});
 ```
 
