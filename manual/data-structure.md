@@ -32,7 +32,7 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 * `image` : array, each element of the array is the URL of image
 * `file` : array, each element of the array is a file object  `[{name: string, url: string, size: number, type: 'file'}]`
 * `multi-select` : array, each element of the array is an option name
-* `collaborator` : array, each element of the array is a collaborator's email
+* `collaborator` : array, each element of the array is a collaborator's system ID
 * `URL` : string
 * `email` :  string
 * `duration` : string, in format `h:mm(1:30)` or `h:mm:ss(0:20:30)` 
