@@ -84,6 +84,29 @@ base.get_metadata()
 }
 ```
 
+## Table
+
+#### add table
+
+在 base 中添加子表
+
+```python
+base.add_table(table_name, lang='en')
+```
+
+其中
+
+* table_name: 需要添加的子表名称
+* lang：语言， 默认 en ， 目前支持英文 ( en )和中文 ( zh-cn )
+
+##### 例子
+
+```python
+base.add_table('项目调查表', lang='zh-cn')
+```
+
+#### 
+
 ## Base 上的操作
 
 Base 对象提供了操作行和列，上传下载文件等的接口，请参考文档
