@@ -34,10 +34,10 @@ update_link(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
 其中
 
 * link_id: 链接列data属性下的 link_id
-* table_id: 链接表的id
-* other_table_id: 被链接表的id
+* table_id: 链接表的 id
+* other_table_id: 被链接表的 id
 * row_id: 链接行 id
-* other_rows_ids: 被链接行的id列表
+* other_rows_ids: 被链接行的 id 列表
 
 ##### 例子
 
