@@ -5,14 +5,21 @@
 获取表格的所有行
 
 ```python
-base.list_rows(table_name, view_name=None)
+base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None, limit=None)
 ```
+
+其中
+
+* order_by: 根据某列名进行排序
+* desc： 是否降序，默认为升序
+* start: 索引的启示位置， 行号
+* limit: 数据的显示数量
 
 ##### 例子
 
 ```python
 rows = base.list_rows('Table1')
-rows = base.list_rows('Table1', view_name='default')
+rows = base.list_rows('Table1', view_name='default', order_by='年龄', desc=True, start=5, limit=20)
 ```
 
 #### Get row
@@ -108,6 +115,43 @@ row_data = {
     "dcXS": "123"
 }
 base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
+```
+
+#### Batch update rows
+
+批量更新行
+
+```
+batch_update_rows(table_name, rows_data)
+```
+
+##### 例子
+
+```python
+updates_data = [
+        {
+            "row_id": "fMmCFyoxT4GN5Y2Powbl0Q",
+            "row": {
+                "Name": "Ranjiwei",
+                "age": "36"
+            }
+        },
+        {
+            "row_id": "cF5JTE99Tae-VVx0BGT-3A",
+            "row": {
+                "Name": "Huitailang",
+                "age": "33"
+            }
+        },
+        {
+            "row_id": "WP-8rb5PSUaM-tZRmTOCPA",
+            "row": {
+                "Name": "Yufeng",
+                "age": "22"
+            }
+        }
+    ]
+base.batch_update_rows('Table1', rows_data=updates_data)
 ```
 
 #### Delete row

@@ -20,14 +20,14 @@ base.list_columns('Table1', view_name='default')
 插入/追加列
 
 ```python
-base.insert_column(table_name, column_name, column_type, column_key=None)
+base.insert_column(table_name, column_name, column_type, column_key=None, column_data=None)
 ```
 
 其中
 
 * column_key：要插入的位置的前一列的 key，如若省略则默认追加为最后一列
-
 * column_type：请参考 [constants](../constants)
+* column_data: 一个列的config信息，创建链接列时需要指定， 其他类型选择性制定
 
 ##### 例子
 
@@ -121,6 +121,24 @@ base.modify_column_type(table_name, column_key, new_column_type)
 from seatable_api.constants import ColumnTypes
 
 base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
+```
+
+### Add column options
+
+单选，多选列专用，添加选项
+
+```
+add_column_options(self, table_name, column, options)
+```
+
+##### 例子
+
+```python
+base.add_column_options('Table1', 'My choices', [
+        {"name": "ddd", "color": "#aaa", "textColor": "#000000"},
+        {"name": "eee", "color": "#aaa", "textColor": "#000000"},
+        {"name": "fff", "color": "#aaa", "textColor": "#000000"},
+])
 ```
 
 #### Delete column
