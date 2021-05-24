@@ -36,6 +36,7 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 * `URL` : string
 * `email` :  string
 * `duration` : string, in format `h:mm(1:30)` or `h:mm:ss(0:20:30)` 
+* `rating`: number, indicates a rating
 
 高级列类型:
 
