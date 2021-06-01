@@ -337,7 +337,7 @@ const groupViewRows = base.getGroupedRows(table, view);
 const groupViewRows = base.getGroupedRows('Table1', '分组视图');
 ```
 
-##### getRowById
+#### getRowById
 
 通过一个行的 id 获取行，返回一个行对象
 
