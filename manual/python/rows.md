@@ -12,7 +12,7 @@ base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None
 
 * order_by: 根据某列名进行排序
 * desc： 是否降序，默认为升序
-* start: 索引的启示位置， 行号
+* start: 索引的起始位置， 行号
 * limit: 数据的显示数量
 
 ##### 例子
