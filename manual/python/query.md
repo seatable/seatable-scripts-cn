@@ -20,7 +20,7 @@ base.query('select name,age from table')
 ```
 返回结果
 
-* 返回查询table的各条数据
+* 成功 返回查询table的各条数据
 
 ```python
 [
@@ -33,4 +33,10 @@ base.query('select name,age from table')
         'age': 11
     },
 ]
+```
+* 失败
+
+```python
+ValueError:'sql can not be empty.'
+ConnectionError: "DtableDb Server Error."
 ```
