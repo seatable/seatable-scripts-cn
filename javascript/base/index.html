@@ -1,0 +1,1584 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="seatable">
+      
+      
+        <link rel="canonical" href="https://seatable.github.io/seatable-scripts-cn/javascript/base/">
+      
+      <link rel="icon" href="../../assets/seatable-favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Base - SeaTable 脚本编程手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ff6e42">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-orange" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#base" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SeaTable 脚本编程手册" class="md-header__button md-logo" aria-label="SeaTable 脚本编程手册" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SeaTable 脚本编程手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Base
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/seatable/seatable-scripts-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SeaTable 脚本编程手册" class="md-nav__button md-logo" aria-label="SeaTable 脚本编程手册" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    SeaTable 脚本编程手册
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/seatable/seatable-scripts-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        引言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-structure/" class="md-nav__link">
+        对象数据结构
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        JavaScript
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="JavaScript" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        引言
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Base
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Base
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    子表
+  </a>
+  
+    <nav class="md-nav" aria-label="子表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getactivetable" class="md-nav__link">
+    getActiveTable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettables" class="md-nav__link">
+    getTables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettablebyname" class="md-nav__link">
+    getTableByName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addtable" class="md-nav__link">
+    addTable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renametable" class="md-nav__link">
+    renameTable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletetable" class="md-nav__link">
+    deleteTable
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    视图
+  </a>
+  
+    <nav class="md-nav" aria-label="视图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getactiveview" class="md-nav__link">
+    getActiveView
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getviews" class="md-nav__link">
+    getViews
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getviewbyname" class="md-nav__link">
+    getViewByName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addview" class="md-nav__link">
+    addView
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renameview" class="md-nav__link">
+    renameView
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleteview" class="md-nav__link">
+    deleteView
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    列
+  </a>
+  
+    <nav class="md-nav" aria-label="列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getcolumns" class="md-nav__link">
+    getColumns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getshowncolumns" class="md-nav__link">
+    getShownColumns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcolumnbyname" class="md-nav__link">
+    getColumnByName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcolumnsbytype" class="md-nav__link">
+    getColumnsByType
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    行
+  </a>
+  
+    <nav class="md-nav" aria-label="行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getrows" class="md-nav__link">
+    getRows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getgroupedrows" class="md-nav__link">
+    getGroupedRows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getrowbyid" class="md-nav__link">
+    getRowById
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleterowbyid" class="md-nav__link">
+    deleteRowById
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addrow" class="md-nav__link">
+    addRow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifyrow" class="md-nav__link">
+    modifyRow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifyrows" class="md-nav__link">
+    modifyRows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    filter
+  </a>
+  
+    <nav class="md-nav" aria-label="filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    例子
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+    <nav class="md-nav" aria-label="Links">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addlink" class="md-nav__link">
+    addLink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removelink" class="md-nav__link">
+    removeLink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcolumnlinkid" class="md-nav__link">
+    getColumnLinkId
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updatelinks" class="md-nav__link">
+    updateLinks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../output/" class="md-nav__link">
+        Output
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        Utils
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        Context
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Python
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        引言
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/base/" class="md-nav__link">
+        Base
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/rows/" class="md-nav__link">
+        Rows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/columns/" class="md-nav__link">
+        Columns
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/query/" class="md-nav__link">
+        Query with SQL
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/account/" class="md-nav__link">
+        Account
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/constants/" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/queryset/" class="md-nav__link">
+        QuerySet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/context/" class="md-nav__link">
+        Context
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/libs/" class="md-nav__link">
+        云端环境下支持的库
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/query-sentences/" class="md-nav__link">
+        查询语句规范
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    子表
+  </a>
+  
+    <nav class="md-nav" aria-label="子表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getactivetable" class="md-nav__link">
+    getActiveTable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettables" class="md-nav__link">
+    getTables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettablebyname" class="md-nav__link">
+    getTableByName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addtable" class="md-nav__link">
+    addTable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renametable" class="md-nav__link">
+    renameTable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletetable" class="md-nav__link">
+    deleteTable
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    视图
+  </a>
+  
+    <nav class="md-nav" aria-label="视图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getactiveview" class="md-nav__link">
+    getActiveView
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getviews" class="md-nav__link">
+    getViews
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getviewbyname" class="md-nav__link">
+    getViewByName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addview" class="md-nav__link">
+    addView
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renameview" class="md-nav__link">
+    renameView
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleteview" class="md-nav__link">
+    deleteView
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    列
+  </a>
+  
+    <nav class="md-nav" aria-label="列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getcolumns" class="md-nav__link">
+    getColumns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getshowncolumns" class="md-nav__link">
+    getShownColumns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcolumnbyname" class="md-nav__link">
+    getColumnByName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcolumnsbytype" class="md-nav__link">
+    getColumnsByType
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    行
+  </a>
+  
+    <nav class="md-nav" aria-label="行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getrows" class="md-nav__link">
+    getRows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getgroupedrows" class="md-nav__link">
+    getGroupedRows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getrowbyid" class="md-nav__link">
+    getRowById
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleterowbyid" class="md-nav__link">
+    deleteRowById
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addrow" class="md-nav__link">
+    addRow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifyrow" class="md-nav__link">
+    modifyRow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifyrows" class="md-nav__link">
+    modifyRows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    filter
+  </a>
+  
+    <nav class="md-nav" aria-label="filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    例子
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+    <nav class="md-nav" aria-label="Links">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addlink" class="md-nav__link">
+    addLink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removelink" class="md-nav__link">
+    removeLink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcolumnlinkid" class="md-nav__link">
+    getColumnLinkId
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updatelinks" class="md-nav__link">
+    updateLinks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/seatable/seatable-scripts-cn/edit/master/manual/javascript/base.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="base">Base 对象<a class="headerlink" href="#base" title="Permanent link">&para;</a></h1>
+<p>Base 对象提供了一些操作数据的方法</p>
+<h2 id="_1">子表<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h4 id="getactivetable">getActiveTable<a class="headerlink" href="#getactivetable" title="Permanent link">&para;</a></h4>
+<p>获取当前选中的表格, 返回一个 table 对象</p>
+<h5 id="_2">例子<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code> <span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getActiveTable</span><span class="p">();</span>
+ <span class="nx">output</span><span class="p">.</span><span class="nx">markdown</span><span class="p">(</span><span class="sb">`#### </span><span class="si">${</span><span class="nx">table</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="gettables">getTables<a class="headerlink" href="#gettables" title="Permanent link">&para;</a></h4>
+<p>获取所有的子表</p>
+<h5 id="_3">例子<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">tables</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTables</span><span class="p">();</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tables</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="gettablebyname">getTableByName<a class="headerlink" href="#gettablebyname" title="Permanent link">&para;</a></h4>
+<p>通过一个表格的名称获取一个 table 对象</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="nx">tableName</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_4">例子<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">_id</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="addtable">addTable<a class="headerlink" href="#addtable" title="Permanent link">&para;</a></h4>
+<p>添加一个子表</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addTable</span><span class="p">(</span><span class="nx">tableName</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_5">例子<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addTable</span><span class="p">(</span><span class="s1">&#39;New table&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="renametable">renameTable<a class="headerlink" href="#renametable" title="Permanent link">&para;</a></h4>
+<p>重命名一个子表</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">renameTable</span><span class="p">(</span><span class="nx">oldName</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="nx">newName</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_6">例子<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">renameTable</span><span class="p">(</span><span class="s1">&#39;Old name&#39;</span><span class="p">,</span> <span class="s1">&#39;New name&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="deletetable">deleteTable<a class="headerlink" href="#deletetable" title="Permanent link">&para;</a></h4>
+<p>删除一个子表</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">deleteTable</span><span class="p">(</span><span class="nx">tableName</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_7">例子<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">deleteTable</span><span class="p">(</span><span class="s1">&#39;Old table&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="_8">视图<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h4 id="getactiveview">getActiveView<a class="headerlink" href="#getactiveview" title="Permanent link">&para;</a></h4>
+<p>获取当前的视图，该方法返回一个 view 对象</p>
+<h5 id="_9">例子<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">view</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getActiveView</span><span class="p">();</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">view</span><span class="p">.</span><span class="nx">_id</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="getviews">getViews<a class="headerlink" href="#getviews" title="Permanent link">&para;</a></h4>
+<p>获取当前表格的所有视图，并以一个数组的形式返回所有的视图</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">views</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViews</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_10">例子<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">views</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViews</span><span class="p">(</span><span class="nx">table</span><span class="p">);</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">views</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">views</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViews</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">views</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="getviewbyname">getViewByName<a class="headerlink" href="#getviewbyname" title="Permanent link">&para;</a></h4>
+<p>通过视图的名称获取表格中的一个视图对象，并返回一个视图对象</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViewByName</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">viewName</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_11">例子<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span> 
+<span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViewByName</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;view 1&#39;</span><span class="p">);</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">view</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViewByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;view 1&#39;</span><span class="p">);</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">view</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="addview">addView<a class="headerlink" href="#addview" title="Permanent link">&para;</a></h4>
+<p>一个子表中添加一个视图</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addView</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">viewName</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_12">例子<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">addView</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;view 2&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addView</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;view 2&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="renameview">renameView<a class="headerlink" href="#renameview" title="Permanent link">&para;</a></h4>
+<p>重命名一个子表中的一个视图</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">renameView</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">currentViewName</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="nx">nextViewName</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_13">例子<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">renameView</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;view1&#39;</span><span class="p">,</span> <span class="s1">&#39;view2&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">renameView</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;view1&#39;</span><span class="p">,</span> <span class="s1">&#39;view2&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="deleteview">deleteView<a class="headerlink" href="#deleteview" title="Permanent link">&para;</a></h4>
+<p>删除一个视图</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">deleteView</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">viewName</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_14">例子<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">deleteView</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;view2&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">deleteView</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;view2&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="_15">列<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h4 id="getcolumns">getColumns<a class="headerlink" href="#getcolumns" title="Permanent link">&para;</a></h4>
+<p>获取一个表格中的所有列，并以一个数组的形式返回所有的列对象</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumns</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h6 id="_16">例子<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h6>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumns</span><span class="p">(</span><span class="nx">table</span><span class="p">);</span>
+
+<span class="nx">column</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">column</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumns</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="getshowncolumns">getShownColumns<a class="headerlink" href="#getshowncolumns" title="Permanent link">&para;</a></h4>
+<p>获取一个视图中所有显示的列，不包含该视图中已经被隐藏的列, 返回一个数组</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getShownColumns</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">view</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_17">例子<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViewByName</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;view 1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getShownColumns</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="nx">view</span><span class="p">);</span>
+<span class="nx">column</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">column</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getShownColumns</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;view 1&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="getcolumnbyname">getColumnByName<a class="headerlink" href="#getcolumnbyname" title="Permanent link">&para;</a></h4>
+<p>通过列的名称获取该列对象</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">column</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumnByName</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_18">例子<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">column</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumnByName</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;Column name&#39;</span><span class="p">);</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">column</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumnByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;Column name&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="getcolumnsbytype">getColumnsByType<a class="headerlink" href="#getcolumnsbytype" title="Permanent link">&para;</a></h4>
+<p>获取该表格中所有特定种类的列</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumnsByType</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_19">例子<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span>  <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumnsByType</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">);</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getColumnsByType</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">);</span>
+<span class="nx">output</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="_20">行<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h4 id="getrows">getRows<a class="headerlink" href="#getrows" title="Permanent link">&para;</a></h4>
+<p>获取一个视图所有的行，返回一个数组</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRows</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">view</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_21">例子<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViewByName</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;view1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRows</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="nx">view</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRows</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;view1&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="getgroupedrows">getGroupedRows<a class="headerlink" href="#getgroupedrows" title="Permanent link">&para;</a></h4>
+<p>获取分组视图中的行分组数据</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">getGroupedRows</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">view</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_22">例子<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getViewByName</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;分组视图&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">groupViewRows</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getGroupedRows</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="nx">view</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">groupViewRows</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getGroupedRows</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;分组视图&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="getrowbyid">getRowById<a class="headerlink" href="#getrowbyid" title="Permanent link">&para;</a></h4>
+<p>通过一个行的 id 获取行，返回一个行对象</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRowById</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">rowId</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_23">例子<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRowById</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s2">&quot;M_lSEOYYTeuKTaHCEOL7nw&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRowById</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s2">&quot;M_lSEOYYTeuKTaHCEOL7nw&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="deleterowbyid">deleteRowById<a class="headerlink" href="#deleterowbyid" title="Permanent link">&para;</a></h4>
+<p>通过一个行的 id 删除当前表格中的该行</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">deleteRowById</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">rowId</span><span class="o">:</span> <span class="nb">String</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_24">例子<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">deleteRowById</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s1">&#39;M_lSEOYYTeuKTaHCEOL7nw&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">deleteRowById</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;M_lSEOYYTeuKTaHCEOL7nw&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="addrow">addRow<a class="headerlink" href="#addrow" title="Permanent link">&para;</a></h4>
+<p>在一个子表中添加一行</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addRow</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">rowData</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="nx">viewName</span><span class="o">?:</span> <span class="nb">String</span><span class="p">)</span>
+</code></pre></div>
+
+<h5 id="_25">例子<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">addRow</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;名称&#39;</span><span class="o">:</span> <span class="s1">&#39;小强&#39;</span><span class="p">,</span> <span class="s1">&#39;年龄&#39;</span><span class="o">:</span> <span class="s1">&#39;18&#39;</span><span class="p">});</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">addRow</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;名称&#39;</span><span class="o">:</span> <span class="s1">&#39;小强&#39;</span><span class="p">,</span> <span class="s1">&#39;年龄&#39;</span><span class="o">:</span> <span class="s1">&#39;18&#39;</span><span class="p">},</span> <span class="s1">&#39;Default View&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addRow</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;名称&#39;</span><span class="o">:</span> <span class="s1">&#39;小强&#39;</span><span class="p">,</span> <span class="s1">&#39;年龄&#39;</span><span class="o">:</span> <span class="s1">&#39;18&#39;</span><span class="p">});</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">addRow</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;名称&#39;</span><span class="o">:</span> <span class="s1">&#39;小强&#39;</span><span class="p">,</span> <span class="s1">&#39;年龄&#39;</span><span class="o">:</span> <span class="s1">&#39;18&#39;</span><span class="p">},</span> <span class="s1">&#39;Default View&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="modifyrow">modifyRow<a class="headerlink" href="#modifyrow" title="Permanent link">&para;</a></h4>
+<p>修改表格中的某一行</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">modifyRow</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">row</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="nx">updateRowData</span><span class="o">:</span> <span class="nb">Object</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_26">例子<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRowById</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="s2">&quot;M_lSEOYYTeuKTaHCEOL7nw&quot;</span><span class="p">);</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">modifyRow</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="nx">row</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="o">:</span> <span class="s1">&#39;new name&#39;</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="o">:</span> <span class="mf">100</span><span class="p">});</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRowById</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s2">&quot;M_lSEOYYTeuKTaHCEOL7nw&quot;</span><span class="p">);</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">modifyRow</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="nx">row</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="o">:</span> <span class="s1">&#39;new name&#39;</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="o">:</span> <span class="mf">100</span><span class="p">});</span>
+</code></pre></div>
+
+<h4 id="modifyrows">modifyRows<a class="headerlink" href="#modifyrows" title="Permanent link">&para;</a></h4>
+<p>一次性修改表格中的多行</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">modifyRows</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="nb">Object</span><span class="o">/</span><span class="nb">String</span><span class="p">,</span> <span class="nx">rows</span><span class="o">:</span> <span class="nb">Array</span><span class="p">,</span> <span class="nx">updatedRows</span><span class="o">:</span> <span class="nb">Array</span><span class="p">);</span>
+</code></pre></div>
+
+<h5 id="_27">例子<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getTableByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRows</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;默认视图&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">selectedColumnName</span> <span class="o">=</span> <span class="s1">&#39;名称&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">selectedRows</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">updatedRows</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="nx">rows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">row</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">row</span><span class="p">[</span><span class="nx">selectedColumnName</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">selectedRows</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
+    <span class="nx">updatedRows</span><span class="p">.</span><span class="nx">push</span><span class="p">({[</span><span class="nx">selectedColumnName</span><span class="p">]</span><span class="o">:</span> <span class="s1">&#39;name1&#39;</span><span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">modifyRows</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="nx">selectedRows</span><span class="p">,</span> <span class="nx">updatedRows</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="filter">filter<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h2>
+<p>通过一个查询语句, 筛选出表格中符合条件的行, 返回一个 querySet 对象</p>
+<ul>
+<li>
+<p><a href="../query-sentences/">查询语句规范</a></p>
+</li>
+<li>
+<p><a href="../queryset/">QuerySet</a></p>
+</li>
+</ul>
+<h4 id="_28">例子<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="c1">// 过滤出 number列 等于 5 的行, 返回一个 querySet 对象</span>
+<span class="kd">const</span> <span class="nx">querySet</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;默认视图&#39;</span><span class="p">,</span> <span class="s1">&#39;number = 5&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h2>
+<h4 id="addlink">addLink<a class="headerlink" href="#addlink" title="Permanent link">&para;</a></h4>
+<p>添加链接，链接其他表记录</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addLink</span><span class="p">(</span><span class="nx">linkId</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">linkedTableName</span><span class="p">,</span> <span class="nx">rowId</span><span class="p">,</span> <span class="nx">linkedRowId</span><span class="p">)</span>
+</code></pre></div>
+
+<p>其中</p>
+<ul>
+<li>linkId: 链接列data属性下的 link_id</li>
+<li>tableName: 链接表的名字</li>
+<li>linkedTableName: 被链接表的名字</li>
+<li>rowId: 链接行 id</li>
+<li>linkedRowId: 被链接行的 id</li>
+</ul>
+<h5 id="_29">例子<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addLink</span><span class="p">(</span><span class="s1">&#39;5WeC&#39;</span><span class="p">,</span> <span class="s1">&#39;real-img-files&#39;</span><span class="p">,</span> <span class="s1">&#39;contact&#39;</span><span class="p">,</span> <span class="s1">&#39;CGtoJB1oQM60RiKT-c5J-g&#39;</span><span class="p">,</span> <span class="s1">&#39;PALm2wPKTCy-jdJNv_UWaQ&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h4 id="removelink">removeLink<a class="headerlink" href="#removelink" title="Permanent link">&para;</a></h4>
+<p>移除某个链接</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">removeLink</span><span class="p">(</span><span class="nx">linkId</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">linkedTableName</span><span class="p">,</span> <span class="nx">rowId</span><span class="p">,</span> <span class="nx">linkedRowId</span><span class="p">)</span>
+</code></pre></div>
+
+<h5 id="_30">例子<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">removeLink</span><span class="p">(</span><span class="s1">&#39;5WeC&#39;</span><span class="p">,</span> <span class="s1">&#39;real-img-files&#39;</span><span class="p">,</span> <span class="s1">&#39;contact&#39;</span><span class="p">,</span> <span class="s1">&#39;CGtoJB1oQM60RiKT-c5J-g&#39;</span><span class="p">,</span> <span class="s1">&#39;PALm2wPKTCy-jdJNv_UWaQ&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h4 id="getcolumnlinkid">getColumnLinkId<a class="headerlink" href="#getcolumnlinkid" title="Permanent link">&para;</a></h4>
+<p>通过列名来获取链接的id</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">getColumnLinkId</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span> <span class="nx">column_name</span><span class="p">)</span>
+</code></pre></div>
+
+<h5 id="_31">例子<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">getColumnLinkId</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="s1">&#39;记录&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h4 id="updatelinks">updateLinks<a class="headerlink" href="#updatelinks" title="Permanent link">&para;</a></h4>
+<p>移除现有的所有的行的链接, 并添加新链接</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">updateLinks</span><span class="p">(</span><span class="nx">linkId</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">linkedTableName</span><span class="p">,</span> <span class="nx">rowId</span><span class="p">,</span> <span class="nx">updatedlinkedRowIds</span><span class="p">)</span>
+</code></pre></div>
+
+<h5 id="_32">例子<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">getRows</span><span class="p">(</span><span class="s1">&#39;contact&#39;</span><span class="p">,</span> <span class="s1">&#39;默认视图&#39;</span><span class="p">);</span>
+
+<span class="c1">// 更新行的链接为 [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id]</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">updateLinks</span><span class="p">(</span><span class="s1">&#39;5WeC&#39;</span><span class="p">,</span> <span class="s1">&#39;real-img-files&#39;</span><span class="p">,</span> <span class="s1">&#39;contact&#39;</span><span class="p">,</span> <span class="s1">&#39;CGtoJB1oQM60RiKT-c5J-g&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">rows</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">_id</span><span class="p">,</span> <span class="nx">rows</span><span class="p">[</span><span class="mf">1</span><span class="p">].</span><span class="nx">_id</span><span class="p">,</span> <span class="nx">rows</span><span class="p">[</span><span class="mf">2</span><span class="p">].</span><span class="nx">_id</span><span class="p">,</span> <span class="nx">rows</span><span class="p">[</span><span class="mf">3</span><span class="p">].</span><span class="nx">_id</span><span class="p">])</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: 引言" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              引言
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../output/" class="md-footer__link md-footer__link--next" aria-label="Next: Output" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Output
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 seatable
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/seatable/seatable-scripts-cn/" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+    
+  </body>
+</html>
