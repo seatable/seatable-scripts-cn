@@ -1,9 +1,6 @@
-# Query
+# Query with SQL
 
-
-#### Query With SQL
-
-使用sql语句查询base
+使用 sql 语句查询一个 base
 
 ```python
 base.query(sql)
@@ -11,16 +8,19 @@ base.query(sql)
 
 其中
 
-* sql: 要执行的sql语句
+* sql: 要执行的 SQL 语句
 
 ##### 例子
 
 ```python
 base.query('select name,age from table')
 ```
-返回结果
 
-* 成功 返回查询table的各条数据
+##### 返回结果
+
+**成功**
+
+返回一个 rows 列表
 
 ```python
 [
@@ -34,9 +34,11 @@ base.query('select name,age from table')
     },
 ]
 ```
-* 失败
 
-```python
-ValueError:'sql can not be empty.'
-ConnectionError: "DtableDb Server Error."
-```
+**失败**
+
+抛出以下异常:
+
+* ValueError: 'sql can not be empty.'
+* ConnectionError: 网络错误
+* Exception: 其他错误
