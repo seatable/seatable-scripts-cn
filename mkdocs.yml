@@ -66,6 +66,7 @@ nav:
     - Account: python/account.md
     - Constants: python/constants.md
     - Context: python/context.md
+    - 日期操作: python/dateutils.md
     - 云端环境下支持的库: python/libs.md
     - 查询语句规范: python/query-sentences.md
 
