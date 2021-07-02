@@ -39,8 +39,9 @@ dateutils.dateadd(time_str_s, 3, 'seconds') # 2020-06-15T15:23:24
 
 其中
 
-* YM, 开始时间 与 结束时间 之间月份之差, 忽略日期中的天和年份
-* MD, 开始时间 与 结束时间 之间天数之差, 忽略日期中的月份和年份
+* YM, 开始时间与结束时间之间月份之差, 忽略日期中的天和年份
+* MD, 开始时间与结束时间之间天数之差, 忽略日期中的月份和年份
+* YD,  开始时间与结束时间的日期部分之差, 忽略日期中的年份。
 
 ```python
 time_start = "2019-6-1"
@@ -52,6 +53,7 @@ dateutils.datediff(start=time_start, end=time_end, unit='H') # hours 8377
 dateutils.datediff(start=time_start, end=time_end, unit='M') # months 12
 dateutils.datediff(start=time_start, end=time_end, unit='YM') #  -1
 dateutils.datediff(start=time_start, end=time_end, unit='MD') #  14
+dateutils.datediff("2019-2-28","2020-2-1", unit='YD') # -27
 ```
 
 #### emonth
