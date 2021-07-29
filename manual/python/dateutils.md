@@ -5,7 +5,7 @@
 #### 函数引入
 
 ```python
-from seatable_api.date_utils import dateutils
+from seatable_api import dateutils
 ```
 
 #### date
