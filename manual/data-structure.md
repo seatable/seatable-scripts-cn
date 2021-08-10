@@ -15,9 +15,8 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 一个 column 对象有以下的字段:
 
 * `key` : The key of the column, string
-
 * `type` : The type of the column(long-text, single-select, number, file and so on), string
-* `name` : The name of the table, string
+* `name` : The name of the column, string
 
 不同的列类型的单元格的值有不同的数据类型，如下:
 
