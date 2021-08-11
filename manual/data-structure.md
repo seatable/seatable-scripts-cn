@@ -22,7 +22,7 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 
 基本列类型:
 
-* `simple-text` : string
+* `text` : string
 * `number` : number
 * `checkbox` : boolean
 * `date` : string, in format `2020-01-01` or `2020-01-01 10:00` 
