@@ -59,32 +59,23 @@ base.update_link(
 批量更新链接信息
 
 ```
-batch_update_links(self, links)
+base.batch_update_links(link_id, table_id, other_table_id, row_id_list, other_rows_ids_map)
 ```
 
 ##### 例子
 
 ```python
-links = [
-        {
-            "row_id":'NK6ImdjPTMy0baWIg5sfmA',
-            "link_id":'r4IJ',
-            "table_id":'0000',
-            "other_table_id":'kFoO',
-            "other_rows_ids":['exkb56fAT66j8R0w6wD9Qg',
-                              'DjHjwmlRRB6WgU9uPnrWeA']
-        },
-        {
-            "row_id": 'chyxfYc-S8SHQmaJ2i20Vg',
-            "link_id": 'r4IJ',
-            "table_id": '0000',
-            "other_table_id": 'kFoO',
-            "other_rows_ids": ['Ufrm3ZLmSiiqJcKvlPdsGw',
-                               'DjHjwmlRRB6WgU9uPnrWeA']
-        },...
-]
+link_id = "WaW5"
+table_id ="0000"
+other_table_id = "jtsf"
+row_id_list = ["fRLglslWQYSGmkU7o6KyHw","eSQe9OpPQxih8A9zPXdMVA","FseN8ygVTzq1CHDqI4NjjQ"]
+other_rows_ids_map = {
+    	"FseN8ygVTzq1CHDqI4NjjQ":["OcCE8aX8T7a4dvJr-qNh3g","JckTyhN0TeS8yvH8D3EN7g"],
+    	"eSQe9OpPQxih8A9zPXdMVA":["cWHbzQiTR8uHHzH_gVSKIg","X56gE7BrRF-i61YlE4oTcw"],
+    	"fRLglslWQYSGmkU7o6KyHw":["MdfUQiWcTL--uMlrGtqqgw","E7Sh3FboSPmfBlDsrj_Fhg","UcZ7w9wDT-uVq4Ohtwgy9w"]
+}
 
-base.batch_update_links(links)
+base.batch_update_links(link_id, table_id, other_table_id, row_id_list, other_rows_ids_map)
 ```
 
 #### Remove link
