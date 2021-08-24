@@ -163,7 +163,7 @@ add_column_cascade_settings(table_name, child_column, parent_column, cascade_set
 
 ```python
 base.add_column_cascade_settings("Table1", "single-op-col-c", "single-op-col", {
-  "aaa": ["aaa-1", "aaa-2"], # 如果父列选择“aaa”， 子列只有“aaa-1”和“aaa-2”可选
+  "aaa": ["aaa-1", "aaa-2"], # 如果父列选择 “aaa”， 子列只有 “aaa-1” 和 “aaa-2” 可选 
   "bbb": ["bbb-1", "bbb-2"],
   "ccc": ["ccc-1", "ccc-2"]
 })
