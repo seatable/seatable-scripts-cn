@@ -132,7 +132,7 @@ base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
 单选，多选列专用，添加选项
 
 ```
-add_column_options(self, table_name, column, options)
+add_column_options(table_name, column, options)
 ```
 
 ##### 例子
@@ -143,6 +143,30 @@ base.add_column_options('Table1', 'My choices', [
         {"name": "eee", "color": "#aaa", "textColor": "#000000"},
         {"name": "fff", "color": "#aaa", "textColor": "#000000"},
 ])
+```
+
+#### Add column cascade settings
+
+单选列专用，添加单选选项的父子及联关系，达到子列的单选选项条目根据父列的选项而定的效果
+
+```python
+add_column_cascade_settings(table_name, child_column, parent_column, cascade_settings)
+```
+
+其中
+
+* child_column: 单选子列的名称
+* parent_column: 单选父列的名称
+* cascade_settings: 及联关系设置数据
+
+##### 例子
+
+```python
+base.add_column_cascade_settings("Table1", "single-op-col-c", "single-op-col", {
+  "aaa": ["aaa-1", "aaa-2"], # 如果父列选择 “aaa”， 子列只有 “aaa-1” 和 “aaa-2” 可选 
+  "bbb": ["bbb-1", "bbb-2"],
+  "ccc": ["ccc-1", "ccc-2"]
+})
 ```
 
 #### Delete column
