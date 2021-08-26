@@ -60,7 +60,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
 
 * 链接公式暂不支持， 如 {link.age}, 这种查询无效;
 * 查询的列名不支持使用大括号(“{}”)来修饰， 如：`select abs({column}) from talbe;` 属于无效查询， 应该写成：`select abs(column) from table;` ，此规则同 SQL 语法一致;
-* 如果字段名称中包含空格或连接符“-”， 可是使用左引号("``")来进行修饰， 如: select abs 'column-a' from table;
+* 如果字段名称中包含空格或连接符“-”， 可是使用左引号("\`\`")来进行修饰， 如: select abs \`column-a\` from table;
 * 不支持给子段起别名， 如：`select abs(t.column) from table as t;` 为无效查询；
 * 公式可以用在 group by 以及 order by 表达语句当中;
 
