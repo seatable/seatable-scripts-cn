@@ -65,11 +65,9 @@ nav:
     - Query with SQL: python/query.md
     - Account: python/account.md
     - Constants: python/constants.md
-    - QuerySet: python/queryset.md
     - Context: python/context.md
     - 日期操作: python/dateutils.md
     - 云端环境下支持的库: python/libs.md
-    - 查询语句规范: python/query-sentences.md
   - SQL:
     - SQL 语法参考: python/sql.md
 
