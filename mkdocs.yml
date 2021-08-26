@@ -71,5 +71,5 @@ nav:
     - 云端环境下支持的库: python/libs.md
     - 查询语句规范: python/query-sentences.md
   - SQL:
-    - SQL支持: python/sql.md
+    - SQL 语法参考: python/sql.md
 
