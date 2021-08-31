@@ -1,6 +1,6 @@
 # Query with SQL
 
-#### Query
+## Query
 
 使用 sql 语句查询一个 base
 
@@ -12,7 +12,18 @@ base.query(sql)
 
 * sql: 要执行的 SQL 语句
 
-##### 例子
+
+可能的异常包括
+
+* ValueError: sql can not be empty
+* ConnectionError: network error
+* Exception: no such table
+* Exception: no such column
+* Exception: columns in group by should match columns in select
+
+## 例子
+
+### 基础查询
 
 ```python
 base.query('select name, price, year from Bill')
@@ -32,16 +43,7 @@ base.query('select name, price, year from Bill')
 ]
 ```
 
-错误
-
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
-
-#### WHERE
-
-##### 例子
+### WHERE
 
 ```python
 base.query('select name, price from Bill where year = 2021')
@@ -57,16 +59,8 @@ base.query('select name, price from Bill where year = 2021')
 ]
 ```
 
-错误
 
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
-
-#### ORDER BY
-
-##### 例子
+### ORDER BY
 
 ```python
 base.query('select name, price, year from Bill order by year')
@@ -86,16 +80,7 @@ base.query('select name, price, year from Bill order by year')
 ]
 ```
 
-错误
-
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
-
-#### GROUP BY
-
-##### 例子
+### GROUP BY
 
 ```python
 base.query('select name, sum(price) from Bill group by name')
@@ -111,17 +96,8 @@ base.query('select name, sum(price) from Bill group by name')
 ]
 ```
 
-错误
 
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
-* Exception: columns in group by should match columns in select
-
-#### DISTINCT
-
-##### 例子
+### DISTINCT
 
 ```python
 base.query('select distinct name from Bill')
@@ -136,10 +112,3 @@ base.query('select distinct name from Bill')
     {'_id': 'EvwCWtX3RmKYKHQO9w2kLg', 'name': 'Jane'}
 ]
 ```
-
-错误
-
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
