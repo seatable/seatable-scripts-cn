@@ -12,6 +12,7 @@ base.query(sql)
 
 * sql: 要执行的 SQL 语句
 
+注意: 默认返回最多 100 条结果，如果需要更多结果，请在 sql 语句中加入 limit 参数
 
 可能的异常包括
 
@@ -46,7 +47,7 @@ base.query('select name, price, year from Bill')
 ### WHERE
 
 ```python
-base.query('select name, price from Bill where year = 2021')
+base.query('select name, price from Bill where year = 2021 ')
 ```
 
 结果
