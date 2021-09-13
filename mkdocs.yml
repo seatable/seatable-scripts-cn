@@ -70,4 +70,5 @@ nav:
     - 云端环境下支持的库: python/libs.md
   - SQL:
     - SQL 语法参考: python/sql.md
+    - SQL 函数参考: python/function.md
 
