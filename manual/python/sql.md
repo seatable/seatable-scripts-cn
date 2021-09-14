@@ -73,6 +73,8 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
 
 以上的公式可以用于 group by 分组， 按星期， 月，季度，  日期等， 如：`select sum(sale) from SalesRecord group by ISODate(SalesTime)` , 返回每天的总销量。
 
+更多支持的公式函数请参考\[./function.md]。
+
 ### 查询字符串列表
 
 协作人以及多选类型以字符串列表的方式进行呈现， SeaTable 从 UI 层面上对这过滤两种类型的数据使用特别的函数呈现， 包括`HAS ANY OF`, `HAS ALL OF`, `HAS NONE OF`, `IS EXACTLY`.  这些关键字同样也适用于 SQL 查询语法中。比如：名为 “city” 的列属于多选类型， 我们想查询出所有包含 “New York” 和  “Paris” 的行， 可以做如下查询： `select * from table where city has any of ("New York", "Paris");` , 其中，用括号修饰的城市列表，相当于语法中的`IN` .
