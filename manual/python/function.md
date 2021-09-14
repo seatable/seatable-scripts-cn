@@ -1,6 +1,6 @@
 # SQL 函数参考
 
-你可以在SQL查询中使用已经支持的函数。
+您可以在SQL查询中使用函数。
 
 ## SQL 函数
 
@@ -24,22 +24,22 @@ FunctionName(parameters...)
 * 逻辑函数
 * 统计函数
 
-下面是所有SQL函数的实例，如果您想查找特定的函数，可以通过Ctrl+F在当前页面进行查找。
+在这篇文档中，我们会提供所有函数的完整介绍，并提供相应的例子。如果您想查找特定的函数，可以通过Ctrl+F在当前页面进行查找。
 
-## 函数实例
+## 函数及例子
 
 您可以在SQL查询中使用下列常量：
 
-| 操作符（Operator） | 描述（Description）     | 输入（Input） | 结果（Result） |
-| :------------ | :------------------ | :-------- | :--------- |
-| e             | 返回自然常数 e=2.71828... | e+1       | 3.71828183 |
-| pi            | 返回圆周率pi Pi.         | pi        | 3.14159265 |
-| true()        | 返回逻辑值 'true'.       | true()    | true       |
-| false()       | 返回逻辑值 'false'.      | false()   | false      |
+| 操作符     | 描述                  | 输入      | 结果         |
+| :------ | :------------------ | :------ | :--------- |
+| e       | 返回自然常数 e=2.71828... | e+1     | 3.71828183 |
+| pi      | 返回圆周率pi Pi.         | pi      | 3.14159265 |
+| true()  | 返回逻辑值 'true'.       | true()  | true       |
+| false() | 返回逻辑值 'false'.      | false() | false      |
 
 ### 操作符
 
-| 操作符(Operator)                      | 描述（Description）  | 输入（Input）                                                   | 结果（Result）                        |
+| 操作符                                | 描述               | 输入                                                          | 结果                                |
 | :--------------------------------- | :--------------- | :---------------------------------------------------------- | :-------------------------------- |
 | add(num1,num2)                     | 计算两个值的和。         | add(1,2)                                                    | 3                                 |
 | subtract(num1,num2)                | 计算两个值的差。         | subtract(5,4)                                               | 1                                 |
@@ -57,7 +57,7 @@ FunctionName(parameters...)
 
 ### 数学函数
 
-| 操作符（Operator）                 | 描述（Description）                                                                                                                                                                         | 输入（Input）          | 结果（Result） |
+| 操作符                           | 描述                                                                                                                                                                                      | 输入                 | 结果         |
 | :---------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------- | :--------- |
 | abs(number)                   | 返回一个数的绝对值。                                                                                                                                                                              | abs(-2)            | 2          |
 | ceiling(number, significance) | 将数字向上舍入到最接近的整数或最接近的指定基数的倍数。(如果任何一个参数是非数值型，则 CEILING 返回空。  不论参数 number 的符号如何，数值都是沿绝对值增大的方向向上舍入。 如果 number 正好是 significance 的倍数，则不进行舍入。 如果 number 和 significance 都为负，则对值按远离 0 的方向进行向下舍入。) | ceiling(2.14)      | 3          |
@@ -81,7 +81,7 @@ FunctionName(parameters...)
 
 ### 文本函数
 
-| 操作符（Operator）                                          | 描述（Description）                                                                  | 输入（Input）                                         | 结果（Result）           |
+| 操作符                                                    | 描述                                                                               | 输入                                                | 结果                   |
 | :----------------------------------------------------- | :------------------------------------------------------------------------------- | :------------------------------------------------ | :------------------- |
 | exact(string1, string2)                                | 返回两个数字符串是否相等。                                                                    | exact('SeaTable', 'Seatable')                     | false                |
 | find(findString, sourceString, startPosition)          | 获取在一个字符串在另一个字符串中的索引。如果找不到，那么返回 0。(区分大小写)。                                        | find('Sea', 'seaTable', 1)                        | 0                    |
@@ -102,7 +102,7 @@ FunctionName(parameters...)
 
 ### 日期函数
 
-| 操作符（Operator）                                            | 描述（Description）                                                                             | 输入（Input）                                            | 结果（Result）          |
+| 操作符                                                      | 描述                                                                                          | 输入                                                   | 结果                  |
 | :------------------------------------------------------- | :------------------------------------------------------------------------------------------ | :--------------------------------------------------- | :------------------ |
 | date(year, month, day)                                   | 从输入的年、月和日返回国际格式 (ISO) 的日期。                                                                  | date(2021, 1, 3)                                     | 2021-01-03 00:00:00 |
 | dateAdd(date, count, unit)                               | 增加时间。最后一个参数 unit 可以为 years, months, weeks, days, hours, minutes, seconds 中的一个。              | dateAdd('2020-02-03', 2, 'days')                     | 2020-02-05 00:00:00 |
@@ -134,22 +134,22 @@ FunctionName(parameters...)
 
 ### 逻辑函数
 
-| 操作符（Operator）                                                     | 描述（Description）                                     | 输入（Input）                                                                               | 结果（Result） |
-| :---------------------------------------------------------------- | :-------------------------------------------------- | :-------------------------------------------------------------------------------------- | :--------- |
-| and(logical1, logical2, ...)                                      | 检查是否所有参数均为 TRUE，如果所有参数值均为 TRUE，则返回 TRUE。            | and(1, '', 2)                                                                           | false      |
-| if(logical, value1, value2)                                       | 判断是否满足某个条件，如果满足返回一个值，如果不满足则返回另一个值。                  | if(1>2, 3, 4)                                                                           | 4          |
-| ifs(logical1, value1, logical2, value2, ...)                      | 检查是否满足一个或多个条件并返回与第一个 TRUE 条件对应的值                    | ifs( 1>2, 3, 5>4, 9)                                                                    | 9          |
-| not(boolean)                                                      | 对参数的逻辑值求反: 参数为 TRUE 时返回 FALSE；参数为 FALSE 时返回 TRUE。   | not(and(1, '', 2))                                                                      | true       |
-| or(logical1, logical2, ...)                                       | 如果任一参数值为 TRUE，即返回 TRUE；只有当所有参数值均为 FALSE 时才返回 FALSE。 | or(1,'',2)                                                                              | true       |
-| switch(logical, matcher1, value1, matcher2, value2, ..., default) | 根据值列表求值表达式并返回与第一个匹配值对应的结果。如果没有匹配项，则返回可选默认值。         | switch(\`grades\`, 1, 'very good', 2, 'good', 3, 'satisfactory', 4, 'passed', 'failed') | very good  |
-| xor(logical1, logical2, ...)                                      | 返回所有参数的逻辑“异或”值。                                     | xor(1, 0, 2\<1)                                                                         | false      |
+| 操作符                                                               | 描述                                                  | 输入                                                                                      | 结果        |
+| :---------------------------------------------------------------- | :-------------------------------------------------- | :-------------------------------------------------------------------------------------- | :-------- |
+| and(logical1, logical2, ...)                                      | 检查是否所有参数均为 TRUE，如果所有参数值均为 TRUE，则返回 TRUE。            | and(1, '', 2)                                                                           | false     |
+| if(logical, value1, value2)                                       | 判断是否满足某个条件，如果满足返回一个值，如果不满足则返回另一个值。                  | if(1>2, 3, 4)                                                                           | 4         |
+| ifs(logical1, value1, logical2, value2, ...)                      | 检查是否满足一个或多个条件并返回与第一个 TRUE 条件对应的值                    | ifs( 1>2, 3, 5>4, 9)                                                                    | 9         |
+| not(boolean)                                                      | 对参数的逻辑值求反: 参数为 TRUE 时返回 FALSE；参数为 FALSE 时返回 TRUE。   | not(and(1, '', 2))                                                                      | true      |
+| or(logical1, logical2, ...)                                       | 如果任一参数值为 TRUE，即返回 TRUE；只有当所有参数值均为 FALSE 时才返回 FALSE。 | or(1,'',2)                                                                              | true      |
+| switch(logical, matcher1, value1, matcher2, value2, ..., default) | 根据值列表求值表达式并返回与第一个匹配值对应的结果。如果没有匹配项，则返回可选默认值。         | switch(\`grades\`, 1, 'very good', 2, 'good', 3, 'satisfactory', 4, 'passed', 'failed') | very good |
+| xor(logical1, logical2, ...)                                      | 返回所有参数的逻辑“异或”值。                                     | xor(1, 0, 2\<1)                                                                         | false     |
 
 ### 统计函数
 
-| 操作符（Operator）                                 | 描述（Description）                                     | 输入（Input）               | 结果（Result） |
-| :-------------------------------------------- | :-------------------------------------------------- | :---------------------- | :--------- |
-| average(number1, number2, ...)                | 返回一组数的平均值。                                          | average(1, 2, 3, 4, 5)  | 3          |
-| counta(textORnumber1, textORnumber2, ...)     | Counts the number of non-e计算一组值中非空值的个数。非空值包括数字和字符串。 | counta(1, '', 2, '3')   | 3          |
-| countall(textORnumber1, textORnumber2, ...)   | 计算一组值的个数 (包括空值)。                                    | countall(1, '', 2, '3') | 4          |
-| countblank(textORnumber1, textORnumber2, ...) | countblank(textOrNumber1, \[textOrNumber2, ...])    | countall(1, '', 2, '3') | 1          |
+| 操作符                                           | 描述                                                  | 输入                      | 结果  |
+| :-------------------------------------------- | :-------------------------------------------------- | :---------------------- | :-- |
+| average(number1, number2, ...)                | 返回一组数的平均值。                                          | average(1, 2, 3, 4, 5)  | 3   |
+| counta(textORnumber1, textORnumber2, ...)     | Counts the number of non-e计算一组值中非空值的个数。非空值包括数字和字符串。 | counta(1, '', 2, '3')   | 3   |
+| countall(textORnumber1, textORnumber2, ...)   | 计算一组值的个数 (包括空值)。                                    | countall(1, '', 2, '3') | 4   |
+| countblank(textORnumber1, textORnumber2, ...) | countblank(textOrNumber1, \[textOrNumber2, ...])    | countall(1, '', 2, '3') | 1   |
 
