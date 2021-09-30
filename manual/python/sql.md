@@ -49,7 +49,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
 | 自动序号          | String                                                       |
 | URL               | String                                                       |
 | 邮箱              | String                                                       |
-| 时                | Float                                                        |
+| 时长                | Float                                                        |
 
 此外， 在 where 语句中， 如果一个列中的数据是列表类型呈现(如协作人，多选列等)， 并且该列与一个字符串做比较时， 如果该字符串在该列表中时， 则会判断为 true 并且返回结果。 如：`SELECT * FROM tb3 where multi_select ='select 1' and multi_select='select 2'` , 如果列 multi-select 中同时包含 ’select 1’ 和 ‘select 2’， 则满足查询条件并返回。
 
