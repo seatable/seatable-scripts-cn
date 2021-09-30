@@ -21,6 +21,16 @@ base = Base(api_token, server_url)
 base.auth()
 ```
 
+如果你在云端编写的话，可以复制一下内容快速开始编写:
+
+```
+from seatable_api import Base, context
+
+base = Base(context.api_token, context.server_url)
+base.auth()
+```
+
+
 ## 本地运行需要安装的库
 
 脚本在本地运行的时候需要安装 `seatable-api`。
