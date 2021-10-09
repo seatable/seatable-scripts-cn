@@ -15,7 +15,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
 * 暂不支持多个子表查询的 `JOIN` 语句;
 * where 语句中支持大部分的表达式 (算数表达式， 比较表达式等), 关键字包括： `[NOT] LIKE`, `IN`, `BETWEEN ... AND ...`, `AND`, `OR`, `NOT`, `IS [NOT] TRUE`, `IS [NOT] NULL`. 其中：
   * 算术表达式只支持数字.
-  * `LIKE` 语句只支持字符串.
+  * `LIKE` 语句只支持字符串. 支持使用 `ILIKE` 关键字替代 `LIKE` ，从而在匹配中不区分大小写.
   * `BETWEEN ... AND ...` 语句只支持数字与时间. 其中时间常数应该是 ISO 格式的字符串 (如:  "2020-09-08 00:11:23");
 * `GROUP BY` 语法比较严格. 除了聚合函数的关键字(`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`) 以及公式的关键字(细节请查看本文档的扩展语法)之外，所选字段也必须同样也要出现在 group by 的语句中;
 * "order by" 语句表示根据某字段排序， 该字段必须出现在 select 表达式中。比如：`select a from table order by b`是无效语句; 而 `select a from table order by a` 或者 `select abs(a), b from table order by abs(a)` 则可以运行；
@@ -32,15 +32,15 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
 | 文本              | String                                                       |
 | 长文本            | String                                                       |
 | 数字              | Float                                                        |
-| 单选              | String.  在 where 表达式中， 需要使用选项的名称，如：`where single_select = "New York"` , 而在查询结果中， 该字段返回的是选项的 key 而非名称， 如果需要在 UI 上进行查询结果展示， 需要把这个 key 转化成名称 |
-| 多选              | 包含 string 的列表. 在 where 表达式中， 需要使用选项的名称，如：`where single_select = "New York"` , 而在查询结果中， 该字段返回的是选项的 key 而非名称， 如果需要在 UI 上进行查询结果展示， 需要把这个 key 转化成名称 |
+| 单选              | String.  在 where 表达式中， 需要使用选项的名称，如：`where single_select = "New York"` 。查询结果默认返回的是选项的 key ，如需返回选项的名称，则应把查询请求中的 `convert_key` 参数设置为 TRUE |
+| 多选              | 包含 string 的列表. 在 where 表达式中， 需要使用选项的名称，如：`where single_select = "New York"` 。查询结果默认返回的是选项的 key ，如需返回选项的名称，则应把查询请求中的 `convert_key` 参数设置为 TRUE |
 | 勾选              | Bool                                                         |
-| 日期              | Datetime. ISO 格式的时间字符串 如:  "2006-1-2" or “2006-1-2 15:04:05“. |
+| 日期              | Datetime. ISO 格式的时间字符串 如:  "2006-1-2" or "2006-1-2 15:04:05". |
 | 地理位置          | 查询结果以json的格式进行返回                                 |
 | 图片              | 包含图片的 URL 的列表                                        |
 | 文件              | 不能用于 where 语句， 查询结果将以 JSON 的格式进行返回。     |
 | 协作人            | 包含用户 ID 的列表, 格式如 5758ecdce3e741ad81293a304b6d3388@auth.local, 如果用到用户名称，需要通过 SeaTable 的相关 API 进行转换。 |
-| 链接其他记录      | 不能用于 where 语句， 被查询时，以包含行 ID 的列表的形式返回， 其中会返回以创建时间排序的前10行。 |
+| 链接其他记录      | 包含链接行的列表。自 2.4 版本起，可以在 WHERE 子句中配合 `=`、`IN`、`HAS ANY OF`、`HAS ALL OF`、`HAS NONE OF`、`IS EXACTLY` 或 `IS NULL` 操作符使用。链接行的显示列的值将被用以计算，并在结果中返回。返回的结果中最多包含 10 个链接行，依照创建时间的先后来排序。如果链接行的显示列的值类型是 String ，那么额外支持 `LIKE`、`ILIKE` 关键字。 |
 | 公式              | 数据类型根据通过该公式计算得到的返回值类型而定               |
 | 创建者            | 用户 ID, string                                              |
 | 创建时间          | Datetime                                                     |
@@ -85,4 +85,3 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
 ### 查询字符串列表
 
 协作人以及多选类型以字符串列表的方式进行呈现， SeaTable 从 UI 层面上对这过滤两种类型的数据使用特别的函数呈现， 包括`HAS ANY OF`, `HAS ALL OF`, `HAS NONE OF`, `IS EXACTLY`.  这些关键字同样也适用于 SQL 查询语法中。比如：名为 “city” 的列属于多选类型， 我们想查询出所有包含 “New York” 和  “Paris” 的行， 可以做如下查询： `select * from table where city has any of ("New York", "Paris");` , 其中，用括号修饰的城市列表，相当于语法中的`IN` .
-
