@@ -11,7 +11,7 @@ base.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
 
 其中
 
-* link_id: 链接列data属性下的 link_id
+* link_id: 链接列 data 属性下的 link_id (你可以获取 base 的 metadata，找到对应的列，然后找一下 data 字段下的 link_id 字段)
 * table_name: 链接表的名字
 * other_table_name: 被链接表的名字
 * row_id: 链接行 id
@@ -33,7 +33,7 @@ update_link(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
 
 其中
 
-* link_id: 链接列 data 属性下的 link_id (你可以获取 base 的 metadata，找到对应的列，然后找一下 data 字段下的 link_id 字段)
+* link_id: 链接列 data 属性下的 link_id 
 * table_id: 链接表的 id
 * other_table_id: 被链接表的 id
 * row_id: 链接行 id
