@@ -1,4 +1,4 @@
-site_name: SeaTable 脚本编程手册
+site_name: SeaTable 编程手册
 site_author: seatable
 docs_dir: ./manual
 site_url: https://seatable.github.io/seatable-scripts-cn/
@@ -8,7 +8,7 @@ repo_name: seatable/seatable-scripts-cn
 repo_url: https://github.com/seatable/seatable-scripts-cn/
 edit_uri: edit/master/manual/
 
-copyright: Copyright &copy; 2020 seatable
+copyright: Copyright &copy; 2021 seatable
 
 theme:
   name: material
@@ -49,13 +49,13 @@ markdown_extensions:
 nav:
   - 引言: README.md
   - 对象数据结构: data-structure.md
-  - JavaScript:
+  - JavaScript 脚本:
     - 引言: javascript/README.md
     - Base: javascript/base.md
     - Output: javascript/output.md
     - Utils: javascript/utils.md
     - Context: javascript/context.md
-  - Python:
+  - Python 脚本:
     - 引言: python/README.md
     - Base: python/base.md
     - Rows: python/rows.md
