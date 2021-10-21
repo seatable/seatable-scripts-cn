@@ -1,14 +1,14 @@
-# SeaTable 脚本编程手册
+# SeaTable 编程手册
 
-SeaTable 支持你通过编写脚本来满足个性化的需求。目前支持的脚本语言包括 Javascript 和 Python。
+本文档包含 SeaTable 编程相关的文档。你可以用 SeaTable 提供的 API 进行脚本编程，也可以用 API 来从你的前端界面或者后台程序获取 SeaTable 表格中的数据。
 
-Javascript 脚本来当前的浏览器中直接运行，适合于对数据进行简单的处理。Python 脚本在服务器端运行，而且可以设置自动周期性运行，适合于更复杂的数据处理场景。
+编写脚本支持的语言包括 JavaScript 和 Python。JavaScript 脚本来当前的浏览器中直接运行，适合于对数据进行简单的处理。Python 脚本在服务器端运行，而且可以设置自动周期性运行，适合于更复杂的数据处理场景。
 
 ## 编程入门
 
 在 SeaTable 中，一个表格英文叫做一个 base。一个 base 包括多个子表，一个子表英文叫做一个 table。一个 table 中包含多个行和列。一个行包含多个字段。
 
-### Javascript 脚本入门
+### JavaScript 脚本入门
 
 脚本执行器提供了两个基本对象供你使用:
 
