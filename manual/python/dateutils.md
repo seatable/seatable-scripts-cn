@@ -169,4 +169,11 @@ dateutils.weeknum('2012-1-2') # 2
 dateutils.isoweeknum('2012-1-2') # 1
 ```
 
+#### isomonth
+
+返回某个日期字符串的 ISO 格式的月份
+
+~~~python
+dateutils.isomonth("2012-1-2") # 2012-01
+~~~
 
