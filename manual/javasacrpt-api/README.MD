@@ -29,7 +29,7 @@ base.listViews(tableName).then(views => {
 第二种:
 
 try {
-  const views = this.base.listViews(tableName);
+  const views = await base.listViews(tableName);
   // 使用 views 完成需求
 } catch (error) {
   // 异常处理
