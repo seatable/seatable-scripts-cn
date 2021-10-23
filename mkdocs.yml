@@ -68,6 +68,14 @@ nav:
     - Context: python/context.md
     - 日期操作: python/dateutils.md
     - 云端环境下支持的库: python/libs.md
+  - Javascript API:
+    - 引言: javascript/README.md
+    - Base: javascript/base.md
+    - Rows: javascript/rows.md
+    - Links: javascript/links.md
+    - Columns: javascript/columns.md
+    - Query with SQL: javascript/query.md
+    - Constants: javascript/constants.md
   - SQL:
     - SQL 语法参考: python/sql.md
     - SQL 函数参考: python/function.md
