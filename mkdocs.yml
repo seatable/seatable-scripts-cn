@@ -68,7 +68,7 @@ nav:
     - Context: python/context.md
     - 日期操作: python/dateutils.md
     - 云端环境下支持的库: python/libs.md
-  - Javascript API:
+  - JavaScript API:
     - 引言: javascript/README.md
     - Base: javascript/base.md
     - Rows: javascript/rows.md
