@@ -77,6 +77,6 @@ nav:
     - Query with SQL: javascript-api/query.md
     - Constants: javascript-api/constants.md
   - SQL:
-    - SQL 语法参考: python/sql.md
-    - SQL 函数参考: python/function.md
+    - SQL 语法参考: sql/sql.md
+    - SQL 函数参考: sql/function.md
 

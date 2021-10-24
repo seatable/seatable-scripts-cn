@@ -5,6 +5,7 @@
 * [Javascript 脚本编程](javascript/README.md): SeaTable 内置的 JavaScript 脚本, 当前的浏览器中直接运行，支持的 API 比较受限，适合于对数据进行简单的处理。
 * [Python 脚本和 API](python/README.md): 可以在你自己的服务器运行，也可以上传到 SeaTable 后运行，适合于更复杂的数据处理场景。
 * [Javascript API](javascript-api/README.md): 对 SeaTable 服务器 Restful API 的封装。你可以在你的前端页面中或者 Node.js 程序中调用。
+* [SQL 参考手册](sql/sql.md): SeaTable SQL 接口参考手册
 
 ## 编程入门
 
