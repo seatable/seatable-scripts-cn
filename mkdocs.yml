@@ -79,4 +79,6 @@ nav:
   - SQL:
     - SQL 语法参考: sql/sql.md
     - SQL 函数参考: sql/function.md
+  - 插件开发:
+    - 插件开发流程: plugins/README.md
 
