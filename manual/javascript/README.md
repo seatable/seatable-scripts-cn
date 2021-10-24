@@ -1,6 +1,6 @@
 # SeaTable Javascript 脚本编程
 
-Javascript 脚本来当前的浏览器中直接运行，适合于对数据进行简单的处理。
+SeaTable 内部的 Javascript 脚本用于在当前的浏览器中直接运行，适合于对数据进行简单的处理。
 
 脚本执行器提供了两个基本对象供你使用:
 
