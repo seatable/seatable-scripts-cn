@@ -55,7 +55,7 @@ nav:
     - Output: javascript/output.md
     - Utils: javascript/utils.md
     - Context: javascript/context.md
-  - Python 脚本:
+  - Python 脚本和 API:
     - 引言: python/README.md
     - Base: python/base.md
     - Rows: python/rows.md

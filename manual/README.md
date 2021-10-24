@@ -1,8 +1,10 @@
 # SeaTable 编程手册
 
-本文档包含 SeaTable 编程相关的文档。你可以用 SeaTable 提供的 API 进行脚本编程，也可以用 API 来从你的前端界面或者后台程序获取 SeaTable 表格中的数据。
+本文档包含 SeaTable 编程相关的文档。包含以下部分
 
-编写脚本支持的语言包括 JavaScript 和 Python。JavaScript 脚本来当前的浏览器中直接运行，适合于对数据进行简单的处理。Python 脚本在服务器端运行，而且可以设置自动周期性运行，适合于更复杂的数据处理场景。
+* [Javascript 脚本编程](javascript/README.md): SeaTable 内置的 JavaScript 脚本, 当前的浏览器中直接运行，支持的 API 比较受限，适合于对数据进行简单的处理。
+* [Python 脚本和 API](python/README.md): 可以在你自己的服务器运行，也可以上传到 SeaTable 后运行，适合于更复杂的数据处理场景。
+* [Javascript API](javascript-api/README.md): 对 SeaTable 服务器 Restful API 的封装。你可以在你的前端页面中或者 Node.js 程序中调用。
 
 ## 编程入门
 
@@ -61,6 +63,4 @@ base.append_row('Table1', row_data)
 ## 进一步参考
 
 * [数据结构](data-structure.md)
-* [Javascript](javascript/README.md)
-* [Python](python/README.md)
-* [Javascript API](javascript-api/README.md)
+
