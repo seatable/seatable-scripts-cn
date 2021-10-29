@@ -19,7 +19,7 @@ IMAGE_COL_NAME = "城市图片"
 def get_time_stamp():
     return str(int(time.time()*10000000))
 
-class WinterOlypic(object):
+class Wiki(object):
 
     def __init__(self, authed_base):
         self.base = authed_base
@@ -104,7 +104,7 @@ def run():
     base = Base(API_TOKEN, SERVER_URL)
     base.auth()
 
-    wo = WinterOlypic(base)
+    wo = Wiki(base)
     wo.handle(TABLE_NAME)
 
 if __name__ == '__main__':
