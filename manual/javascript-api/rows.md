@@ -179,7 +179,7 @@ base.batchDeleteRows(table_name, row_ids)
 ##### 例子
 
 ```javascript
-del_rows = rows[:3]
-row_ids = [row['_id'] for row in del_rows]
+const del_rows = rows.slice(0, 3);
+const row_ids = del_rows.map(row => row._id);
 await base.batchDeleteRows('Table1', row_ids)
 ```

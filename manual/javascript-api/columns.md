@@ -26,7 +26,7 @@ base.insertColumn(table_name, column_name, column_type, column_key='', column_da
 其中
 
 * column_key：要插入的位置的前一列的 key，如若省略则默认追加为最后一列
-* column_type：请参考 [constants](../constants)
+* column_type：请参考 [constants](constants)
 * column_data: 一个列的 config 信息，创建链接列时需要指定， 其他类型选择性制定
 
 ##### 例子
