@@ -180,6 +180,6 @@ base.batchDeleteRows(table_name, row_ids)
 
 ```javascript
 const del_rows = rows.slice(0, 3);
-row_ids = del_rows.map(row => row._id);
+const row_ids = del_rows.map(row => row._id);
 await base.batchDeleteRows('Table1', row_ids)
 ```
