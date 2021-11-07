@@ -201,7 +201,7 @@ class App extends React.Component{
 协作人数量: X
 ```
 
-## 8. 打包上传插件
+### 8. 打包上传插件
 
 1. 执行 `npm run build-plugin` 打包插件，打包后插件的路径为 /plugin/task.zip 
 
