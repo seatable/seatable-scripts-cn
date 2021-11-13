@@ -126,7 +126,8 @@ tableName: 新表的名字
 columns: 新表的列数据
 rows: 新表的行数据
 
-返回值:
+### 例子
+
 ```javascript
 const tableName = 'tableName';
 const columns = [
@@ -152,33 +153,4 @@ const rows = [
   {'0000': '小红', '1111': '1994-04-05'},
 ];
 dtable.importDataIntoNewTable(tableName, columns, rows);
-```
-
-### 例子
-```javascript
-dtable.getTablePermissionType();
-```
-
-
-## getTablePermissionType
-
-获取子表的权限配置
-
-```javascript
-dtable.getTablePermissionType();
-```
-
-返回值:
-```json
-{
-  "DEFAULT": "default",
-  "ADMINS": "admins",
-  "SPECIFIC_USERS": "specific_users",
-  "NONE": "none",
-}
-```
-
-### 例子
-```javascript
-dtable.getTablePermissionType();
 ```
