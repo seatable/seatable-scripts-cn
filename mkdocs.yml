@@ -76,6 +76,17 @@ nav:
     - Columns: javascript-api/columns.md
     - Query with SQL: javascript-api/query.md
     - Constants: javascript-api/constants.md
+  - Plugins API:
+    - 引言: plugins/README.md
+    - Base: plugins/base.md
+    - Common: plugins/common.md
+    - Tables: plugins/tables.md
+    - Views: plugins/views.md
+    - Columns: plugins/columns.md
+    - Rows: plugins/rows.md
+    - Query with SQL: plugins/query.md
+    - plugins: plugins/plugins.md
+    - Constants: plugins/constants.md
   - SQL:
     - SQL 语法参考: sql/sql.md
     - SQL 函数参考: sql/function.md
