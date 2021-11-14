@@ -6,6 +6,7 @@
 * [Python 脚本和 API](python/README.md): 可以在你自己的服务器运行，也可以上传到 SeaTable 后运行，适合于更复杂的数据处理场景。
 * [Javascript API](javascript-api/README.md): 对 SeaTable 服务器 Restful API 的封装。你可以在你的前端页面中或者 Node.js 程序中调用。
 * [SQL 参考手册](sql/sql.md): SeaTable SQL 接口参考手册
+* [插件开发流程和 API](plugins/README.md): SeaTable 插件开发流程和 API
 
 ## 编程入门
 
