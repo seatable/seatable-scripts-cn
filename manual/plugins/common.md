@@ -8,7 +8,8 @@
 dtable.getRelatedUsers()
 ```
 
-### 例子
+例子
+
 ```javascript
 const collaborators = dtable.getRelatedUsers();
 ```
@@ -23,10 +24,11 @@ dtable.getCollaboratorsName(collaborators, value)
 
 其中
 
-collaborators: base 协作人列表
-value: 协作者列的邮箱列表
+* collaborators: base 协作人列表
+* value: 协作者列的邮箱列表
 
-### 例子
+例子
+
 ```javascript
 const collaborators = dtable.getRelatedUsers();
 const value = ['abc@seafile.com', 'shun@seafile.com'];
@@ -43,10 +45,11 @@ dtable.getTableFormulaResults(table, rows)
 
 其中
 
-table: 子表对象
-rows: 需要获取 计算公式列相关数据的行数据
+* table: 子表对象
+* rows: 需要获取 计算公式列相关数据的行数据
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'tableName';
 const viewName = 'viewName';
@@ -67,11 +70,12 @@ dtable.getViewRowsColor(rows, view, table)
 
 其中
 
-rows: 需要获取 颜色属性 的行数据
-view: 视图对象
-table: 子表对象
+* rows: 需要获取 颜色属性 的行数据
+* view: 视图对象
+* table: 子表对象
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'tableName';
 const viewName = 'viewName';
@@ -92,12 +96,13 @@ dtable.getLinkCellValue(linkId, tableId, otherTableId, rowId)
 
 其中
 
-linkId: link 列对应的 link_id 值
-tableId: 当前表格的 id 值
-otherTableId: 关联表格的 id 值
-rowId: 当前表格中行的 id 值
+* linkId: link 列对应的 link_id 值
+* tableId: 当前表格的 id 值
+* otherTableId: 关联表格的 id 值
+* rowId: 当前表格中行的 id 值
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
@@ -125,11 +130,12 @@ dtable.getLinkDisplayString(linkedRowIds, linkedTable, displayColumnKey)
 
 其中
 
-linkedRowIds: 关联的行列表
-linkedTable: 关联的子表对象
-displayColumnKey: 关联的列对象
+* linkedRowIds: 关联的行列表
+* linkedTable: 关联的子表对象
+* displayColumnKey: 关联的列对象
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
@@ -159,10 +165,11 @@ dtable.getNumberDisplayString(value, columnData)
 
 其中
 
-value: number 类型列对应的 value 值
-columnData: number 类型列 对应的 column 的 data 配置属性
+* value: number 类型列对应的 value 值
+* columnData: number 类型列 对应的 column 的 data 配置属性
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
@@ -183,10 +190,11 @@ dtable.getGeolocationDisplayString(value, columnData)
 
 其中
 
-value: geolocation 类型列对应的 value 值
-columnData: geolocation 类型列 对应的 column 的 data 配置属性
+* value: geolocation 类型列对应的 value 值
+* columnData: geolocation 类型列 对应的 column 的 data 配置属性
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
@@ -207,10 +215,11 @@ dtable.getDurationDisplayString(value, columnData)
 
 其中
 
-value: duration 类型列对应的 value 值
-columnData: duration 类型列 对应的 column 的 data 配置属性
+* value: duration 类型列对应的 value 值
+* columnData: duration 类型列 对应的 column 的 data 配置属性
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
@@ -231,10 +240,11 @@ dtable.getDateDisplayString(value, columnData)
 
 其中
 
-value: date 类型列对应的 value 值
-columnData: date 类型列 对应的 column 的 data 配置属性
+* value: date 类型列对应的 value 值
+* columnData: date 类型列 对应的 column 的 data 配置属性
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);

@@ -13,7 +13,8 @@ dtable.addView(tableName, viewName);
 * tableName: 子表名字
 * viewName: 添加视图的名字
 
-### 例子
+例子
+
 ```javascript
 dtable.addView('tableName', 'viewName');
 ```
@@ -31,7 +32,8 @@ dtable.deleteView(tableName, viewName);
 * tableName: 子表名字
 * viewName: 删除视图的名字
 
-### 例子
+例子
+
 ```javascript
 dtable.deleteView('TableName', ViewName);
 ```
@@ -50,7 +52,8 @@ dtable.renameView(tableName, oldViewName, newViewName);
 * oldViewName: 更视图的旧名字
 * newViewName: 更视图的新名字
 
-### 例子
+例子
+
 ```javascript
 dtable.renameView('tableName', 'oldViewName', 'newViewName');
 ```
@@ -67,7 +70,8 @@ dtable.getViews(table);
 
 * table: 子表对象
 
-### 例子
+例子
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -86,7 +90,8 @@ dtable.getNonArchiveViews(table);
 
 * table: 子表对象
 
-### 例子
+例子
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -101,7 +106,8 @@ const views = dtable.getNonArchiveViews(table);
 dtable.getActiveView();
 ```
 
-### 例子
+例子
+
 ```javascript
 const view = dtable.getActiveView();
 ```
@@ -119,7 +125,8 @@ dtable.getViewByName(table, viewName);
 * table: 子表对象
 * viewName: 获取视图的名字
 
-### 例子
+例子
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -140,7 +147,8 @@ dtable.getViewById(table, viewId);
 * table: 子表对象
 * viewId: 获取视图的id
 
-### 例子
+例子
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -161,7 +169,8 @@ dtable.isDefaultView(view, columns);
 * view: 视图对象
 * columns: 子表中所有的列内容
 
-### 例子
+例子
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -184,7 +193,8 @@ dtable.isGroupView(view, columns);
 * view: 视图对象
 * columns: 子表中所有的列内容
 
-### 例子
+例子
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -207,7 +217,8 @@ dtable.isFilterView(view, columns);
 * view: 视图对象
 * columns: 子表中所有的列内容
 
-### 例子
+例子
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);

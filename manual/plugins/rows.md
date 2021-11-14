@@ -15,7 +15,8 @@ dtable.appendRow(table, rowData, view, { collaborators } = {});
 * view: 视图对象, 可以为 null
 * { collaborators } : 包含协作人列表的的对象参数
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -43,7 +44,8 @@ dtable.deleteRowById(table, rowId);
 * table: 子表对象
 * rowId: 删除行的 id 值
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -69,7 +71,8 @@ dtable.deleteRowsByIds(table, rowIds);
 * table: 子表对象
 * rowIds: 删除多行数据的 id 列表
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -97,7 +100,8 @@ dtable.modifyRow(table, row, updated);
 * row: 行对象
 * updated: 新的参数值对象
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -130,7 +134,8 @@ dtable.forEachRow(tableName, viewName, callback, { username, userId } = {});
 
 注: username, userId: 在开发环境中可以从本地配置文件读取, 在集成环境中从 window.dtable 中读取
 
-### 例子
+例子
+
 ```javascript
 import { username, userId } from 'setting.local';
 
@@ -163,7 +168,8 @@ dtable.getTableLinkRows(rows, table);
 * rows: 行数据
 * table: 行数据所属的子表对象
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -189,7 +195,8 @@ dtable.getViewRows(view, table);
 * view: 视图对象
 * table: 子表对象
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -212,7 +219,8 @@ dtable.getGroupRows(view, table);
 * view: 视图对象
 * table: 子表对象
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -236,7 +244,8 @@ dtable.getInsertedRowInitData(view, table, rowId);
 * table: 子表对象
 * rowId: 新增行的前一行的 id 值
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -262,7 +271,8 @@ dtable.getRowsByID(tableId, rowIds);
 * tableId: 子表的 id 值
 * rowIds: 查找行的 id 列表
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -285,7 +295,8 @@ dtable.getRowById(table, rowId);
 * table: 子表对象
 * rowId: 查找行的 id 值
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
@@ -314,7 +325,8 @@ dtable.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, upd
 * oldRows: 移动前移动行需要更新的旧的属性值对象
 * groupbyColumns: 当前视图分组的列数据
 
-### 例子
+例子
+
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);

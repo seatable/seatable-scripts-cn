@@ -12,7 +12,8 @@ dtable.getPluginSettings(pluginName);
 
 * pluginName: 插件名字
 
-### 例子
+例子
+
 ```javascript
 const pluginName = 'gallery';
 const pluginSetting = dtable.getPluginSettings(pluginName);
@@ -31,7 +32,8 @@ dtable.updatePluginSettings(pluginName, pluginSettings);
 * pluginName: 插件名字
 * pluginSettings: 插件的配置参数
 
-### 例子
+例子
+
 ```javascript
 const pluginName = 'gallery';
 const pluginSettings = {};
@@ -50,7 +52,8 @@ dtable.deletePluginSettings(pluginName);
 
 * pluginName: 插件名字
 
-### 例子
+例子
+
 ```javascript
 const pluginName = 'gallery';
 dtable.deletePluginSettings(pluginName);

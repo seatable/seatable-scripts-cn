@@ -12,7 +12,8 @@ dtable.addTable(tableName);
 
 * tableName: 添加子表的名称
 
-### 例子
+例子
+
 ```javascript
 dtable.addTable('newTable');
 ```
@@ -29,7 +30,8 @@ dtable.deleteTable(tableName);
 
 * tableName: 删除子表的名称
 
-### 例子
+例子
+
 ```javascript
 dtable.deleteTable('newTable');
 ```
@@ -47,7 +49,8 @@ dtable.renameTable(oldTableName, newTableName);
 * oldTableName: 更新子表的旧名字
 * newTableName: 更新子表的新名字
 
-### 例子
+例子
+
 ```javascript
 dtable.renameTable('oldTableName', 'newTableName');
 ```
@@ -60,7 +63,8 @@ dtable.renameTable('oldTableName', 'newTableName');
 dtable.getTables();
 ```
 
-### 例子
+例子
+
 ```javascript
 const tables = dtable.getTables();
 ```
@@ -73,7 +77,8 @@ const tables = dtable.getTables();
 dtable.getActiveTable();
 ```
 
-### 例子
+例子
+
 ```javascript
 const table = dtable.getActiveTable();
 ```
@@ -90,7 +95,8 @@ dtable.getTableByName(tableName);
 
 * tableName: 子表的 name 值
 
-### 例子
+例子
+
 ```javascript
 dtable.getTableByName('tableName');
 ```
@@ -107,7 +113,8 @@ dtable.getTableById(tableId);
 
 * tableId: 子表的 id 值
 
-### 例子
+例子
+
 ```javascript
 dtable.getTableById('0000');
 ```
@@ -126,7 +133,7 @@ tableName: 新表的名字
 columns: 新表的列数据
 rows: 新表的行数据
 
-### 例子
+例子
 
 ```javascript
 const tableName = 'tableName';
