@@ -208,7 +208,7 @@ const rows = dtable.getViewRows(view, table);
 
 ## getGroupRows
 
-获取视图的行数据
+获取分组的行数据
 
 ```javascript
 dtable.getGroupRows(view, table);
@@ -284,7 +284,7 @@ const rows = dtable.getRowsByID(table._id, rowIds);
 
 ## getRowById
 
-通过 id 列表获取子表的相关行数据
+通过 id 获取子表的相关行数据
 
 ```javascript
 dtable.getRowById(table, rowId);
@@ -308,7 +308,7 @@ const rows = dtable.getRowById(table, rowId);
 
 ## moveGroupRows
 
-通过 id 列表获取子表的相关行数据
+移动分组中的行
 
 ```javascript
 dtable.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, updated, oldRows, groupbyColumns);

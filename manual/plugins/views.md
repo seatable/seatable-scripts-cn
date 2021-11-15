@@ -40,7 +40,7 @@ dtable.deleteView('TableName', ViewName);
 
 ## renameView
 
-修改子表名字
+修改视图名字
 
 ```javascript
 dtable.renameView(tableName, oldViewName, newViewName);
@@ -49,8 +49,8 @@ dtable.renameView(tableName, oldViewName, newViewName);
 其中
 
 * tableName: 子表的名字
-* oldViewName: 更视图的旧名字
-* newViewName: 更视图的新名字
+* oldViewName: 视图的旧名字
+* newViewName: 视图的新名字
 
 例子
 
