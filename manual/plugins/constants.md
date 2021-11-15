@@ -16,7 +16,6 @@ CELL_TYPE.CHECKBOX            // 勾选
 CELL_TYPE.DATE                // 日期时间
 CELL_TYPE.SINGLE_SELECT       // 单选
 CELL_TYPE.MULTIPLE_SELECT     // 多选
-CELL_TYPE.LONG_TEXT           // 长文本
 CELL_TYPE.IMAGE               // 图片
 CELL_TYPE.FILE                // 文件
 CELL_TYPE.COLLABORATOR        // 协作人
