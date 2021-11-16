@@ -88,7 +88,7 @@ dtable.deleteRowsByIds(table, rowIds.slice(0, 5));
 
 ## modifyRow
 
-通过 name 获取列内容
+更改行内容
 
 ```javascript
 dtable.modifyRow(table, row, updated);
@@ -98,7 +98,7 @@ dtable.modifyRow(table, row, updated);
 
 * table: 子表对象
 * row: 行对象
-* updated: 新的参数值对象
+* updated: 新的行参数对象
 
 例子
 
