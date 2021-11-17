@@ -77,7 +77,7 @@ base.upload_bytes_file(name, content, file_type='file', replace=False)
 import requests
 file_url = 'http://www.baidu.com/xxx/xxx/xxx.txt'
 response = requests.get(file_url)
-info_dict = base.upload_bytes_file = ('my_uploaded_file.txt', response.content)
+info_dict = base.upload_bytes_file('my_uploaded_file.txt', response.content)
 ```
 
 例子 2, 上传本地的图片
@@ -86,7 +86,7 @@ info_dict = base.upload_bytes_file = ('my_uploaded_file.txt', response.content)
 local_img_file = '/Users/Desktop/a.png'
 with open (local_img_file, 'rb') as f:
   content = f.read()
-info_dict = base.upload_bytes_file = ('my_uploaded_img.png', content, file_type='image')
+info_dict = base.upload_bytes_file('my_uploaded_img.png', content, file_type='image')
 ```
 
 
