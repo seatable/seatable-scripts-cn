@@ -83,7 +83,7 @@ const table = dtable.getTableByName(tableName);
 const view = dtable.getViewByName(table, viewName);
 const rows = dtable.getViewRows();
 
-const formulaResult = dtable.getViewRowsColor(rows, view, table);
+const rowsColor = dtable.getViewRowsColor(rows, view, table);
 ```
 
 ## getLinkCellValue
