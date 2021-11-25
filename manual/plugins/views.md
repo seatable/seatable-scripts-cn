@@ -60,7 +60,7 @@ dtable.renameView('tableName', 'oldViewName', 'newViewName');
 
 ## getViews
 
-获取 table 中的所有视图
+获取 table 中的非私有视图
 
 ```javascript
 dtable.getViews(table);
@@ -80,7 +80,7 @@ const views = dtable.getViews(table);
 
 ## getNonArchiveViews
 
-获取 table 中的所有非归档视图
+获取 table 中的非私有且非归档视图
 
 ```javascript
 dtable.getNonArchiveViews(table);
