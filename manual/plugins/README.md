@@ -206,3 +206,26 @@ class App extends React.Component{
 1. 执行 `npm run build-plugin` 打包插件，打包后插件的路径为 /plugin/task.zip 
 
 2. 将插件 task.zip 上传到 dtable 中
+
+## 官方提供的插件开发库
+
+### dtable-sdk
+
+dtable-sdk 提供了对数据操作的接口
+
+* [初始化插件](base.md)
+* [Tables](tables.md)
+* [Views](views.md)
+* [Columns](columns.md)
+* [Rows](rows.md)
+* [Query with sql](query.md)
+* [plugins](plugins.md)
+* [Constants](constants.md)
+
+
+### dtable-ui-component
+
+dtable-ui-component 提供了格式化显示不同类型的数据单元和对数据进行编辑的 UI 控件。
+
+详情可以查看: <https://seatable.github.io/dtable-ui-component/docs/>
+
