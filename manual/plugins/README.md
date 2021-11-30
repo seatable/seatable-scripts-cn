@@ -207,11 +207,11 @@ class App extends React.Component{
 
 2. 将插件 task.zip 上传到 dtable 中
 
-## 公司提供的插件开组建库
+## 官方提供的插件开发库
 
 ### dtable-sdk
 
-dtable-sdk 提供的API
+dtable-sdk 提供了对数据操作的接口
 
 * [初始化插件](base.md)
 * [Tables](tables.md)
@@ -225,5 +225,7 @@ dtable-sdk 提供的API
 
 ### dtable-ui-component
 
-[文档地址](https://seatable.github.io/dtable-ui-component/docs/)
+dtable-ui-component 提供了格式化显示不同类型的数据单元和对数据进行编辑的 UI 控件。
+
+详情可以查看: <https://seatable.github.io/dtable-ui-component/docs/>
 
