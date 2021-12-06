@@ -7,7 +7,7 @@ SeaTable 中数据查询支持 SQL 语句。使用 SQL 语句会检索完整的�
 目前只支持基本的 select 语句，语法如下：
 
 ```
-SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByClause] [Limit Option]
+SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingClause] [OrderByClause] [Limit Option]
 ```
 
 说明：
@@ -18,6 +18,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
   * `LIKE` 语句只支持字符串. 支持使用 `ILIKE` 关键字替代 `LIKE` ，从而在匹配中不区分大小写.
   * `BETWEEN ... AND ...` 语句只支持数字与时间. 其中时间常数应该是 ISO 格式的字符串 (如:  "2020-09-08 00:11:23");
 * `GROUP BY` 语法比较严格. 除了聚合函数的关键字(`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`) 以及公式的关键字(细节请查看本文档的扩展语法)之外，所选字段也必须同样也要出现在 group by 的语句中;
+* `HAVING` 过滤经 group by 聚合后的行。只有 group by 语句中的字段或者聚合函数能被 having 语句引用，其它语法和 where 语句相同；
 * "order by" 语句表示根据某字段排序， 该字段必须出现在 select 表达式中。比如：`select a from table order by b`是无效语句; 而 `select a from table order by a` 或者 `select abs(a), b from table order by abs(a)` 则可以运行；
 * Limit 语句和 MySQL 格式一样，语法是 `OFFSET ... LIMIT ...`。
 
