@@ -173,6 +173,7 @@ render() {
 在父组件 app.js 中调用 TableInfo 组件，并修改 app.js 中的 render 函数，传入 tables 和 collaborators。
 
 ```jsx
+import PropTypes from 'prop-types';
 import TableInfo from './table-info';
 
 class App extends React.Component{
@@ -188,6 +189,10 @@ class App extends React.Component{
       </Modal>
     );
   }
+}
+
+App.propTypes = {
+  row: PropTypes.object, // 如果插件是通过按钮打开的，它会有一个row参数
 }
 ```
 
