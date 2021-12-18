@@ -21,6 +21,7 @@ FunctionName(parameters...)
 * 数学函数
 * 文本函数
 * 日期函数
+* 地理位置函数
 * 逻辑函数
 * 统计函数
 
@@ -112,7 +113,7 @@ FunctionName(parameters...)
 | :------------------------------------------------------- | :------------------------------------------------------------------------------------------ | :--------------------------------------------------- | :------------------ |
 | date(year, month, day)                                   | 从输入的年、月和日返回国际格式 (ISO) 的日期。                                                                  | date(2021, 1, 3)                                     | 2021-01-03T00:00:00+08:00 |
 | dateAdd(date, count, unit)                               | 增加时间。最后一个参数 unit 可以为 years, months, weeks, days, hours, minutes, seconds 中的一个。              | dateAdd('2020-02-03', 2, 'days')                     | 2020-02-05T00:00:00+08:00 |
-| datedif(startDate, endDate, unit)                        | 计算两个日期之间相隔的秒数、天数、月数或年数。参数 unit 可以为 S, Y, M, D, YD, YM, MD. 中的一个。                            | dateDif('2018-01-01', '2020-01-01')                  | 2                   |
+| datedif(startDate, endDate, unit)                        | 计算两个日期之间相隔的秒数、天数、月数或年数。参数 unit 可以为 S, Y, M, D, YD, YM, MD. 中的一个。如果 startDate 为空，默认为 "1900-01-01"。如果两个日期都为空，则返回 0 。 | dateDif('2018-01-01', '2020-01-01')                  | 2                   |
 |                                                          | unit参数是可选的: S (秒数), D (天数), M (月数), Y (年数), YD (天数，忽略年份), YM (月份，忽略年份和天数), MD (天数，忽略年份和月份). | dateDif('2019-10-11', '2020-12-12', 'M')             | 14                  |
 | day(date)                                                | 返回一个月中的第几天的数值，介于 1 到 31 之间                                                                  | day('2020-01-03')                                     | 3                   |
 | eomonth(startDate, months)                               | 返回一个日期，表示指定日期之前或之后的几个月的最后一天。                                                                | eomonth('2020-01-01', 1)                             | 2020-02-29T00:00:00+08:00 |
@@ -138,6 +139,16 @@ FunctionName(parameters...)
 | isodate(date)                                            | 返回日期的 ISO 字符串表示，比如 "2021-05-11"。                                                            | isodate('2021-01-01 11:00:00')                       | 2021-01-01          |
 | isomonth(date)                                           | 返回年月的 ISO 字符串表示，比如 "2020-05"。                                                               | isomonth('2021-01-01 11:00:00')                      | 2021-01             |
 
+### 地理位置函数
+
+_自版本 2.7.0 起支持地理位置函数_
+
+| 操作符                 | 描述                                                                                          | 输入                  | 结果   |
+| :-------------------- | :------------------------------------------------------------------------------------------- | :-------------------- | :---- |
+| province(geolocation) | 返回地理位置列的省份值。（仅当地理位置列设置成 “省份”、“省份/城市”、“省/市/区” 或 “省/市/区及详情” 格式时） | province(column_name) | 北京市 |
+| city(geolocation)     | 返回地理位置列的城市值。（仅当地理位置列设置成 “省份/城市”、“省/市/区” 或 “省/市/区及详情” 格式时）        | city(column_name)     | 北京市 |
+| district(geolocation) | 返回地理位置列的区县值。（仅当地理位置列设置成 “省/市/区” 或 “省/市/区及详情” 格式时）                   | district(column_name) | 朝阳区 |
+
 ### 逻辑函数
 
 | 操作符                                                               | 描述                                                  | 输入                                                                                      | 结果        |
@@ -158,4 +169,4 @@ FunctionName(parameters...)
 | counta(textORnumber1, textORnumber2, ...)     | Counts the number of non-e计算一组值中非空值的个数。非空值包括数字和字符串。 | counta(1, '', 2, '3')   | 3   |
 | countall(textORnumber1, textORnumber2, ...)   | 计算一组值的个数 (包括空值)。                                    | countall(1, '', 2, '3') | 4   |
 | countblank(textORnumber1, textORnumber2, ...) | countblank(textOrNumber1, \[textOrNumber2, ...])    | countall(1, '', 2, '3') | 1   |
-
+| countItems(column)                            | 返回某一列中值的元素个数。仅允许图片、文件、多选和协作人列类型。（自版本 2.7.0 起支持） | countItems(column_name) | 2   |
