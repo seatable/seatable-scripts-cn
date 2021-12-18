@@ -141,6 +141,8 @@ FunctionName(parameters...)
 
 ### 地理函数
 
+_自版本 2.7.0 起支持地理函数_
+
 | 操作符                 | 描述                                                                                          | 输入                  | 结果   |
 | :-------------------- | :------------------------------------------------------------------------------------------- | :-------------------- | :---- |
 | province(geolocation) | 返回地理位置列的省份值。（仅当地理位置列设置成 “省份”、“省份/城市”、“省/市/区” 或 “省/市/区及详情” 格式时） | province(column_name) | 北京市 |
@@ -167,4 +169,4 @@ FunctionName(parameters...)
 | counta(textORnumber1, textORnumber2, ...)     | Counts the number of non-e计算一组值中非空值的个数。非空值包括数字和字符串。 | counta(1, '', 2, '3')   | 3   |
 | countall(textORnumber1, textORnumber2, ...)   | 计算一组值的个数 (包括空值)。                                    | countall(1, '', 2, '3') | 4   |
 | countblank(textORnumber1, textORnumber2, ...) | countblank(textOrNumber1, \[textOrNumber2, ...])    | countall(1, '', 2, '3') | 1   |
-| countItems(column)                            | 返回某一列中值的元素个数。（允许图片、文件、多选和协作人列类型） | countItems(column_name) | 2   |
+| countItems(column)                            | 返回某一列中值的元素个数。仅允许图片、文件、多选和协作人列类型。（自版本 2.7.0 起支持） | countItems(column_name) | 2   |
