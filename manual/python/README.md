@@ -99,4 +99,5 @@ SeaTable API 库介绍:
 * [send_wechat_msg.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/send_wechat_msg.py): 通过企业微信群机器人推送群消息
 * [sync_stock_price.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/sync_stock_price.py): 更新股票价格信息
 * [sync_data_by_spider.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/sync_data_by_spider.py): 通过爬取维基百科信息写入表格
+* [sync_finance_data.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/sync_finance_data.py): 从启信宝获取公司信息写入表格
 
