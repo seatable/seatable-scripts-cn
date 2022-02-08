@@ -16,6 +16,14 @@ from seatable_api import dateutils
 dateutils.date(2020, 5, 16) # 2020-05-16
 ```
 
+#### now
+
+返回 ISO 格式化的当前日期
+
+```python
+dateutils.now() # 2022-02-07T09:44:00.034494
+```
+
 #### dateadd
 
 对时间进行加法运算，通过传递不同的单位参数可以加年，月，周，日，小时，分钟，秒，默认使用‘日’作为单位
@@ -176,4 +184,25 @@ dateutils.isoweeknum('2012-1-2') # 1
 ~~~python
 dateutils.isomonth("2012-1-2") # 2012-01
 ~~~
+
+#### 时间处理举例
+
+通过dateutils获取的日期信息，可以当作参数再次传递到dateutils的处理函数中去
+
+```python
+dt_now = dateutils.now()  # 2022-02-07T09:49:14.212954
+# 1. 获取10天后的时间
+dt_10_days = dateutils.dateadd(dt_now, 10) # 2022-02-17T09:49:14.212954
+# 2. 获取10天后的月份
+dt_month_10_days = dateutils.month(dt_10_days) # 2
+# 3. 获取时间差，天数差
+dt_10_days_before = dateutils.dateadd(dt_now, -10)
+date_df = dateutils.datediff(dt_10_days_before, dt_10_days, unit="D") # 20
+# 4. 处理有时区的时间字符串
+time_str = "2021-07-17T08:15:41.106+00:00"
+time_day = dateutils.day(time_str) # 17
+time_month = dateutils.month(time_str) # 7
+time_year = dateutils.year(time_str) # 2021
+time_date = dateuitls.date(time_year, time_month, time_day) # 2021-07-17
+```
 
