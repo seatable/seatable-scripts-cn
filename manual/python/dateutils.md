@@ -21,7 +21,7 @@ dateutils.date(2020, 5, 16) # 2020-05-16
 返回 ISO 格式化的当前日期
 
 ```python
-dateutils.now() # 2022-02-07T09:44:00.034494
+dateutils.now() # 2022-02-07 09:44:00
 ```
 
 #### dateadd
@@ -32,13 +32,13 @@ dateutils.now() # 2022-02-07T09:44:00.034494
 time_str = "2020-6-15"
 time_str_s = "2020-6-15 15:23:21"
 
-dateutils.dateadd(time_str, -2, 'years') # 2018-06-15T00:00:00
-dateutils.dateadd(time_str, 3, 'months') # 2020-09-15T00:00:00
-dateutils.dateadd(time_str_s, 44, 'minutes') # 2020-06-15T16:07:21
-dateutils.dateadd(time_str_s, 1000, 'days') # 2023-03-12T15:23:21
-dateutils.dateadd(time_str_s, 3, 'weeks') # 2020-07-06T15:23:21
-dateutils.dateadd(time_str_s, -3, 'hours') # 2020-06-15T12:23:21
-dateutils.dateadd(time_str_s, 3, 'seconds') # 2020-06-15T15:23:24
+dateutils.dateadd(time_str, -2, 'years') # 2018-06-15
+dateutils.dateadd(time_str, 3, 'months') # 2020-09-15
+dateutils.dateadd(time_str_s, 44, 'minutes') # 2020-06-15 16:07:21
+dateutils.dateadd(time_str_s, 1000, 'days') # 2023-03-12 15:23:21
+dateutils.dateadd(time_str_s, 3, 'weeks') # 2020-07-06 15:23:21
+dateutils.dateadd(time_str_s, -3, 'hours') # 2020-06-15 12:23:21
+dateutils.dateadd(time_str_s, 3, 'seconds') # 2020-06-15 15:23:24
 ```
 
 #### datediff
@@ -190,9 +190,9 @@ dateutils.isomonth("2012-1-2") # 2012-01
 通过dateutils获取的日期信息，可以当作参数再次传递到dateutils的处理函数中去
 
 ```python
-dt_now = dateutils.now()  # 2022-02-07T09:49:14.212954
+dt_now = dateutils.now()  # 2022-02-07 09:49:14.212954
 # 1. 获取10天后的时间
-dt_10_days = dateutils.dateadd(dt_now, 10) # 2022-02-17T09:49:14.212954
+dt_10_days = dateutils.dateadd(dt_now, 10) # 2022-02-17 09:49:14
 # 2. 获取10天后的月份
 dt_month_10_days = dateutils.month(dt_10_days) # 2
 # 3. 获取时间差，天数差
@@ -203,6 +203,7 @@ time_str = "2021-07-17T08:15:41.106+00:00"
 time_day = dateutils.day(time_str) # 17
 time_month = dateutils.month(time_str) # 7
 time_year = dateutils.year(time_str) # 2021
+time_hour = dateutils.hour(time_str) # 16 
 time_date = dateuitls.date(time_year, time_month, time_day) # 2021-07-17
 ```
 
