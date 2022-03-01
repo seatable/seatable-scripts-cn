@@ -16,9 +16,9 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingCl
 * where 语句中支持大部分的表达式（算数表达式，比较表达式等），关键字包括： `[NOT] LIKE`, `IN`, `BETWEEN ... AND ...`, `AND`, `OR`, `NOT`, `IS [NOT] TRUE`, `IS [NOT] NULL`. 其中：
     * 算术表达式只支持数字。
     * `LIKE` 语句只支持字符串。支持使用 `ILIKE` 关键字替代 `LIKE`，从而在匹配中不区分大小写。
-    * `BETWEEN ... AND ...` 语句只支持数字与时间。
-    * 时间常量应该是 ISO 格式的字符串（如: "2020-09-08 00:11:23"）。从 2.8 版本开始，还支持符合 RFC 3339 标准的时间字符串。
-    * 对 NULL 值的处理逻辑，与 [MySQL](https://dev.mysql.com/doc/refman/8.0/en/working-with-null.html) 的一致：
+    * `BETWEEN ... AND ...` 语句只支持数字与时间
+    * 时间常量应该是 ISO 格式的字符串（如: "2020-09-08 00:11:23"）。从 2.8 版本开始，还支持符合 RFC 3339 标准的时间字符串，例如 "2020-12-31T23:59:60Z"。
+    * 对 NULL 值的处理逻辑，与 [MySQL](https://dev.mysql.com/doc/refman/8.0/en/working-with-null.html) 的一致。
 * `GROUP BY` 语法比较严格。除了聚合函数的关键字（`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`）以及公式（细节请查看本文档的扩展语法）之外，所选字段也必须同样也要出现在 group by 的语句中。
 * `HAVING` 过滤经 group by 聚合后的行。只有 group by 语句中的字段或者聚合函数能被 having 语句引用，其它语法和 where 语句相同。
 * "order by" 语句表示根据某字段排序，该字段必须出现在 select 表达式中。比如：`select a from table order by b`是无效语句；而 `select a from table order by a` 或者 `select abs(a), b from table order by abs(a)` 则可以运行。
@@ -27,7 +27,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingCl
     * 一个返回字段的别名，可以在 group by, order by, having 语句中被引用。比如 `select t.registration as r, count(*) as c from t group by r having c > 100`。
     * 一个返回字段的别名，不能在 where 语句中被引用。比如 `select t.registration as r, count(*) from t group by r where r > "2020-01-01"` 会报告语法错误。
 
-查询结果是以 JSON 的格式进行返回. 其中 key 字段是列的唯一标示， 而不是列名。
+查询结果是以 JSON 的格式进行返回，每一行是一个 JSON 对象。默认情况下，对象的 key 是对应的列的 key，而不是列明。
 
 ## 数据类型
 
@@ -41,7 +41,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingCl
 | 单选              | String     | 查询结果默认返回的是选项的 key ，如需返回选项的名称，则应把查询请求中的 `convert_key` 参数设置为 TRUE | 在 where 表达式中，常量需要使用选项的名称，如：`where single_select = "New York"` | 按照选项的 key 进行排序 |
 | 多选              | 包含 string 的列表 | 查询结果默认返回的是选项的 key，如需返回选项的名称，则应把查询请求中的 `convert_key` 参数设置为 TRUE | 在 where 表达式中，需要使用选项的名称。具体的匹配规则参考下面关于列表类型的说明。 | 支持，参考下面关于列表类型的说明 |
 | 勾选              | Bool       |                | 支持               | 支持                  |
-| 日期              | Datetime   | 返回符合 RFC 3339 规范的字符串 | 查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串 | 支持 |
+| 日期              | Datetime   | 返回符合 RFC 3339 规范的字符串 | 查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串，例如 "2020-12-31T23:59:60Z" | 支持 |
 | 地理位置          | 查询结果以 json 的格式进行返回。数据根据设置的格式不同返回结果有差异，如设置经纬度，返回经纬度的数字，设置省市等，返回省，市，其他细节信息等。| 不支持直接使用 where 语句查询，但是可以通过地理位置函数提取省市等细节信息进行过滤 | 不支持 | 不支持 |
 | 图片              | 图片的 URL 的列表 | JSON 字符串数组，元素为 URL | 支持，参考下面关于列表类型的说明 | 支持，参考下面关于列表类型的说明 |
 | 文件              | 查询结果将以 JSON 的格式进行返回，返回包含名称，类型，url等信息的列表 | 不支持 | 不支持 | 不支持 |
@@ -49,9 +49,9 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingCl
 | 链接其他记录      | 包含链接行的列表 | 支持，参考下面关于列表类型的说明 | 支持，参考下面关于列表类型的说明 | 支持，参考下面关于列表类型的说明 |
 | 公式              | 数据类型根据通过该公式计算得到的返回值类型而定 | 根据通过该公式计算得到的返回值类型而定，具体参考返回类型对应的 SQL 类型的说明 | 根据通过该公式计算得到的返回值类型而定，具体参考返回类型对应的 SQL 类型的说明 | 根据通过该公式计算得到的返回值类型而定，具体参考返回类型对应的 SQL 类型的说明 |
 | 创建者            | 用户 ID, string |格式如 5758ecdce3e741ad81293a304b6d3388@auth.local, 如果用到用户名称，需要通过 SeaTable 的相关 API 进行转换 | 支持 | 支持 |
-| 创建时间          | Datetime | 返回符合 RFC 3339 规范的字符串 | 查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串 | 支持 |
+| 创建时间          | Datetime | 返回符合 RFC 3339 规范的字符串 | 查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串，例如 "2020-12-31T23:59:60Z" | 支持 |
 | 修改者            | 用户 ID, string | 格式如 5758ecdce3e741ad81293a304b6d3388@auth.local, 如果用到用户名称，需要通过 SeaTable 的相关 API 进行转换 | 支持 | 支持 |
-| 修改时间          | Datetime | 返回符合 RFC 3339 规范的字符串 | 查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串 | 支持 |
+| 修改时间          | Datetime | 返回符合 RFC 3339 规范的字符串 | 查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串，例如 "2020-12-31T23:59:60Z" | 支持 |
 | 自动序号          | String |          | 支持 | 支持 |
 | URL               | String |          | 支持 | 支持 |
 | 邮箱              | String |          | 支持 | 支持 |
@@ -79,7 +79,7 @@ SeaTable 中有两类列会产生列表数据类型：
 | Datetime      | IN, 列表扩展语法（比如 has any of） | 按照相应的操作符规则处理                                            |
 | Datetime      | =, !=, \<, \<=, >, >=, between | 如果只有一个元素，取出第一个元素来比较；如果有多于一个元素，只有在 != 的时候返回 true；如果没有元素，只有在 != 的时候返回 true。 |
 | Datetime      | IS NULL                        | 没有数据或者空列表的时候判断为 NULL                                                    |
-| bool      | IS TRUE                        | 如果只有一个元素，取出第一个元素来比较；如果有多于一个元素，只有在 != 的时候返回 true；如果没有元素，只有在 != 的时候返回 true。 |
+| bool      | IS TRUE                        | 如果只有一个元素，取出第一个元素来比较；否则返回 false。 |
 | 链接记录 |                                | 根据链接列设置的显示列的类型，结合上述每种类型的规则来处理                                          |
 
 作为 select fields 返回的时候，只返回列表的前十个元素。
