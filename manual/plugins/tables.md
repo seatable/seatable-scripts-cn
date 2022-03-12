@@ -129,9 +129,9 @@ dtable.importDataIntoNewTable(tableName, columns, rows);
 
 其中
 
-tableName: 新表的名字
-columns: 新表的列数据
-rows: 新表的行数据
+* tableName: 新表的名字
+* columns: 新表的列数据
+* rows: 新表的行数据
 
 例子
 
