@@ -55,7 +55,7 @@ const tableName = 'tableName';
 const viewName = 'viewName';
 const table = dtable.getTableByName(tableName);
 const view = dtable.getViewByName(table, viewName);
-const rows = dtable.getViewRows();
+const rows = dtable.getViewRows(view, table);
 
 const formulaResult = dtable.getTableFormulaResults(table, rows);
 ```
@@ -81,7 +81,7 @@ const tableName = 'tableName';
 const viewName = 'viewName';
 const table = dtable.getTableByName(tableName);
 const view = dtable.getViewByName(table, viewName);
-const rows = dtable.getViewRows();
+const rows = dtable.getViewRows(view, table);
 
 const rowsColor = dtable.getViewRowsColor(rows, view, table);
 ```
@@ -114,7 +114,7 @@ const row = rows[0];
 const columnName = 'linkColumn';
 const linkColumn = dtable.getColumnByName(table, columnName);
 const { link_id, table_id, other_table_id, display_column_key } = linkColumn.data;
-const linkedTaleId = table._id === table_id ? other_table_id : table_id;
+const linkedTableId = table._id === table_id ? other_table_id : table_id;
 
 const linkedRowIds = dtable.getLinkCellValue(link_id, table._id, linkedTableId, row._id);
 ```
@@ -130,9 +130,9 @@ dtable.getLinkDisplayString(linkedRowIds, linkedTable, displayColumnKey)
 
 其中
 
-* linkedRowIds: 关联的行列表
+* linkedRowIds: 关联的行 ids 列表
 * linkedTable: 关联的子表对象
-* displayColumnKey: 关联的列对象
+* displayColumnKey: 关联的列 key
 
 例子
 
@@ -147,7 +147,7 @@ const row = rows[0];
 const columnName = 'linkColumn';
 const linkColumn = dtable.getColumnByName(table, columnName);
 const { link_id, table_id, other_table_id, display_column_key } = linkColumn.data;
-const linkedTaleId = table._id === table_id ? other_table_id : table_id;
+const linkedTableId = table._id === table_id ? other_table_id : table_id;
 
 const linkedRowIds = dtable.getLinkCellValue(link_id, table._id, linkedTableId, row._id);
 const linkedTable = dtable.getTableById(linkedTableId);
@@ -173,7 +173,7 @@ dtable.getNumberDisplayString(value, columnData)
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
-const columnName = 'dateColumn';
+const columnName = 'numberColumn';
 const column = dtable.getColumnByName(table, columnName);
 
 const value = 190203;
@@ -198,7 +198,7 @@ dtable.getGeolocationDisplayString(value, columnData)
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
-const columnName = 'dateColumn';
+const columnName = 'geolocationColumn';
 const column = dtable.getColumnByName(table, columnName);
 
 const value = {city: "安庆市", detail: "nide" ,district: "迎江区", province: "安徽省"};
@@ -223,7 +223,7 @@ dtable.getDurationDisplayString(value, columnData)
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
-const columnName = 'dateColumn';
+const columnName = 'durationColumn';
 const column = dtable.getColumnByName(table, columnName);
 
 const value = '12:30';

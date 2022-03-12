@@ -59,7 +59,7 @@ npm install
 
 ### 5. 添加插件开发配置文件
 
-在项目 src 文件夹夹中有一个文件 setting.local.dist.js, 将其 copy 一份 并命名为 setting.local.js
+在项目 src 文件夹中有一个文件 setting.local.dist.js, 将其 copy 一份 并命名为 setting.local.js
 文件内容如下, 按照注释进行修改即可
 
 ```js
