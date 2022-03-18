@@ -4,7 +4,9 @@ SeaTable 中数据查询支持 SQL 语句。使用 SQL 语句会检索完整的�
 
 ## 语法
 
-目前只支持基本的 select 语句，语法如下：
+目前只支持基本的 SELECT，INSERT，UPDATE，DELETE 语句。（INSERT，UPDATE，DELETE 语句于 2.7 版本起支持）
+
+SELECT 语句的语法如下：
 
 ```
 SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingClause] [OrderByClause] [Limit Option]
@@ -18,7 +20,6 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingCl
     * `LIKE` 语句只支持字符串。支持使用 `ILIKE` 关键字替代 `LIKE`，从而在匹配中不区分大小写。
     * `BETWEEN ... AND ...` 语句只支持数字与时间
     * 时间常量应该是 ISO 格式的字符串（如: "2020-09-08 00:11:23"）。从 2.8 版本开始，还支持符合 RFC 3339 标准的时间字符串，例如 "2020-12-31T23:59:60Z"。
-    * 对 NULL 值的处理逻辑，与 [MySQL](https://dev.mysql.com/doc/refman/8.0/en/working-with-null.html) 的一致。
 * `GROUP BY` 语法比较严格。除了聚合函数的关键字（`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`）以及公式（细节请查看本文档的扩展语法）之外，所选字段也必须同样也要出现在 group by 的语句中。
 * `HAVING` 过滤经 group by 聚合后的行。只有 group by 语句中的字段或者聚合函数能被 having 语句引用，其它语法和 where 语句相同。
 * "order by" 语句表示根据某字段排序，该字段必须出现在 select 表达式中。比如：`select a from table order by b`是无效语句；而 `select a from table order by a` 或者 `select abs(a), b from table order by abs(a)` 则可以运行。
@@ -28,6 +29,28 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingCl
     * 一个返回字段的别名，不能在 where 语句中被引用。比如 `select t.registration as r, count(*) from t group by r where r > "2020-01-01"` 会报告语法错误。
 
 查询结果是以 JSON 的格式进行返回，每一行是一个 JSON 对象。默认情况下，对象的 key 是对应的列的 key，而不是列明。
+
+INSERT，UPDATE，DELETE 语句的语法如下：
+
+```
+INSERT INTO table_name [column_list] VALUES value_list [, ...]
+
+UPDATE table_name SET column_name = value [, ...] [WhereClause]
+
+DELETE FROM table_name [WhereClause]
+
+```
+
+* `column_list` 是一个由括号包围逗号分隔的列名列表，如果没有指定，则默认为所有可更新的列。
+* `value_list` 是一个由括号包围逗号分隔的值列表，值必须和 `column_list` 中的列名一一对应。例如：`(1, "2", 3.0)` 。
+* 多值列（如多选类型）需要使用括号包围值列表，例如 `(1, "2", 3.0, ("foo", "bar"))` 。
+* 单选和多选类型的列需要使用选项名称，而不是选项 key。
+* `WhereClause` 是一个可选的 where 语句，如果没有指定，则包含所有行。
+
+注意：以下列类型不支持插入和更新：
+
+* 系统列（如 `_id`，`_ctime`）
+* 图片，文件，公式，链接，链接公式，地理位置，自动序号，按钮
 
 ## 数据类型
 
@@ -93,6 +116,21 @@ SeaTable 中有两类列会产生列表数据类型：
 在公式中使用时，如果列表传入作为一个参数，而参数需要一个单值，则取出列表的第一个元素。如果列表的元素是一个链接记录，取出其显示列的值。
 
 在聚合函数（min, max, sum, avg）中使用，如果列表只有一个元素，取出第一个元素来计算；其他情况，该行不参与计算。
+
+### NULL 值
+
+NULL 值不同于 0 或者空字符串，它代表一个空值。
+
+在 WHERE 条件中：
+
+* 无法被转换为当前列类型的值，当作 NULL 值处理。
+* 算术运算中存在 NULL 值，则结果为 NULL。
+* `!=`，`NOT LIKE`，`NOT IN`，`NOT BETWEEN`，`HAS NONE OF`，`IS NOT TRUE` 和 `IS NULL` 遇到 NULL 值时结果是 TRUE。
+* `AND`，`OR`，`NOT` 会把 NULL 值当作 FALSE 处理。
+* 聚合函数（min，max，sum，avg）会忽略 NULL 值。
+* 公式列或函数如果返回了错误，会当作 NULL 值处理。
+
+在公式中，NULL 值会被转换为 0 或者空字符串。
 
 ## 扩展语法
 
