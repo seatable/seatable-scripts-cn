@@ -165,7 +165,7 @@ dateutils.isoweekday("2019-6-3") # 1
 
 #### weeknum
 
-返回某个日期是当年的第几周，含1月1日为周为第一周
+返回某个日期是当年的第几周，含1月1日为第一周
 
 ```python
 dateutils.weeknum('2012-1-2') # 2
