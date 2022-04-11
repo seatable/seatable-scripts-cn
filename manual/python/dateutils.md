@@ -57,11 +57,11 @@ dateutils.dateadd(time_str_s, 3, 'seconds') # 2020-06-15 15:23:24
 time_start = "2019-6-1"
 time_end = "2020-5-15"
 dateutils.datediff(start=time_start, end=time_end, unit='S') # seconds 30153600
-dateutils.datediff(start=time_start, end=time_end, unit='Y') # years 1
+dateutils.datediff(start=time_start, end=time_end, unit='Y') # years 0
 dateutils.datediff(start=time_start, end=time_end, unit='D') # days 349
-dateutils.datediff(start=time_start, end=time_end, unit='H') # hours 8377
-dateutils.datediff(start=time_start, end=time_end, unit='M') # months 12
-dateutils.datediff(start=time_start, end=time_end, unit='YM') #  -1
+dateutils.datediff(start=time_start, end=time_end, unit='H') # hours 8376
+dateutils.datediff(start=time_start, end=time_end, unit='M') # months 11
+dateutils.datediff(start=time_start, end=time_end, unit='YM') #  11
 dateutils.datediff(start=time_start, end=time_end, unit='MD') #  14
 dateutils.datediff("2019-2-28","2020-2-1", unit='YD') # -27
 ```
@@ -71,7 +71,7 @@ dateutils.datediff("2019-2-28","2020-2-1", unit='YD') # -27
 返回某个日期的前一个月或后一个月的最后一天， 参数 direction 可以为1或-1
 
 ```python
-dateutils.emonth('2020-3-25', direction=-1) # 2021-02-28
+dateutils.emonth('2021-3-25', direction=-1) # 2021-02-28
 dateutils.emonth('2021-3-25', direction=1) # 2021-04-30
 ```
 
@@ -96,7 +96,7 @@ dateutils.month("2019-5-4") # 5
 返回两个日期相差的月数
 
 ```python
-dateutils.month("2019-5-1","2020-5-4") # 12
+dateutils.months("2019-5-1","2020-5-4") # 12
 ```
 
 #### day
@@ -128,7 +128,7 @@ dateutils.hour("2020-1-1 12:20:30") # 12
 返回两个日期相差的小时数
 
 ```python
-dateutils.hours("2019-6-3 20:1:12", "2020-5-3 13:13:13") # 8034
+dateutils.hours("2019-6-3 20:1:12", "2020-5-3 13:13:13") # 8033
 ```
 
 #### minute
@@ -165,7 +165,7 @@ dateutils.isoweekday("2019-6-3") # 1
 
 #### weeknum
 
-返回某个日期是当年的第几周，含1月1日为周为第一周
+返回某个日期是当年的第几周，含1月1日为第一周
 
 ```python
 dateutils.weeknum('2012-1-2') # 2
