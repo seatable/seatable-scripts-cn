@@ -119,16 +119,20 @@ SeaTable 中有两类列会产生列表数据类型：
 
 ### NULL 值
 
-NULL 值不同于 0 或者空字符串，它代表一个空值。
+NULL 值不同于 0，它代表一个空值。以下的值会被看做空值：
+
+* 表格中的空的单元格会被看做 NULL 值。
+* 无法被转换为当前列类型的值，当作 NULL 值处理。
+* 空字符串（""）会被看做 NULL 值。这与标准的 SQL 不一样。
+* 列表类型的值根据“列表类型”一节中的规则被判断为 NULL。
+* 公式列或函数如果返回了错误，会当作 NULL 值处理。
 
 在 WHERE 条件中：
 
-* 无法被转换为当前列类型的值，当作 NULL 值处理。
 * 算术运算中存在 NULL 值，则结果为 NULL。
 * `!=`，`NOT LIKE`，`NOT IN`，`NOT BETWEEN`，`HAS NONE OF`，`IS NOT TRUE` 和 `IS NULL` 遇到 NULL 值时结果是 TRUE。
 * `AND`，`OR`，`NOT` 会把 NULL 值当作 FALSE 处理。
 * 聚合函数（min，max，sum，avg）会忽略 NULL 值。
-* 公式列或函数如果返回了错误，会当作 NULL 值处理。
 
 在公式中，NULL 值会被转换为 0 或者空字符串。
 
