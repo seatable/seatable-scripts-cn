@@ -6,9 +6,9 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 
 * `_id` : The id of the row
 * `_creator` : The creator for this row
-* `_ctime`: The create time for this row
+* `_ctime`: The create time for this row, 记录的是 UTC 时区的 ISO 格式的时间 (比如 2022-04-14T09:51:54.159+00:00)。
 * `_last_modifier` : The last modifier for this row
-* `_mtime`: The last modified time for this row
+* `_mtime`: The last modified time for this row, 记录的是 UTC 时区的 ISO 格式的时间 (比如 2022-04-14T09:51:54.159+00:00)。
 
 ## Column (列)
 
