@@ -192,7 +192,7 @@ dateutils.isomonth("2012-1-2") # 2012-01
 通过dateutils获取的日期信息，可以当作参数再次传递到dateutils的处理函数中去
 
 ```python
-dt_now = dateutils.now()  # 2022-02-07 09:49:14.212954
+dt_now = dateutils.now()  # 2022-02-07 09:49:14
 # 1. 获取10天后的时间
 dt_10_days = dateutils.dateadd(dt_now, 10) # 2022-02-17 09:49:14
 # 2. 获取10天后的月份
