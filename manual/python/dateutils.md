@@ -210,3 +210,9 @@ time_hour = dateutils.hour(time_str) # 16，因为北京时间比 UTC 时间多 
 time_date = dateuitls.date(time_year, time_month, time_day) # 2021-07-17
 ```
 
+注意，SQL 查询接口
+
+* 对日期列类型返回的是 ISO 格式的服务器所在时区的时间字符串， 比如 `2021-07-17T00:00:00+08:00`
+* 对创建时间列和最后修改时间列返回的是 ISO 格式的 UTC 时区的时间字符串。比如 `2021-07-17T08:15:41+00:00`
+
+两种类型的时间都可以通过 Python 标准库中的 datetime 模块来处理。
