@@ -100,4 +100,5 @@ SeaTable API 库介绍:
 * [sync_stock_price.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/sync_stock_price.py): 更新股票价格信息
 * [sync_data_by_spider.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/sync_data_by_spider.py): 通过爬取维基百科信息写入表格
 * [sync_finance_data.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/sync_finance_data.py): 从启信宝获取公司信息写入表格
+* [work_days_calculator.py](https://github.com/seatable/seatable-scripts-cn/tree/master/examples/python/work_days_calculator.py): 计算两个日期之间的工作日
 
