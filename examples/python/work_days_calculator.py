@@ -6,7 +6,7 @@ from seatable_api import dateutils, Base, context
 
 
 # 一个 Base 的授权信息
-SERVER_URL = context.server_url or 'http://127.0.0.1:8000'
+SERVER_URL = context.server_url or 'https://cloud.seatable.cn'
 API_TOKEN = context.api_token or 'dd46f9ca0172a850a0922107a6b2e6b99932b040'
 
 # 以下信息用户需要根据自己表格中的字段名称，子表名称做相应的修改
