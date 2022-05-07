@@ -3,7 +3,7 @@
 # 若有更新， 可以补充该脚本中的holidays和workdays的字典。
 import datetime
 from enum import Enum
-from seatable_api import dateutils, Base
+from seatable_api import dateutils, Base, context
 
 
 START_DATE_COL = "开始日期"
@@ -217,10 +217,10 @@ if __name__ == '__main__':
 
     # Seatable数据处理
 
-    api_token = "xxxxxx"
-    server_url = "https://....."
+    SERVER_URL = context.server_url or 'https://cloud.seatable.cn/'
+    API_TOKEN = context.api_token or 'cacc42497886e4d0aa8ac0531bdcccb1c93bd0f5'
 
-    base = Base(api_token, server_url)
+    base = Base(API_TOKEN, SERVER_URL)
     base.auth()
     calculate_base_workdays(base, TABLE_NAME)
 
