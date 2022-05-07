@@ -206,9 +206,3 @@ if __name__ == '__main__':
     base = Base(API_TOKEN, SERVER_URL)
     base.auth()
     calculate_base_workdays(base, TABLE_NAME)
-
-
-
-
-
-
