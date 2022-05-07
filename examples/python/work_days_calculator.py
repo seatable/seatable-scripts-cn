@@ -5,11 +5,19 @@ from enum import Enum
 from seatable_api import dateutils, Base, context
 
 
+# 一个 Base 的授权信息
+SERVER_URL = context.server_url or 'http://127.0.0.1:8000'
+API_TOKEN = context.api_token or 'dd46f9ca0172a850a0922107a6b2e6b99932b040'
+
+# 以下信息用户需要根据自己表格中的字段名称，子表名称做相应的修改
+# 子表名称
+TABLE_NAME = "工作任务安排"
+
+# 表格中的相应的字段， 通过开始日期和结束日期来计算工作日的数量
 START_DATE_COL = "开始日期"
 END_DATE_COL = "结束日期"
 WORK_DAY_COL = "工作日"
 
-TABLE_NAME = "工作任务安排"
 
 # 定义中国的节假日
 class Holiday(Enum):
@@ -164,61 +172,37 @@ def calculate_base_workdays(base, table_name):
         start_date = row.get(START_DATE_COL)
         end_date = row.get(END_DATE_COL)
 
-        work_day_list = get_workdays(
-            datetime.date(
-                year=dateutils.year(start_date),
-                month=dateutils.month(start_date),
-                day=dateutils.day(start_date)
-            ),
 
-            datetime.date(
-                year=dateutils.year(end_date),
-                month=dateutils.month(end_date),
-                day=dateutils.day(end_date)
+        if not (start_date and end_date):
+            continue
+        try:
+            work_day_list = get_workdays(
+                datetime.date(
+                    year=dateutils.year(start_date),
+                    month=dateutils.month(start_date),
+                    day=dateutils.day(start_date)
+                ),
+
+                datetime.date(
+                    year=dateutils.year(end_date),
+                    month=dateutils.month(end_date),
+                    day=dateutils.day(end_date)
+                )
             )
-        )
-        # 两个日期间的工作日天数
-        work_day_counts = len(work_day_list)
-        base.update_row(
-            table_name,
-            row_id,
-            {
-                WORK_DAY_COL: work_day_counts
-            }
-        )
-
-
-
-
+            # 两个日期间的工作日天数
+            work_day_counts = len(work_day_list)
+            base.update_row(
+                table_name,
+                row_id,
+                {
+                    WORK_DAY_COL: work_day_counts
+                }
+            )
+        except Exception as e:
+            print("start date: %s, end date: %s, error: %s" % (start_date, end_date, e) )
+            continue
 
 if __name__ == '__main__':
-
-    # 测试工作日计算算法
-    a = '2022-4-27'
-    b = '2022-5-19'
-    work_day_list = get_workdays(
-        datetime.date(
-            year=dateutils.year(a),
-            month=dateutils.month(a),
-            day=dateutils.day(a)
-        ),
-
-        datetime.date(
-            year=dateutils.year(b),
-            month=dateutils.month(b),
-            day=dateutils.day(b)
-        )
-    )
-    # 两个日期间的工作日天数
-    work_day_counts = len(work_day_list)
-
-    print(work_day_counts) # 15
-
-    # Seatable数据处理
-
-    SERVER_URL = context.server_url or 'https://cloud.seatable.cn/'
-    API_TOKEN = context.api_token or 'cacc42497886e4d0aa8ac0531bdcccb1c93bd0f5'
-
     base = Base(API_TOKEN, SERVER_URL)
     base.auth()
     calculate_base_workdays(base, TABLE_NAME)
