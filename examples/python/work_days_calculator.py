@@ -191,6 +191,9 @@ def calculate_base_workdays(base, table_name):
             )
             # 两个日期间的工作日天数
             work_day_counts = len(work_day_list)
+            cell_value = row.get(WORK_DAY_COL)
+            if cell_value == work_day_counts:
+                continue
             base.update_row(
                 table_name,
                 row_id,
