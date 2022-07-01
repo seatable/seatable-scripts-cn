@@ -46,6 +46,8 @@ DELETE FROM table_name [WhereClause]
 * 多值列（如多选类型）需要使用括号包围值列表，例如 `(1, "2", 3.0, ("foo", "bar"))` 。
 * 单选和多选类型的列需要使用选项名称，而不是选项 key。
 * `WhereClause` 是一个可选的 where 语句，如果没有指定，则包含所有行。
+* `INSERT` 语句仅支持已经归档过的 base 使用，数据会被直接插入大数据存储中。如果 base 未归档过，则会报错。如果需要往未归档过的 base 中插入数据，可以使用 dtable-server 提供的 API。
+* `UPDATE` 和 `DELETE` 语句支持同时修改已归档和未归档的数据。
 
 注意：以下列类型不支持插入和更新：
 
