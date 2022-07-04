@@ -66,13 +66,15 @@ dateutils.datediff(start=time_start, end=time_end, unit='MD') #  14
 dateutils.datediff("2019-2-28","2020-2-1", unit='YD') # -27
 ```
 
-#### emonth
+#### eomonth
 
-返回某个日期的前一个月或后一个月的最后一天， 参数 direction 可以为1或-1
+返回某个日期的前 n 个月或后 n 个月的最后一天， 参数为 months 代表 n
 
 ```python
-dateutils.emonth('2021-3-25', direction=-1) # 2021-02-28
-dateutils.emonth('2021-3-25', direction=1) # 2021-04-30
+date = "2022-7-4"
+dateutils.eomonth(date, months=0) # 2022-07-31
+dateutils.eomonth(date, months=2) # 2022-09-30
+dateutils.eomonth(date, months=-5) # 2022-02-28
 ```
 
 #### year
