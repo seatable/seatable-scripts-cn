@@ -98,7 +98,7 @@ base.remove_link('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 
 通过列名来获取链接的id
 
 ```python
-base.get_column_link_id(table_name, column_name, view_name=None)
+base.get_column_link_id(table_name, column_name)
 ```
 
 ##### 例子
