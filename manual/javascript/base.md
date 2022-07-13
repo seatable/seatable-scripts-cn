@@ -441,20 +441,6 @@ rows.forEach((row) => {
 base.modifyRows(table, selectedRows, updatedRows);
 ```
 
-## filter
-
-通过一个查询语句, 筛选出表格中符合条件的行, 返回一个 querySet 对象
-
-* [查询语句规范](query-sentences.md)
-
-* [QuerySet](queryset.md)
-
-#### 例子
-
-```javascript
-// 过滤出 number列 等于 5 的行, 返回一个 querySet 对象
-const querySet = base.filter('Table1', '默认视图', 'number = 5');
-```
 
 ## Links
 
