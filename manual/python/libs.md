@@ -14,7 +14,7 @@
 * 日期/时间运算的工具库, [dateutils](https://pypi.org/project/dateutils/)
 * http 请求库, [requests](https://pypi.org/project/requests/)
 * OpenSSL 库, [pyOpenSSL](https://pypi.org/project/pyOpenSSL/)
-* Pillow 库, [pyOpenSSL](https://pypi.org/project/Pillow/)
+* Pillow 库, [Pillow](https://pypi.org/project/Pillow/)
 * Barcode 库, [python-barcode](https://pypi.org/project/python-barcode/)
 * Pandas 库, [pandas](https://pypi.org/project/pandas/)
 * Numpy 库, [numpy](https://pypi.org/project/numpy/)
