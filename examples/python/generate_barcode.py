@@ -8,10 +8,10 @@ from seatable_api import Base, context
 """
 
 api_token = context.api_token or "859ad340d9a2b11b067c11f43078992e14853af5"
-server_url = context.server_url or "http://127.0.0.1:8000/"
+server_url = context.server_url or "https://cloud.seatable.cn"
 
-TEXT_COL = "NUM"
-BARCODE_IMAGE_COL = "NumCode"
+TEXT_COL = "Message"
+BARCODE_IMAGE_COL = "BarcodeImage"
 TABLE_NAME = 'Table1'
 BARCODE_TYPE = 'code128'
 
