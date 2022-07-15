@@ -10,8 +10,8 @@ from seatable_api import Base, context
 api_token = context.api_token or "859ad340d9a2b11b067c11f43078992e14853af5"
 server_url = context.server_url or "https://cloud.seatable.cn"
 
-TEXT_COL = "Message"
-BARCODE_IMAGE_COL = "BarcodeImage"
+TEXT_COL = "Message"  # 需要转换成条码的列
+BARCODE_IMAGE_COL = "BarcodeImage" # 图片列， 存储条码
 TABLE_NAME = 'Table1'
 BARCODE_TYPE = 'code128'
 
