@@ -32,21 +32,29 @@ def get_time_stamp():
     return str(int(time.time()*100000))
 
 for row in base.list_rows(TABLE_NAME):
-    row_id = row.get('_id')
-    msg = str(row.get(TEXT_COL))
+    # 如果图片列中已有内容， 则跳过
+    if row.get(BARCODE_IMAGE_COL):
+        continue
 
-    # 生成条码对象
-    code_img = CODE(msg, writer=ImageWriter())
-    save_name = "%s_%s" % (row_id, get_time_stamp())
+    try:
+        row_id = row.get('_id')
+        msg = str(row.get(TEXT_COL))
 
-    # 保存为图片并暂存
-    file_name = code_img.save("/tmp/%s" % save_name, options=CUSTOM_OPTIONS)
+        # 生成条码对象
+        code_img = CODE(msg, writer=ImageWriter())
+        save_name = "%s_%s" % (row_id, get_time_stamp())
 
-    # 将图片上传至 Base 表格
-    info_dict = base.upload_local_file(file_name, name=None, file_type='image', replace=True)
-    img_url = info_dict.get('url')
-    row[BARCODE_IMAGE_COL] = [img_url]
-    base.update_row('Table1', row_id, row)
+        # 保存为图片并暂存
+        file_name = code_img.save("/tmp/%s" % save_name, options=CUSTOM_OPTIONS)
 
-    # 移除暂存文件
-    os.remove(file_name)
+        # 将图片上传至 Base 表格
+        info_dict = base.upload_local_file(file_name, name=None, file_type='image', replace=True)
+        img_url = info_dict.get('url')
+        row[BARCODE_IMAGE_COL] = [img_url]
+        base.update_row('Table1', row_id, row)
+
+        # 移除暂存文件
+        os.remove(file_name)
+    except Exception as error:
+        print("error occured during barcode generate", error)
+        continue
