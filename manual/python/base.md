@@ -116,3 +116,27 @@ Base 对象提供了操作行和列，上传下载文件等的接口，请参考
 * [Columns](columns.md)
 * [Files](files.md)
 
+
+
+## 授权过期的处理方式
+
+一些情况下， 我们 需要把表格的读写逻辑放入到 while 或者 for 循环里面， 在运行过程中授权可能会因为过期而导致程序中断， 我们在此提供了一个异常 TokenExpiredError， 可以通过捕获该异常，来进行重新授权，参考如下
+
+```python
+from seatable_api import Base, context
+from seatable_api.exception import TokenExpiredError
+
+server_url = context.server_url or 'https://cloud.seatable.cn'
+api_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
+
+base = Base(api_token, server_url)
+base.auth()
+
+while True:
+    try:
+        base.append_row('Table1', {"xxx":"xxx"})
+        ...
+    except TokenExpiredError:
+       base.auth()
+```
+
