@@ -1,8 +1,8 @@
 # Websocket
 
-## 实时获取数据更新
+## 实时获取数据更新通知
 
-利用 websocket，您可以像 SeaTable 网页端一样实时获取 Base 的数据更新
+利用 Websocket，您可以像 SeaTable 网页端一样实时获取 Base 的数据更新通知
 
 ##### 例子
 
