@@ -189,6 +189,66 @@ dateutils.isoweeknum('2012-1-2') # 1
 dateutils.isomonth("2012-1-2") # 2012-01
 ~~~
 
+#### quarter_from_yq
+
+返回一个季度对象，参数包含年份，季度。
+
+```python
+q = dateutils.quarter_from_yq(2022, 3) # <DateQuarter-2022,3Q>
+```
+
+#### quarter_from_ym
+
+返回一个季度对象， 参数包含年份， 月份
+
+```python
+q = dateutils.quarter_from_ym(2022, 3) # <DateQuarter-2022,3Q>
+```
+
+#### to_quarter
+
+返回某个日期字符串对应的季度(DateQuarter对象)
+
+```python
+time_str = "2022-07-17"
+q = dateutils.to_quarter(time_str) # DateQuarter obj: <DateQuarter-2022,3Q>
+```
+
+#### quarters_within
+
+返回开始日期，结束日期之间的季度， 返回一个生成器, 里面会产生DateQuarter 对象，包含参数 include_last 是否包含最后一个季度， 默认为 False
+
+```python
+qs = dateutils.quarters_within("2021-03-28", "2022-07-17", include_last=True) # 生成器
+list(qs) # [<DateQuarter-2021,1Q>, <DateQuarter-2021,2Q>,...., <DateQuarter-2022,3Q>]
+```
+
+#### 季度操作
+
+季度对象包含年，月等属性， 并且可以进行运算
+
+```python
+q = dateutils.quarter_from_yq(2022, 3)
+# 获取年份， 季度, 开始结束日期等
+q.year # 2022
+q.quarter # 3
+
+q.start_date # 2022-07-01
+q.end_date # 2022-09-30
+
+# 日期遍历
+q.days()  # 生成器对象， 里面包含该季度所有日期
+list(q.days()) # [datetime.date(2022, 7, 1), datetime.date(2022, 7, 2),....., datetime.date(2022, 9, 30)]
+
+# 季度运算
+q + 10 # <DateQuarter-2025,1Q> 2025年第一季度
+q1 = dateutils.quater_from_yq(2021, 1) # <DateQuarter-2021,1Q>
+q - q1 # 6
+q < q1 # False
+"2022-6-28" in q # False
+"2022-8-28" in q # True
+```
+
 #### 时间处理举例
 
 通过dateutils获取的日期信息，可以当作参数再次传递到dateutils的处理函数中去
