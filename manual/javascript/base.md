@@ -526,3 +526,119 @@ const rows = base.getRows('contact', '默认视图');
 // 更新行的链接为 [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id]
 base.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
 ```
+
+#### query
+
+使用 sql 语句查询一个 base
+
+```javascript
+await base.query(sql)
+
+```
+
+##### 例子
+
+######  基础查询
+
+```javascript
+const data = base.query('select name, price, year from Bill')
+output.text(data)
+
+```
+
+结果
+
+```javascript
+[
+	{"name":"Bob","price":"300","year":"2021"},
+	{"name":"Bob","price":"300","year":"2019"},
+	{"price":"100","year":"2019","name":"Tom"},
+	{"name":"Tom","price":"100","year":"2020"},
+	{"name":"Tom","price":"200","year":"2021"},
+	{"name":"Jane","price":"200","year":"2020"},
+	{"name":"Jane","price":"200","year":"2021"}
+]
+
+```
+
+###### WHERE
+
+```javascript
+const data = await base.query('select name, price from Bill where year = 2021')
+output.text(data)
+
+```
+
+结果
+
+```javascript
+[
+	{"name":"Bob","price":"300"},
+	{"name":"Tom","price":"200"},
+	{"name":"Jane","price":"200"}
+]
+
+```
+
+###### ORDER BY
+
+```javascript
+const data = await base.query('select name, price from Bill where year = 2021')
+output.text(data)
+
+```
+
+结果
+
+```javascript
+[
+	{"price":"300","year":2019,"name":"Bob"},
+	{"price":"100","year":2019,"name":"Tom"},
+	{"name":"Tom","price":"100","year":2020},
+	{"price":"200","year":2020,"name":"Jane"},
+	{"name":"Bob","price":"300","year":2021},
+	{"name":"Tom","price":"200","year":2021},
+	{"name":"Jane","price":"200","year":2021}
+]
+
+```
+
+###### GROUP BY
+
+```javascript
+const data = await base.query('select name, sum(price) from Bill group by name')
+output.text(data)
+
+```
+
+结果
+
+```
+[
+	{"name":"Bob","SUM(price)":600},
+	{"SUM(price)":400,"name":"Jane"},
+	{"name":"Tom","SUM(price)":400}
+]
+
+```
+
+###### DISTINCT
+
+```javascript
+const data = await base.query('select distinct name from Bill')
+output.text(data)
+
+```
+
+结果
+
+```
+[
+	{"name":"Bob"},
+	{"name":"Jane"},
+	{"name":"Tom"}
+]
+
+```
+
+
