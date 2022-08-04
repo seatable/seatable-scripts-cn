@@ -527,7 +527,7 @@ const rows = base.getRows('contact', '默认视图');
 base.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
 ```
 
-#### query
+## query
 
 使用 sql 语句查询一个 base
 
@@ -536,7 +536,7 @@ await base.query(sql)
 
 ```
 
-##### 例子
+#### 例子
 
 ######  基础查询
 
@@ -640,5 +640,3 @@ output.text(data)
 ]
 
 ```
-
-
