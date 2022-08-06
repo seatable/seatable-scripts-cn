@@ -541,7 +541,7 @@ await base.query(sql)
 ######  基础查询
 
 ```javascript
-const data = base.query('select name, price, year from Bill')
+const data = await base.query('select name, price, year from Bill')
 output.text(data)
 
 ```
