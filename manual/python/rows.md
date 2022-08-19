@@ -121,7 +121,7 @@ base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
 
 批量更新行
 
-```
+```python
 batch_update_rows(table_name, rows_data)
 ```
 

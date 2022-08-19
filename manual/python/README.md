@@ -23,7 +23,7 @@ base.auth()
 
 如果你在云端编写的话，可以复制一下内容快速开始编写:
 
-```
+```python
 from seatable_api import Base, context
 
 base = Base(context.api_token, context.server_url)
@@ -35,7 +35,7 @@ base.auth()
 
 脚本在本地运行的时候需要安装 `seatable-api`。
 
-```
+```bash
 pip3 install seatable-api
 ```
 
@@ -49,7 +49,7 @@ pip3 install seatable-api
 
 下面的例子展示怎么在一个 base 中查询数据和更新数据。
 
-```
+```python
 base = Base(api_token, server_url)
 base.auth()
 
@@ -73,7 +73,6 @@ SeaTable 中对象的数据结构:
 SeaTable API 库介绍:
 
 * [Base](base.md)
-* [QuerySet](queryset.md)
 * [Rows](rows.md)
 * [Links](links.md)
 * [Columns](columns.md)
@@ -83,7 +82,6 @@ SeaTable API 库介绍:
 * [Constants](constants.md): 一些常量定义
 * [云端环境下支持的库](libs.md): 云端环境下支持导入的 Python 库列表
 * [Websocket](websocket.md): 通过 Websocket 实时获取数据更新的通知
-* [QuerySet查询语句规范](query-sentences.md)
 
 
 ## 例子

@@ -21,14 +21,14 @@
 
 下面我们来看一个很简单的例子，就是输出表格中子表的数量。新建一个脚本，并输入以下的内容，然后点击运行即可:
 
-```
+```javascript
 const tables = base.getTables();
 output.text(tables.length);
 ```
 
 下面我们来看另一个简单的例子，就是取出一个子表中的所有行，然后把 Name 列的值输出出来:
 
-```
+```javascript
 // 通过名称获取子表
 const table = base.getTableByName('云端服务'); 
 // 从子表获取一个特定的视图
@@ -48,7 +48,7 @@ for (var i=0; i<rows.length; i++) {
 
 编写脚本时，需要从 seatable_api 导入 Base 对象并对其初始化，然后就可以调用其中的函数来操作表格了。下面为一个简单的例子，用于往一个表格中添加一个新行:
 
-```
+```python
 from seatable_api import Base
 
 server_url = os.environ.get('dtable_web_url')
