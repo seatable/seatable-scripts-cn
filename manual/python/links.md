@@ -27,7 +27,7 @@ base.add_link('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 'PA
 
 更新链接信息
 
-```
+```python
 update_link(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
 ```
 
@@ -59,7 +59,7 @@ base.update_link(
 
 批量更新链接信息
 
-```
+```python
 base.batch_update_links(link_id, table_id, other_table_id, row_id_list, other_rows_ids_map)
 ```
 

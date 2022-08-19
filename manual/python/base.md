@@ -10,7 +10,7 @@ Base 代表一个表格。你可以用两种方法来获取读写一个 base 的
 
 ##### 例子
 
-```
+```python
 from seatable_api import Base, context
 
 server_url = context.server_url or 'https://cloud.seatable.cn'

@@ -131,7 +131,7 @@ base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
 
 单选，多选列专用，添加选项
 
-```
+```python
 add_column_options(table_name, column, options)
 ```
 

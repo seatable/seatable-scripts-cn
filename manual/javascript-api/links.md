@@ -27,7 +27,7 @@ await base.addLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g'
 
 更新链接信息
 
-```
+```javascript
 base.updateLink(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
 ```
 
@@ -59,7 +59,7 @@ await base.updateLink(
 
 批量更新链接信息
 
-```
+```javascript
 base.batchUpdateLinks(link_id, table_id, other_table_id, row_id_list, other_rows_ids_map)
 ```
 

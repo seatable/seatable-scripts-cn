@@ -8,7 +8,7 @@ SeaTable 中数据查询支持 SQL 语句。使用 SQL 语句会检索完整的�
 
 SELECT 语句的语法如下：
 
-```
+```SQL
 SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingClause] [OrderByClause] [Limit Option]
 ```
 
@@ -32,7 +32,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingCl
 
 INSERT，UPDATE，DELETE 语句的语法如下：
 
-```
+```SQL
 INSERT INTO table_name [column_list] VALUES value_list [, ...]
 
 UPDATE table_name SET column_name = value [, ...] [WhereClause]
