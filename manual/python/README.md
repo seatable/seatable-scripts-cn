@@ -53,15 +53,18 @@ pip3 install seatable-api
 base = Base(api_token, server_url)
 base.auth()
 
-queryset = base.filter('Table1', "age>18 and gender='male'")
-elder_queryset = queryset.filter("age > 70")
-for row in elder_queryset:
-    print(row)
+# 查看行
+rows = base.list_rows("Table1")
 
-update_row_data = {'paid': True}
-updated_rows = elder_queryset.update(update_row_data)
+row_data = {'name': 'Tom', 'age': 18}
+# 追加行
+base.append_row('Table1', row_data)
 
-deleted_count = elder_queryset.delete()
+# 更新行
+base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
+
+# 删除行
+base.delete_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
 ## 编程参考
