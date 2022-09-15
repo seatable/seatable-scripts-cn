@@ -17,7 +17,7 @@ base.get_linked_records(table_id, link_column_key, rows)
 ##### 例子
 
 ```python
-base.get_link_records('0000', '89o4', rows=[
+base.get_linked_records('0000', '89o4', rows=[
         {'row_id': 'FzNqJxVUT8KrRjewBkPp8Q', 'limit': 2, 'offset': 0},
         {'row_id': 'Jmnrkn6TQdyRg1KmOM4zZg', 'limit': 20}
     ])
