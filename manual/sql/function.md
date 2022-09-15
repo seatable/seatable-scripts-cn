@@ -90,8 +90,8 @@ FunctionName(parameters...)
 | :----------------------------------------------------- | :------------------------------------------------------------------------------- | :------------------------------------------------ | :------------------- |
 | exact(string1, string2)                                | 返回两个数字符串是否相等。                                                                    | exact('SeaTable', 'Seatable')                     | false                |
 | find(findString, sourceString, startPosition)          | 获取在一个字符串在另一个字符串中的索引。如果找不到，那么返回 0。(区分大小写)。                                        | find('Sea', 'seaTable', 1)                        | 0                    |
-| left(string, count)                                    | Returns the specified number (count) of characters at the beginning of a string. | left('SeaTable', 3)                               | Sea                  |
-| len(string)                                            | 从一个文本字符串的第一个字符开始返回指定个数的字符。                                                       | len('SeaTable')                                   | 8                    |
+| left(string, count)                                    | 从一个文本字符串的第一个字符开始返回指定个数的字符。 | left('SeaTable', 3)                               | Sea                  |
+| len(string)                                            | 返回字符串的长度。                                                       | len('SeaTable')                                   | 8                    |
 | lower(string)                                          | 将字符串转换为小写。                                                                       | lower('German)                                    | german               |
 | mid(string, startPosition, count)                      | 从文本字符串中指定的起始位置起返回指定长度的字符。                                                        | mid('SeaTable is the best', 1, 8)                 | SeaTable             |
 | replace(sourceString, startPosition, count, newString) | 将一个字符串中的部分字符用另一个字符串替换。                                                           | replace('SeaTable is the best.', 1, 8, 'Seafile') | Seafile is the best. |
