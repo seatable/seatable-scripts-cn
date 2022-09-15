@@ -5,7 +5,7 @@
 获取被链接的行的信息。可以一次查询多个行的被链接行的信息。
 
 ```python
-base.get_link_records(table_id, link_column_key, rows)
+base.get_linked_records(table_id, link_column_key, rows)
 ```
 
 其中
