@@ -2,7 +2,7 @@
 
 #### Get link records
 
-获取链接记录
+获取被链接的行的信息。可以一次查询多个行的被链接行的信息。
 
 ```python
 base.get_link_records(table_id, link_column_key, rows)
@@ -12,7 +12,7 @@ base.get_link_records(table_id, link_column_key, rows)
 
 * table_id: 子表的 id
 * link_column_key: 链接列的 key (非 link_id )
-* rows: 需要查找的行的链接记录信息，包含 row_id, offset (查找的偏移量, 或开始的链接记录, 默认为0)， limit(查找的链接记录的数量， 默认为10)
+* rows: 需要查找链接信息的行的列表，每一列表项包含三个参数 row_id, offset (查找的偏移量, 默认为0)， limit (查找的数量， 默认为10)
 
 ##### 例子
 
@@ -22,7 +22,7 @@ base.get_link_records('0000', '89o4', rows=[
         {'row_id': 'Jmnrkn6TQdyRg1KmOM4zZg', 'limit': 20}
     ])
 
-# 返回的数据结构, 包含被链接的行的 ID 和显示列的值。每个行所连接的行 ID，按照行创建时间顺序以数组形式返回
+# 返回的数据结构, 包含被链接的行的 ID 和显示值。每个行所连接的行，按照被链接的行的创建时间顺序以数组形式返回。
 {
     'FzNqJxVUT8KrRjewBkPp8Q': [
         {'row_id': 'LocPgVvsRm6bmnzjFDP9bA', 'display_value': '1'},                            
