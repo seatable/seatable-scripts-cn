@@ -10,6 +10,8 @@ base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None
 
 其中
 
+* table_name: 子表名称或 ID
+
 * order_by: 根据某列名进行排序
 * desc： 是否降序，默认为升序
 * start: 索引的起始位置， 行号
@@ -30,6 +32,10 @@ rows = base.list_rows('Table1', view_name='default', order_by='年龄', desc=Tru
 base.get_row(table_name, row_id)
 ```
 
+其中
+
+* table_name: 子表名称或 ID
+
 ##### 例子
 
 ```python
@@ -43,6 +49,10 @@ row = base.get_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```python
 base.append_row(table_name, row_data)
 ```
+
+其中
+
+* table_name: 子表名称或 ID
 
 ##### 例子
 
@@ -64,6 +74,8 @@ base.insert_row(table_name, row_data, anchor_row_id)
 
 其中
 
+* table_name: 子表名称或 ID
+
 * anchor_row_id: 锚定的行的 id，将会把新行插入到这行下方
 
 ##### 例子
@@ -83,6 +95,10 @@ base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
 ```python
 base.batch_append_rows(table_name, rows_data)
 ```
+
+其中
+
+* table_name: 子表名称或 ID
 
 ##### 例子
 
@@ -108,6 +124,10 @@ base.batch_append_rows('Table6', rows_data)
 base.update_row(table_name, row_id, row_data)
 ```
 
+其中
+
+* table_name: 子表名称或 ID
+
 ##### 例子
 
 ```python
@@ -124,6 +144,10 @@ base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
 ```python
 batch_update_rows(table_name, rows_data)
 ```
+
+其中
+
+* table_name: 子表名称或 ID
 
 ##### 例子
 
@@ -162,6 +186,10 @@ base.batch_update_rows('Table1', rows_data=updates_data)
 base.delete_row(table_name, row_id)
 ```
 
+其中
+
+* table_name: 子表名称或 ID
+
 ##### 例子
 
 ```python
@@ -175,6 +203,10 @@ base.delete_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```python
 base.batch_delete_rows(table_name, row_ids)
 ```
+
+其中
+
+* table_name: 子表名称或 ID
 
 ##### 例子
 

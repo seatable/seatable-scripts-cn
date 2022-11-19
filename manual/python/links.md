@@ -48,8 +48,8 @@ base.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
 其中
 
 * link_id: 链接列 data 属性下的 link_id (你可以获取 base 的 metadata，找到对应的列，然后找一下 data 字段下的 link_id 字段, 或者通过下方的 get_column_link_id 函数获取。)
-* table_name: 链接表的名字
-* other_table_name: 被链接表的名字
+* table_name: 链接表的名字或 ID
+* other_table_name: 被链接表的名字或 ID
 * row_id: 链接行 id
 * other_row_id: 被链接行的 id
 
@@ -123,6 +123,11 @@ base.batch_update_links(link_id, table_id, other_table_id, row_id_list, other_ro
 base.remove_link(link_id, table_name, other_table_name, row_id, other_row_id)
 ```
 
+其中
+
+* table_name: 链接表的名字或 ID
+* other_table_name: 被链接表的名字或 ID
+
 ##### 例子
 
 ```python
@@ -136,6 +141,10 @@ base.remove_link('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 
 ```python
 base.get_column_link_id(table_name, column_name)
 ```
+
+其中
+
+* table_name: 子表名称或 ID
 
 ##### 例子
 
