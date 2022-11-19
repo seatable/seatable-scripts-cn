@@ -75,6 +75,7 @@ nav:
     - Context: python/context.md
     - 日期操作: python/dateutils.md
     - 云端环境下支持的库: python/libs.md
+    - 消息通知: python/notifications.md
     - 实时获取数据更新通知: python/websocket.md
   - JavaScript API:
     - 引言: javascript-api/README.md
