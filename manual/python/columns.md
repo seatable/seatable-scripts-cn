@@ -10,7 +10,7 @@ base.list_columns(table_name, view_name=None)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -29,7 +29,7 @@ base.insert_column(table_name, column_name, column_type, column_key=None, column
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 * column_key：要插入的位置的前一列的 key，如若省略则默认追加为最后一列
 * column_type：请参考 [constants](../constants)
@@ -57,7 +57,7 @@ base.rename_column(table_name, column_key, new_column_name)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -75,7 +75,7 @@ base.resize_column(table_name, column_key, new_column_width)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -95,7 +95,7 @@ base.freeze_column(table_name, column_key, frozen)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 * frozon: True/False
 
@@ -113,7 +113,7 @@ base.move_column(table_name, column_key, target_column_key)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 * column_key：要移动的列的 key
 
@@ -137,7 +137,7 @@ base.modify_column_type(table_name, column_key, new_column_type)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 * column_type：请参考 [constants](../constants)
 
@@ -159,7 +159,7 @@ add_column_options(table_name, column, options)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -181,7 +181,7 @@ add_column_cascade_settings(table_name, child_column, parent_column, cascade_set
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 * child_column: 单选子列的名称
 * parent_column: 单选父列的名称
@@ -207,7 +207,7 @@ base.delete_column(table_name, column_key)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 

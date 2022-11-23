@@ -10,7 +10,7 @@ base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 * order_by: 根据某列名进行排序
 * desc： 是否降序，默认为升序
@@ -34,7 +34,7 @@ base.get_row(table_name, row_id)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -52,7 +52,7 @@ base.append_row(table_name, row_data)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -74,7 +74,7 @@ base.insert_row(table_name, row_data, anchor_row_id)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 * anchor_row_id: 锚定的行的 id，将会把新行插入到这行下方
 
@@ -98,7 +98,7 @@ base.batch_append_rows(table_name, rows_data)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -126,7 +126,7 @@ base.update_row(table_name, row_id, row_data)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -147,7 +147,7 @@ batch_update_rows(table_name, rows_data)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -188,7 +188,7 @@ base.delete_row(table_name, row_id)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -206,7 +206,7 @@ base.batch_delete_rows(table_name, row_ids)
 
 其中
 
-* table_name: 子表名称或 ID
+* table_name: 子表名称或 id
 
 ##### 例子
 
