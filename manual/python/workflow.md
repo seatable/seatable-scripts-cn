@@ -14,8 +14,8 @@
 base.add_workflow_task(workflow_token, row_data, initiator=None, link_rows=None, new_linked_rows=None)
 
 # initiator: 发起人
-# link_rows: 表单中链接列修改的内容
-# new_linked_rows: 表单中链接列增加的新内容
+# link_rows: 对应于表单中链接列 "链接已有记录" 功能，用于链接已有记录
+# new_linked_rows: 对应于表单中链接列 “增加新记录" 功能，用于往链接的表中增加新的记录项，并建立链接关系
 
 ```
 
