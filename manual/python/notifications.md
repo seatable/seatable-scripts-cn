@@ -17,7 +17,7 @@ base.send_toast_notification(user_id, msg, toast_type='success')
 ##### 例子
 
 ```python
-base.send_toast_notifation(
+base.send_toast_notification(
 "aea9e807bcfd4f3481d60294df74f6ee@auth.local",
   "error request",
   "danger"
