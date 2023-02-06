@@ -98,11 +98,12 @@ await base.removeLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J
 通过列名来获取链接的id
 
 ```javascript
-const linkId = base.getColumnLinkId(table_name, column_name, view_name=None)
+base.getColumnLinkId(columns, column_name)
 ```
 
 ##### 例子
 
 ```javascript
-await base.getColumnLinkId('Table1', '记录') # 返回链接的id，如‘aHL2’
+const columns = await base.listColumns('Table1') # 获取当前表格的列数据信息
+const linkId = await base.getColumnLinkId(columns, '记录') # 返回链接的id，如‘aHL2’
 ```
