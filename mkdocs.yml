@@ -70,6 +70,7 @@ nav:
     - Columns: python/columns.md
     - Files: python/files.md
     - Query with SQL: python/query.md
+    - Big data storage: python/big_data_storage.md
     - Account: python/account.md
     - Constants: python/constants.md
     - Context: python/context.md
