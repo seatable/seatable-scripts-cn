@@ -49,19 +49,22 @@ base.get_comments(row_id, page=1, per_page=25)
 返回
 
 ```Python
-[
-    {
-        'id': 1,
-        'author': '27e19630f2044e1abe9e86e17e4c8418@auth.local',
-        'comment': 'comment content',
-        'created_at': '2023-03-10T16:09:30+00:00',
-        'updated_at': '2023-03-10T16:09:30+00:00',
-        'dtable_uuid': '281bb8dc19fb4257ad5feabccc8a9333',
-        'row_id': 'R6anZyjkRJK-HGrqkLvVsA',
-        'detail': None,
-        'resolved': False
-    }
-]
+{
+    "comment_list": [
+        {
+            'id': 1,
+            'author': '27e19630f2044e1abe9e86e17e4c8418@auth.local',
+            'comment': 'comment content',
+            'created_at': '2023-03-10T16:09:30+00:00',
+            'updated_at': '2023-03-10T16:09:30+00:00',
+            'dtable_uuid': '281bb8dc19fb4257ad5feabccc8a9333',
+            'row_id': 'R6anZyjkRJK-HGrqkLvVsA',
+            'detail': None,
+            'resolved': False
+        }
+    ],
+    "count": 1
+}
 ```
 
 #### Resolve a comment
