@@ -81,8 +81,8 @@ update_link(self, link_id, table_name, other_table_name, row_id, other_rows_ids)
 ```python
 base.update_link(
         link_id='r4IJ',
-        table_name='0000',
-        other_table_name='kFoO',
+        table_name='Table1',
+        other_table_name='Table2',
         row_id='BXhEm9ucTNu3FjupIk7Xug',
         other_rows_ids=[
           'exkb56fAT66j8R0w6wD9Qg',
@@ -108,8 +108,8 @@ base.batch_update_links(link_id, table_name, other_table_name, row_id_list, othe
 
 ```python
 link_id = "WaW5"
-table_id ="0000"
-other_table_id = "jtsf"
+table_name ="Table1"
+other_table_name = "Table2"
 row_id_list = ["fRLglslWQYSGmkU7o6KyHw","eSQe9OpPQxih8A9zPXdMVA","FseN8ygVTzq1CHDqI4NjjQ"]
 other_rows_ids_map = {
     	"FseN8ygVTzq1CHDqI4NjjQ":["OcCE8aX8T7a4dvJr-qNh3g","JckTyhN0TeS8yvH8D3EN7g"],
@@ -117,7 +117,7 @@ other_rows_ids_map = {
     	"fRLglslWQYSGmkU7o6KyHw":["MdfUQiWcTL--uMlrGtqqgw","E7Sh3FboSPmfBlDsrj_Fhg","UcZ7w9wDT-uVq4Ohtwgy9w"]
 }
 
-base.batch_update_links(link_id, table_id, other_table_id, row_id_list, other_rows_ids_map)
+base.batch_update_links(link_id, table_name, other_table_name, row_id_list, other_rows_ids_map)
 ```
 
 #### Remove link
