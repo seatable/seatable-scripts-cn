@@ -8,6 +8,10 @@
 base.list_columns(table_name, view_name=None)
 ```
 
+其中
+
+* table_name: 子表名称或 id
+
 ##### 例子
 
 ```python
@@ -24,6 +28,8 @@ base.insert_column(table_name, column_name, column_type, column_key=None, column
 ```
 
 其中
+
+* table_name: 子表名称或 id
 
 * column_key：要插入的位置的前一列的 key，如若省略则默认追加为最后一列
 * column_type：请参考 [constants](../constants)
@@ -49,6 +55,10 @@ base.insert_column('Table1', 'Link1', ColumnTypes.LINK, column_data={
 base.rename_column(table_name, column_key, new_column_name)
 ```
 
+其中
+
+* table_name: 子表名称或 id
+
 ##### 例子
 
 ```python
@@ -62,6 +72,10 @@ base.rename_column('Table1', 'kSiR', 'new-python-api')
 ```python
 base.resize_column(table_name, column_key, new_column_width)
 ```
+
+其中
+
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -79,7 +93,11 @@ base.resize('Table1', 'asFV', 500)
 base.freeze_column(table_name, column_key, frozen)
 ```
 
-frozon: True/False
+其中
+
+* table_name: 子表名称或 id
+
+* frozon: True/False
 
 ##### 例子
 
@@ -94,6 +112,8 @@ base.move_column(table_name, column_key, target_column_key)
 ```
 
 其中
+
+* table_name: 子表名称或 id
 
 * column_key：要移动的列的 key
 
@@ -117,6 +137,8 @@ base.modify_column_type(table_name, column_key, new_column_type)
 
 其中
 
+* table_name: 子表名称或 id
+
 * column_type：请参考 [constants](../constants)
 
 ##### 例子
@@ -134,6 +156,10 @@ base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
 ```python
 add_column_options(table_name, column, options)
 ```
+
+其中
+
+* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -154,6 +180,8 @@ add_column_cascade_settings(table_name, child_column, parent_column, cascade_set
 ```
 
 其中
+
+* table_name: 子表名称或 id
 
 * child_column: 单选子列的名称
 * parent_column: 单选父列的名称
@@ -176,6 +204,10 @@ base.add_column_cascade_settings("Table1", "single-op-col-c", "single-op-col", {
 ```python
 base.delete_column(table_name, column_key)
 ```
+
+其中
+
+* table_name: 子表名称或 id
 
 ##### 例子
 
