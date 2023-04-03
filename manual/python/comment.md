@@ -2,32 +2,6 @@
 
 以下的方法可以对 Base 内评论进行操作
 
-**使用评论相关 API 时请先调用 Base.auth_as_user(login, password) 方法进行用户登录**
-
-#### Add a comment
-
-对某行评论
-
-```python
-base.add_comment(table_id, row_id, comment)
-```
-
-##### 例子
-
-```python
-table_id = '0000'
-row_id = 'IN6FfRQLR9GAYX-6VHPvvA'
-comment = 'comment from seatable-api'
-
-base.add_comment(table_id, row_id, comment)
-```
-
-返回
-
-```Python
-{'success': True}
-```
-
 #### Get the count number of a row's comments
 
 获取某行评论数量
@@ -73,20 +47,6 @@ base.get_comments(row_id, page=1, per_page=25)
 
 ```Python
 base.resolve_comment(comment_id)
-```
-
-返回
-
-```Python
-{'success': True}
-```
-
-#### Delete a comment
-
-删除评论
-
-```Python
-base.delete_comment(comment_id)
 ```
 
 返回
