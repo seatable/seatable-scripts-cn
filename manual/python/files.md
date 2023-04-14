@@ -174,3 +174,92 @@ response = requests.post(upload_link, data={
 })
 ```
 
+## 自定义目录操作
+
+除了 Base 表格中的附件的上传和下载外， 一个 Base 中有一个自定义的文件系统叫做 自定义目录， 通过 Base 的文件管理功能模块打开。 以下定义了一些用于操作该自定义目录的 API。
+
+#### 列出文件夹中的文件
+
+```python
+base.list_custom_assets(path)
+```
+
+##### 例子
+
+```python
+folder_dir = "/Main/photos"
+
+base.list_custom_assets(folder_dir)
+# 返回的一个字典， 包括 dir，和 file 两个字段， dir 表示目录， file 表示文件
+{
+  "dir": [{'name': "MyDir"}, ...]
+  "file":[{'name': "sky.png"}, ....]
+}
+```
+
+#### 获取文件信息
+
+返回的信息与表格文件列存储的信息有相同的数据结构， 因此可以直接将该信息更新到表格的文件列
+
+```python
+base.get_custom_file_info(path, name)
+```
+
+##### 例子
+
+```python
+folder_dir = "/Main/"
+file_name = "sky.png"
+info_dict = base.get_custom_file_info(path, name) # 获取信息
+row_id = "xxxx"
+file_col_name = "File"
+# 更新文件单元格
+base.update_row('Table1', row_id, {"File": [info_dict]})
+```
+
+#### 获取文件内容
+
+返回 一个 Bytes 类型的数据结构, 可以将其写入本地的文件中， 相当于下载
+
+```python
+base.read_custom_file(file_path)
+```
+
+##### 例子
+
+```python
+custom_file_path = "/Main/sky.png"
+local_path = "/Users/Desktop/sky.png"
+save_name = "sky.png"
+content = base.read_custom_file(custom_file_path)
+with open(local, 'wb') as f: # 写入本地文件
+  f.write(content)
+```
+
+#### 上传本地文件到自定义目录
+
+返回的文件信息可以直接更新到表格的附件列
+
+```python
+base.upload_local_file_to_custom_folder(self, local_path, custom_folder_path=None, name=None)
+```
+
+* local_path: 本地的文件路径
+* Custom_folder_path: 自定义目录的路径， 默认为 ‘/’
+* name: 自定义目录中保存的文件名， 默认与在本地的文件名一致
+
+##### 例子
+
+```python
+local_path = "/Users/Desktop/sky.png"
+custom_path = "/Main/"
+
+info_dict = base.upload_local_file_to_custom_folder(local_path， custom_path)
+row_id = "xxxx"
+file_col_name = "File"
+# 更新文件单元格
+base.update_row('Table1', row_id, {"File": [info_dict]})
+```
+
+#### 
+
