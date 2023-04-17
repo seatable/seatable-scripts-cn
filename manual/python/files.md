@@ -222,7 +222,7 @@ base.update_row('Table1', row_id, {"File": [info_dict]})
 返回 一个 Bytes 类型的数据结构, 可以将其写入本地的文件中， 相当于下载
 
 ```python
-base.read_custom_file(file_path)
+base.get_custom_file_content(file_path)
 ```
 
 ##### 例子
@@ -231,8 +231,8 @@ base.read_custom_file(file_path)
 custom_file_path = "/Main/sky.png"
 local_path = "/Users/Desktop/sky.png"
 save_name = "sky.png"
-content = base.read_custom_file(custom_file_path)
-with open(local, 'wb') as f: # 写入本地文件
+content = base.get_custom_file_content(custom_file_path)
+with open(local_path, 'wb') as f: # 写入本地文件
   f.write(content)
 ```
 
@@ -245,7 +245,7 @@ base.upload_local_file_to_custom_folder(self, local_path, custom_folder_path=Non
 ```
 
 * local_path: 本地的文件路径
-* Custom_folder_path: 自定义目录的路径， 默认为 ‘/’
+* custom_folder_path: 自定义目录的路径， 默认为 ‘/’
 * name: 自定义目录中保存的文件名， 默认与在本地的文件名一致
 
 ##### 例子
