@@ -217,26 +217,24 @@ file_col_name = "File"
 base.update_row('Table1', row_id, {"File": [info_dict]})
 ```
 
-#### 获取文件内容
-
-返回 一个 Bytes 类型的数据结构, 可以将其写入本地的文件中， 相当于下载
+#### 下载文件到本地
 
 ```python
-base.get_custom_file_content(file_path)
+base.download_custom_file(path, save_path)
 ```
+
+* path: 自定义目录中的文件路径
+* save_path:  文件保存的本地路径
 
 ##### 例子
 
 ```python
 custom_file_path = "/Main/sky.png"
 local_path = "/Users/Desktop/sky.png"
-save_name = "sky.png"
-content = base.get_custom_file_content(custom_file_path)
-with open(local_path, 'wb') as f: # 写入本地文件
-  f.write(content)
+base.download_custom_file(custom_file_path, local_path)
 ```
 
-#### 上传本地文件到自定义目录
+#### 上传本地文件到文件夹
 
 返回的文件信息可以直接更新到表格的附件列
 
@@ -260,6 +258,4 @@ file_col_name = "File"
 # 更新文件单元格
 base.update_row('Table1', row_id, {"File": [info_dict]})
 ```
-
-#### 
 
