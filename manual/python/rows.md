@@ -29,7 +29,7 @@ rows_data = [{
 
 #### List rows
 
-获取表格的所有行
+获取表格的行
 
 ```python
 base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None, limit=None)
