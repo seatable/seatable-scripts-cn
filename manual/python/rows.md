@@ -24,7 +24,7 @@ rows_data = [{
                 'Name': '小明',
                 'Age': 33
             }, ....
-            ]
+]
 ```
 
 #### List rows
