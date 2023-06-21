@@ -1,5 +1,32 @@
 # Row
 
+ `seatable-api` 模块提供了一系列操作 base 中行的方法
+
+大多数操作方法中参数使用到的名称以及数据结构描述如下：
+
+* table_name: 子表名称或 id， 字符串
+* row_id: 行的 id， 字符串
+* row_data: 行数据， 字典
+* rows_data: 多行数据， 包含字典的列表
+
+##### 例子
+
+```json
+row_data = {
+    "Name": "Ron",
+  	"Age": 20
+}
+
+rows_data = [{
+                'Name': 'Tom',
+                'Age': 18
+            }, {
+                'Name': '小明',
+                'Age': 33
+            }, ....
+            ]
+```
+
 #### List rows
 
 获取表格的所有行
@@ -11,11 +38,13 @@ base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None
 其中
 
 * table_name: 子表名称或 id
-
-* order_by: 根据某列名进行排序
-* desc： 是否降序，默认为升序
+* view_name: 视图名称或 id， 如果设定， 会返回满足视图设定条件的行数据
+* order_by: 按照某列排序的列名
+* desc:  是否是降序， 默认为 False
 * start: 索引的起始位置， 行号
-* limit: 数据的显示数量
+* limit: 数据的显示数量， 最大返回 1000 行 (即使设定值超过 1000 行)
+
+使用 [SQL 查询](../sql/sql.md) 可以设定更加灵活的过滤条件检索到更多的行.
 
 ##### 例子
 
@@ -32,10 +61,6 @@ rows = base.list_rows('Table1', view_name='default', order_by='年龄', desc=Tru
 base.get_row(table_name, row_id)
 ```
 
-其中
-
-* table_name: 子表名称或 id
-
 ##### 例子
 
 ```python
@@ -49,10 +74,6 @@ row = base.get_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```python
 base.append_row(table_name, row_data)
 ```
-
-其中
-
-* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -71,10 +92,6 @@ base.append_row('Table1', row_data)
 ```python
 base.insert_row(table_name, row_data, anchor_row_id)
 ```
-
-其中
-
-* table_name: 子表名称或 id
 
 * anchor_row_id: 锚定的行的 id，将会把新行插入到这行下方
 
@@ -95,10 +112,6 @@ base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
 ```python
 base.batch_append_rows(table_name, rows_data)
 ```
-
-其中
-
-* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -124,10 +137,6 @@ base.batch_append_rows('Table6', rows_data)
 base.update_row(table_name, row_id, row_data)
 ```
 
-其中
-
-* table_name: 子表名称或 id
-
 ##### 例子
 
 ```python
@@ -144,10 +153,6 @@ base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
 ```python
 batch_update_rows(table_name, rows_data)
 ```
-
-其中
-
-* table_name: 子表名称或 id
 
 ##### 例子
 
@@ -186,10 +191,6 @@ base.batch_update_rows('Table1', rows_data=updates_data)
 base.delete_row(table_name, row_id)
 ```
 
-其中
-
-* table_name: 子表名称或 id
-
 ##### 例子
 
 ```python
@@ -204,10 +205,6 @@ base.delete_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 base.batch_delete_rows(table_name, row_ids)
 ```
 
-其中
-
-* table_name: 子表名称或 id
-
 ##### 例子
 
 ```python
@@ -215,7 +212,3 @@ del_rows = rows[:3]
 row_ids = [row['_id'] for row in del_rows]
 base.batch_delete_rows('Table1', row_ids)
 ```
-
-#### Filter rows
-
-最新的版本请用 SQL Query 函数提供的查询功能。
