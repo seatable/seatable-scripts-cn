@@ -15,10 +15,10 @@ Account 类提供了操作全局 API 的接口，包括
 ```python
 from seatable_api import Account
 
-email = 'xiongxxx@xxx.com'
+username = 'xiongxxx@xxx.com'
 password = 'xxxxxxx'
 server_url = 'https://cloud.seatable.cn/'
-account = Account(email, password, server_url)
+account = Account(username, password, server_url)
 account.auth()
 ```
 
