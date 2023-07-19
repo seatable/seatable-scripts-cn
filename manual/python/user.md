@@ -5,7 +5,7 @@
 获取用户的信息， 通过用户的 ID 可以返回用户在 机构中的编号 (id_in_org) 以及姓名 (name)
 
 ```python
-base.get_user_info（username）
+base.get_user_info(username)
 ```
 
 其中
