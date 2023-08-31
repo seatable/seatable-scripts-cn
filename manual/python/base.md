@@ -38,8 +38,8 @@ base.get_metadata()
 		'_id': '4krH',
 		'name': '联系人',
 		'is_header_locked': False,
-    		'description': 'xxxx',
-    		'header_settings': {
+    'description': 'xxxx',
+    'header_settings': {
 			'header_height': 'double'
 		},
 		'columns': [{
