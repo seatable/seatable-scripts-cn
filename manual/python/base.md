@@ -38,6 +38,10 @@ base.get_metadata()
 		'_id': '4krH',
 		'name': '联系人',
 		'is_header_locked': False,
+    'description': 'xxxx',
+    'header_settings': {
+			'header_height': 'double'
+		},
 		'columns': [{
 			'key': '0000',
 			'type': 'text',
@@ -78,9 +82,23 @@ base.get_metadata()
 			'formula_rows': {},
 			'link_rows': {},
 			'summaries': {},
-			'colors': {}
+			'colors': {},
+      'row_height': 'double'
 		}]
-	}]
+	}],
+  'version': 28,
+	'scripts': [{
+		'name': 'test',
+		'url': '/scripts/09U9.py',
+		'_id': '09U9',
+		'type': 'Python'
+	}],
+	'settings': {
+		'enable_archive': True
+	},
+	'description': {
+		'text': 'The base records are based on the research work recently\n\n\n'
+	}
 }
 ```
 
