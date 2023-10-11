@@ -2,7 +2,7 @@
 
 #### List columns
 
-列出表/视图所有行
+列出表/视图所有列
 
 ```python
 base.list_columns(table_name, view_name=None)
