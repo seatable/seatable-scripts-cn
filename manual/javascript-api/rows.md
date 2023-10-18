@@ -5,21 +5,23 @@
 获取表格的所有行
 
 ```javascript
-base.listRows(table_name, view_name=None, order_by='', desc='', start='', limit='')
+base.listRows(table_name, view_name='', order_by='', desc='', start='', limit='')
 ```
 
 其中
 
-* order_by: 根据某列名进行排序
-* desc： 是否降序，默认为升序
-* start: 索引的起始位置， 行号
-* limit: 数据的显示数量
+* table_name: 子表名称
+* view_name: 视图名称， 如果设定， 会返回满足视图设定条件的行数据
+* order_by: 按照某列排序的列名
+* desc:  是否是降序，默认为 false
+* start: 索引的起始位置，行号
+* limit: 数据的显示数量，最大返回 1000 行 (即使设定值超过 1000 行)
 
 ##### 例子
 
 ```javascript
 const rows1 = await base.listRows('Table1')
-const rows2 = await base.listRows('Table1', view_name='default', order_by='年龄', desc=True, start=5, limit=20)
+const rows2 = await base.listRows('Table1', 'Default', '年龄', true, 5, 20)
 ```
 
 #### Get row
