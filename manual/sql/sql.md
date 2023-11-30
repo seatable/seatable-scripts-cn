@@ -12,9 +12,23 @@ SELECT 语句的语法如下：
 SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingClause] [OrderByClause] [Limit Option]
 ```
 
+从 4.3 版本起，支持基本的 JOIN 查询，例如：
+
+```SQL
+SELECT ... FROM table1, table2 WHERE table1.column1 = table2.column2 AND ...
+```
+
+JOIN 查询存在以下限制：
+
+* 只支持 INNER JOIN 查询，不支持 LEFT JOIN，RIGHT JOIN，FULL JOIN 等。
+* `FROM` 子句中的表不能重复。
+* `FROM` 子句中的每个表必须至少关联一个 JOIN 条件。
+* JOIN 条件需要放在 `WHERE` 子句里，并且用 `AND` 连接。
+* JOIN 条件只能是两个列的相等比较，例如 `table1.column1 = table2.column2`。
+* JOIN 条件中的列需要存在索引，除非这个子表未归档。
+
 说明：
 
-* 暂不支持多个子表查询的 `JOIN` 语句。
 * where 语句中支持大部分的表达式（算数表达式，比较表达式等），关键字包括： `[NOT] LIKE`, `IN`, `BETWEEN ... AND ...`, `AND`, `OR`, `NOT`, `IS [NOT] TRUE`, `IS [NOT] NULL`. 其中：
     * 算术表达式只支持数字。
     * `LIKE` 语句只支持字符串。支持使用 `ILIKE` 关键字替代 `LIKE`，从而在匹配中不区分大小写。
@@ -28,7 +42,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingCl
     * 一个返回字段的别名，可以在 group by, order by, having 语句中被引用。比如 `select t.registration as r, count(*) as c from t group by r having c > 100`。
     * 一个返回字段的别名，不能在 where 语句中被引用。比如 `select t.registration as r, count(*) from t group by r where r > "2020-01-01"` 会报告语法错误。
 
-查询结果是以 JSON 的格式进行返回，每一行是一个 JSON 对象。默认情况下，对象的 key 是对应的列的 key，而不是列明。
+查询结果是以 JSON 的格式进行返回，每一行是一个 JSON 对象。默认情况下，对象的 key 是对应的列的 key，而不是列名。不过在 JOIN 查询里，对象的 key 对应 "id" 字段，而不是 "key" 字段。上述 "id", "key" 字段都存在于返回结果的 "metadata" 数组中。
 
 INSERT，UPDATE，DELETE 语句的语法如下：
 
