@@ -38,6 +38,7 @@ npm install
 ```
 "name": '',                   // 插件英文名字，只能包含字母、数字、下划线、中划线
 "version": '',                // 插件版本号
+"display_type: '',            // 插件展示类型 "dialog" | 'overlay'
 "display_name": '',           // 插件显示的名字
 "description": '',            // 插件功能相关描述
 ```
@@ -212,20 +213,34 @@ App.propTypes = {
 
 2. 将插件 task.zip 上传到 dtable 中
 
-## 官方提供的插件开发库
+## 官方提供的插件开发工具库
+
+1. dtable-sdk
+2. dtable-utils
 
 ### dtable-sdk
+> 覆写 Base 应用向插件提供的 api. 主要用于插件开发阶段，用于获取，删除，更新 Base 数据,本地开发时使用 dtable-sdk 提供的 api, 集成后使用 Base 的 api
 
 dtable-sdk 提供了对数据操作的接口
 
-* [初始化插件](base.md)
-* [Tables](tables.md)
-* [Views](views.md)
-* [Columns](columns.md)
-* [Rows](rows.md)
-* [Query with sql](query.md)
-* [plugins](plugins.md)
-* [Constants](constants.md)
+* [初始化插件](./dtable-sdk/base.md)
+* [Tables](./dtable-sdk/tables.md)
+* [Views](./dtable-sdk/views.md)
+* [Columns](./dtable-sdk/columns.md)
+* [Rows](./dtable-sdk/rows.md)
+* [Plugins](./dtable-sdk/plugins.md)
+* [Links](./dtable-sdk/links.md)
+
+### dtable-utils
+> 插件开发工具函数库，提供一些常量，数据格式化工具，数据获取工具，方便用户完成插件的开发
+
+* [Tables](./dtable-utils/tables.md)
+* [Views](./dtable-utils/views.md)
+* [Columns](./dtable-utils/columns.md)
+* [Rows](./dtable-utils/rows.md)
+* [Cells](./dtable-utils/cells.md)
+* [Constants](./dtable-utils/constants.md)
+
 
 
 ### dtable-ui-component

@@ -5,7 +5,7 @@
 添加子表
 
 ```javascript
-dtable.addTable(tableName);
+window.dtableSDK.addTable(tableName);
 ```
 
 其中
@@ -15,7 +15,7 @@ dtable.addTable(tableName);
 例子
 
 ```javascript
-dtable.addTable('newTable');
+window.dtableSDK.addTable('newTable');
 ```
 
 ## deleteTable
@@ -23,7 +23,7 @@ dtable.addTable('newTable');
 删除子表
 
 ```javascript
-dtable.deleteTable(tableName);
+window.dtableSDK.deleteTable(tableName);
 ```
 
 其中
@@ -33,7 +33,7 @@ dtable.deleteTable(tableName);
 例子
 
 ```javascript
-dtable.deleteTable('newTable');
+window.dtableSDK.deleteTable('newTable');
 ```
 
 ## renameTable
@@ -41,7 +41,7 @@ dtable.deleteTable('newTable');
 修改子表名字
 
 ```javascript
-dtable.renameTable(oldTableName, newTableName);
+window.dtableSDK.renameTable(oldTableName, newTableName);
 ```
 
 其中
@@ -52,7 +52,7 @@ dtable.renameTable(oldTableName, newTableName);
 例子
 
 ```javascript
-dtable.renameTable('oldTableName', 'newTableName');
+window.dtableSDK.renameTable('oldTableName', 'newTableName');
 ```
 
 ## getTables
@@ -60,13 +60,13 @@ dtable.renameTable('oldTableName', 'newTableName');
 获取 base 中所有的子表
 
 ```javascript
-dtable.getTables();
+window.dtableSDK.getTables();
 ```
 
 例子
 
 ```javascript
-const tables = dtable.getTables();
+const tables = window.dtableSDK.getTables();
 ```
 
 ## getActiveTable
@@ -74,49 +74,13 @@ const tables = dtable.getTables();
 获取当前 base 正在访问的子表
 
 ```javascript
-dtable.getActiveTable();
+window.dtableSDK.getActiveTable();
 ```
 
 例子
 
 ```javascript
-const table = dtable.getActiveTable();
-```
-
-## getTableByName
-
-通过 name 获取子表内容
-
-```javascript
-dtable.getTableByName(tableName);
-```
-
-其中
-
-* tableName: 子表的 name 值
-
-例子
-
-```javascript
-dtable.getTableByName('tableName');
-```
-
-## getTableById
-
-通过 id 获取子表内容
-
-```javascript
-dtable.getTableById(tableId);
-```
-
-其中
-
-* tableId: 子表的 id 值
-
-例子
-
-```javascript
-dtable.getTableById('0000');
+const table = window.dtableSDK.getActiveTable();
 ```
 
 ## importDataIntoNewTable
