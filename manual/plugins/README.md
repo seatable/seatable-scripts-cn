@@ -217,6 +217,7 @@ App.propTypes = {
 
 1. dtable-sdk
 2. dtable-utils
+3. dtable-ui-component
 
 ### dtable-sdk
 > 覆写 Base 应用向插件提供的 api. 主要用于插件开发阶段，用于获取，删除，更新 Base 数据,本地开发时使用 dtable-sdk 提供的 api, 集成后使用 Base 的 api
