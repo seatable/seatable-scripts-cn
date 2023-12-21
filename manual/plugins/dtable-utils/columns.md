@@ -28,7 +28,7 @@ const columnType = CellType.TEXT;
 const sameTypeColumns = getColumnsByType(columns, columnType);
 ```
 
-## getColumnByName
+## getTableColumnByName
 
 通过 name 获取列内容
 
@@ -43,7 +43,7 @@ getTableColumnByName(table, columnName);
 
 ### 例子
 ```javascript
-import { CellType, getTableById, getColumnByName } from 'dtable-utils';
+import { getTableById, getColumnByName } from 'dtable-utils';
 
 const tables = window.dtableSDK.getTables();
 
@@ -56,7 +56,7 @@ const columnName = 'columnName';
 const column = getTableColumnByName(columns, columnName);
 ```
 
-## getColumnByKey
+## getTableColumnByKey
 
 通过 key 获取列内容
 
@@ -71,7 +71,7 @@ getTableColumnByKey(table, columnKey);
 
 ### 例子
 ```javascript
-import { CellType, getTableById, getTableColumnByKey } from 'dtable-utils';
+import { getTableById, getTableColumnByKey } from 'dtable-utils';
 
 const tables = window.dtableSDK.getTables();
 

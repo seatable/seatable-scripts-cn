@@ -28,7 +28,7 @@ const table = getTableById(tables, tableId);
 const viewId = '0000';
 const view = getViewById(table.views, viewId);
 
-const collaborators = dtable.getRelatedUsers();
+const collaborators = window.dtableSDK.getRelatedUsers();
 const rowData = {
   '名称': '小强',
   '年龄': 28,

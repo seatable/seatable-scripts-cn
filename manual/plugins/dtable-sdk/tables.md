@@ -88,7 +88,7 @@ const table = window.dtableSDK.getActiveTable();
 向 base 中添加新的子表,并包含默认数据
 
 ```javascript
-dtable.importDataIntoNewTable(tableName, columns, rows);
+window.dtableSDK.importDataIntoNewTable(tableName, columns, rows);
 ```
 
 其中
@@ -123,5 +123,5 @@ const rows = [
   {'0000': '小明', '1111': '1993-04-04'},
   {'0000': '小红', '1111': '1994-04-05'},
 ];
-dtable.importDataIntoNewTable(tableName, columns, rows);
+window.dtableSDK.importDataIntoNewTable(tableName, columns, rows);
 ```

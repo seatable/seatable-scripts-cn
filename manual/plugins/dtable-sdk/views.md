@@ -63,7 +63,7 @@ window.dtableSDK.renameView('tableName', 'oldViewName', 'newViewName');
 获取 table 中的非私有视图
 
 ```javascript
-dtable.getViews(table);
+window.dtableSDK.getViews(table);
 ```
 
 其中
@@ -78,7 +78,7 @@ import { getTableById } from 'dtable-utils';
 const tables = window.dtableSDK.getTables();
 const tableId = '0000';
 const table = getTableById(tables, tableId);
-const views = dtable.getViews(table); // const views = table.views
+const views = window.dtableSDK.getViews(table); // const views = table.views
 ```
 
 ## getActiveView

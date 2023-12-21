@@ -135,13 +135,13 @@ const name = getDurationDisplayString(value, column.data);
 获取 date 列的字符串显示(按照不同的配置参数返回用户数据)
 
 ```javascript
-getDateDisplayString(value, columnData)
+getDateDisplayString(value, columnDataFormat)
 ```
 
 其中
 
 * value: date 类型列对应的 value 值
-* format: date 的类型
+* format: columnData.format 的类型
 
 例子
 

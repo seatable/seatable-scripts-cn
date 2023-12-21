@@ -178,8 +178,8 @@ import PropTypes from 'prop-types';
 import TableInfo from './table-info';
 
 class App extends React.Component{
-  let tables = this.dtable.getTables();
-  let collaborators = this.dtable.getRelatedUsers();
+  let tables = window.dtableSDK..getTables();
+  let collaborators = window.dtableSDK.getRelatedUsers();
   render() {
     return (
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} contentClassName="dtable-plugin plugin-container" size='lg'>
@@ -217,6 +217,7 @@ App.propTypes = {
 
 1. dtable-sdk
 2. dtable-utils
+3. dtable-ui-component
 
 ### dtable-sdk
 > 覆写 Base 应用向插件提供的 api. 主要用于插件开发阶段，用于获取，删除，更新 Base 数据,本地开发时使用 dtable-sdk 提供的 api, 集成后使用 Base 的 api

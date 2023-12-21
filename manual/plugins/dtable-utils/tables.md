@@ -16,11 +16,11 @@ getTableById(tables, tableId);
 例子
 
 ```javascript
-import { getTableByName } from 'dtable-utils';
+import { getTableById } from 'dtable-utils';
 
 const tables = window.dtableSDK.getTables();
 const tableId = 'tableId';
-const table = getTableByName(tables, tableId)
+const table = getTableById(tables, tableId)
 ```
 
 ## getTableByName
