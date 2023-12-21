@@ -43,7 +43,7 @@ getTableColumnByName(table, columnName);
 
 ### 例子
 ```javascript
-import { CellType, getTableById, getColumnByName } from 'dtable-utils';
+import { getTableById, getColumnByName } from 'dtable-utils';
 
 const tables = window.dtableSDK.getTables();
 
@@ -71,7 +71,7 @@ getTableColumnByKey(table, columnKey);
 
 ### 例子
 ```javascript
-import { CellType, getTableById, getTableColumnByKey } from 'dtable-utils';
+import { getTableById, getTableColumnByKey } from 'dtable-utils';
 
 const tables = window.dtableSDK.getTables();
 
