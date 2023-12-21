@@ -28,7 +28,7 @@ const columnType = CellType.TEXT;
 const sameTypeColumns = getColumnsByType(columns, columnType);
 ```
 
-## getColumnByName
+## getTableColumnByName
 
 通过 name 获取列内容
 
@@ -56,7 +56,7 @@ const columnName = 'columnName';
 const column = getTableColumnByName(columns, columnName);
 ```
 
-## getColumnByKey
+## getTableColumnByKey
 
 通过 key 获取列内容
 

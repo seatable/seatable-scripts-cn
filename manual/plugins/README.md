@@ -178,8 +178,8 @@ import PropTypes from 'prop-types';
 import TableInfo from './table-info';
 
 class App extends React.Component{
-  let tables = this.dtable.getTables();
-  let collaborators = this.dtable.getRelatedUsers();
+  let tables = window.dtableSDK..getTables();
+  let collaborators = window.dtableSDK.getRelatedUsers();
   render() {
     return (
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} contentClassName="dtable-plugin plugin-container" size='lg'>
