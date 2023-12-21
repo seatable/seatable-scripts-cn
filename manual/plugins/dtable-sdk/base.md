@@ -76,11 +76,11 @@ class App extends React.Component {
       await dtableSDK.init(settings);
       await dtableSDK.syncWithServer();
       widow.dtableSDK = dtableSDK;
-      this.dtable.subscribe('dtable-connect', this.resetData);
+      widow.dtableSDK.subscribe('dtable-connect', this.resetData);
     }
 
-    this.dtable.subscribe('local-dtable-changed', this.resetData);
-    this.dtable.subscribe('remote-dtable-changed', this.resetData);
+    widow.dtableSDK.subscribe('local-dtable-changed', this.resetData);
+    widow.dtableSDK.subscribe('remote-dtable-changed', this.resetData);
   }
 
   resetData = () => {
