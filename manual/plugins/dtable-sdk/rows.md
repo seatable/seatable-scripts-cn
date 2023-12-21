@@ -5,7 +5,7 @@
 添加行数据
 
 ```javascript
-dtable.appendRow(table, rowData, view, { collaborators } = {});
+window.dtableSDK.appendRow(table, rowData, view, { collaborators } = {});
 ```
 
 其中
@@ -18,17 +18,23 @@ dtable.appendRow(table, rowData, view, { collaborators } = {});
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
-const view = dtable.getViewByName(table, viewName);
+import { getTableById, getViewById } from 'dtable-utils';
+
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
+const viewId = '0000';
+const view = getViewById(table.views, viewId);
+
 const collaborators = dtable.getRelatedUsers();
 const rowData = {
   '名称': '小强',
   '年龄': 28,
   '工作': '程序员'
 };
-dtable.appendRow(table, rowData, view, { collaborators });
+window.dtableSDK.appendRow(table, rowData, view, { collaborators });
 ```
 
 ## deleteRowById
@@ -36,7 +42,7 @@ dtable.appendRow(table, rowData, view, { collaborators });
 通过 id 删除子表的行数据
 
 ```javascript
-dtable.deleteRowById(table, rowId);
+window.dtableSDK.deleteRowById(table, rowId);
 ```
 
 其中
@@ -47,15 +53,20 @@ dtable.deleteRowById(table, rowId);
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
-const view = dtable.getViewByName(table, viewName);
+import { getTableById, getViewById } from 'dtable-utils';
 
-const rows = dtable.getViewRows(view, table);
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
+const viewId = '0000';
+const view = getViewById(table.views, viewId);
+
+const rows = window.dtableSDK.getViewRows(view, table);
 const rowId = rows[0]._id;
 
-dtable.deleteRowById(table, rowId);
+window.dtableSDK.deleteRowById(table, rowId);
 ```
 
 ## deleteRowsByIds
@@ -63,7 +74,7 @@ dtable.deleteRowById(table, rowId);
 通过 id 列表删除子表的多行数据
 
 ```javascript
-dtable.deleteRowsByIds(table, rowIds);
+window.dtableSDK.deleteRowsByIds(table, rowIds);
 ```
 
 其中
@@ -74,16 +85,21 @@ dtable.deleteRowsByIds(table, rowIds);
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
-const view = dtable.getViewByName(table, viewName);
+import { getTableById, getViewById } from 'dtable-utils';
 
-const rows = dtable.getViewRows(view, table);
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
+const viewId = '0000';
+const view = getViewById(table.views, viewId);
+
+const rows = window.dtableSDK.getViewRows(view, table);
 const rowIds = rows.map(row => row._id);
 
 // 删除前五行数据
-dtable.deleteRowsByIds(table, rowIds.slice(0, 5));
+window.dtableSDK.deleteRowsByIds(table, rowIds.slice(0, 5));
 ```
 
 ## modifyRow
@@ -91,7 +107,7 @@ dtable.deleteRowsByIds(table, rowIds.slice(0, 5));
 更改行内容
 
 ```javascript
-dtable.modifyRow(table, row, updated);
+window.dtableSDK.modifyRow(table, row, updated);
 ```
 
 其中
@@ -103,18 +119,23 @@ dtable.modifyRow(table, row, updated);
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
-const view = dtable.getViewByName(table, viewName);
+import { getTableById, getViewById } from 'dtable-utils';
 
-const rows = dtable.getViewRows(view, table);
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
+const viewId = '0000';
+const view = getViewById(table.views, viewId);
+
+const rows = window.dtableSDK.getViewRows(view, table);
 const rowId = rows[0];
 const updated = {
   '年龄': 30,
   '工作': '销售'
 };
-dtable.modifyRow(table, row, updated);
+window.dtableSDK.modifyRow(table, row, updated);
 ```
 
 ## forEachRow
@@ -122,7 +143,7 @@ dtable.modifyRow(table, row, updated);
 遍历行数据, 依据某些条件完成相应业务逻辑
 
 ```javascript
-dtable.forEachRow(tableName, viewName, callback, { username, userId } = {});
+window.dtableSDK.forEachRow(tableName, viewName, callback, { username, userId } = {});
 ```
 
 其中
@@ -138,18 +159,20 @@ dtable.forEachRow(tableName, viewName, callback, { username, userId } = {});
 
 ```javascript
 import { username, userId } from 'setting.local';
+import { getTableByName } from 'dtable-utils';
 
 // const { username, userId } = window.dtable;
 
 // 业务需求: 如果 行数据中的 “任务状态” 列是 “完成” 状态, 将改行中 “合格” 列设置为 “是”
 const tableName = 'Table1';
 const viewName = 'Default View'
-dtable.forEachRow(tableName, viewName, (row) => {
+const tables = window.dtableSDK.getTables();
+window.dtableSDK.forEachRow(tableName, viewName, (row) => {
   // 实现业务需求
   if (row['任务状态'] === '完成') {
-    const table = dtable.getTableByName(tableName);
+    const table = getTableByName(tables, tableName);
     const updated = {'合格': '是'};
-    dtable.modifyRow(table, row, updated);
+    window.dtableSDK.modifyRow(table, row, updated);
   }
 }, {username, userId});
 
@@ -160,7 +183,7 @@ dtable.forEachRow(tableName, viewName, (row) => {
 获取行数据关联其他表的所有行数据的 id 值
 
 ```javascript
-dtable.getTableLinkRows(rows, table);
+window.dtableSDK.getTableLinkRows(rows, table);
 ```
 
 其中
@@ -171,15 +194,20 @@ dtable.getTableLinkRows(rows, table);
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
-const view = dtable.getViewByName(table, viewName);
+import { getTableById, getViewById } from 'dtable-utils';
 
-const rows = dtable.getViewRows(view, table);
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
+const viewId = '0000';
+const view = getViewById(table.views, viewId);
+
+const rows = window.dtableSDK.getViewRows(view, table);
 
 const findLinkRows = rows.slice(0, 5);
-dtable.getTableLinkRows(finLinkRows, table);
+window.dtableSDK.getTableLinkRows(finLinkRows, table);
 ```
 
 ## getViewRows
@@ -187,7 +215,7 @@ dtable.getTableLinkRows(finLinkRows, table);
 获取视图的行数据
 
 ```javascript
-dtable.getViewRows(view, table);
+window.dtableSDK.getViewRows(view, table);
 ```
 
 其中
@@ -198,12 +226,17 @@ dtable.getViewRows(view, table);
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
-const view = dtable.getViewByName(table, viewName);
+import { getTableById, getViewById } from 'dtable-utils';
 
-const rows = dtable.getViewRows(view, table);
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
+const viewId = '0000';
+const view = getViewById(table.views, viewId);
+
+const rows = window.dtableSDK.getViewRows(view, table);
 ```
 
 ## getGroupRows
@@ -211,7 +244,7 @@ const rows = dtable.getViewRows(view, table);
 获取分组的行数据
 
 ```javascript
-dtable.getGroupRows(view, table);
+window.dtableSDK.getGroupRows(view, table);
 ```
 
 其中
@@ -222,12 +255,17 @@ dtable.getGroupRows(view, table);
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
-const view = dtable.getViewByName(table, viewName);
+import { getTableById, getViewById } from 'dtable-utils';
 
-const rows = dtable.getViewRows(view, table);
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
+const viewId = '0000';
+const view = getViewById(table.views, viewId);
+
+const rows = window.dtableSDK.getGroupRows(view, table);
 ```
 
 ## getInsertedRowInitData
@@ -235,7 +273,7 @@ const rows = dtable.getViewRows(view, table);
 获取新增行的默认数据(如果表格中包含排序, 分组, 过滤等功能, 可以直接通过 api 获取新增行的默认值)
 
 ```javascript
-dtable.getInsertedRowInitData(view, table, rowId);
+window.dtableSDK.getInsertedRowInitData(view, table, rowId);
 ```
 
 其中
@@ -247,63 +285,20 @@ dtable.getInsertedRowInitData(view, table, rowId);
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
-const view = dtable.getViewByName(table, viewName);
+import { getTableById, getViewById } from 'dtable-utils';
 
-const rows = dtable.getViewRows(view, table);
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
+const viewId = '0000';
+const view = getViewById(table.views, viewId);
+
+const rows = window.dtableSDK.getViewRows(view, table);
 const prevRow = rows[row.length - 1];
 
-const defaultRowData = dtable.getInsertedRowInitData(view, table, prevRow._id);
-```
-
-## getRowsByID
-
-通过 id 列表获取子表的相关行数据
-
-```javascript
-dtable.getRowsByID(tableId, rowIds);
-```
-
-其中
-
-* tableId: 子表的 id 值
-* rowIds: 查找行的 id 列表
-
-例子
-
-```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-
-const rowIds = ['aaa', 'bbb', 'cccc', 'dddd'];
-
-const rows = dtable.getRowsByID(table._id, rowIds);
-```
-
-## getRowById
-
-通过 id 获取子表的相关行数据
-
-```javascript
-dtable.getRowById(table, rowId);
-```
-
-其中
-
-* table: 子表对象
-* rowId: 查找行的 id 值
-
-例子
-
-```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
-
-const rowId = 'aaaa';
-
-const rows = dtable.getRowById(table, rowId);
+const defaultRowData = window.dtableSDK.getInsertedRowInitData(view, table, prevRow._id);
 ```
 
 ## moveGroupRows
@@ -311,7 +306,7 @@ const rows = dtable.getRowById(table, rowId);
 移动分组中的行
 
 ```javascript
-dtable.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, updated, oldRows, groupbyColumns);
+window.dtableSDK.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, updated, oldRows, groupbyColumns);
 ```
 
 其中
@@ -328,8 +323,13 @@ dtable.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, upd
 例子
 
 ```javascript
-const tableName = 'Table1';
-const table = dtable.getTableByName(tableName);
+import { getTableById } from 'dtable-utils';
+
+const tables = window.dtableSDK.getTables();
+
+const tableId = '0000';
+const table = getTableById(tables, tableId);
+
 // 1. 假设: 默认行数据列表如下, 按照分组列进行分组
 const rows = [
   {_id: 'aaa', '名称', '小强', '年龄': '29', '出生日期': '1992-09-09', '分组': 'a'},
@@ -361,6 +361,6 @@ const oldRows = {
 
 const groupbyColumns = [{key: '分组', name: '分组', type: 'text', ...}];
 
-const rows = dtable.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, updated, oldRows, groupbyColumns);
+const rows = window.dtableSDK.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, updated, oldRows, groupbyColumns);
 ```
 

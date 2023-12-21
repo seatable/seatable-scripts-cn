@@ -93,14 +93,22 @@ nav:
     - SQL 函数参考: sql/function.md
   - 插件开发流程和 API:
     - 插件开发流程: plugins/README.md
-    - Base: plugins/base.md
-    - Common: plugins/common.md
-    - Tables: plugins/tables.md
-    - Views: plugins/views.md
-    - Columns: plugins/columns.md
-    - Rows: plugins/rows.md
-    - Query with SQL: plugins/query.md
-    - plugins: plugins/plugins.md
-    - Constants: plugins/constants.md
+    - dtable-sdk:
+      - Base: plugins/dtable-sdk/base.md
+      - Common: plugins/dtable-sdk/common.md
+      - Tables: plugins/dtable-sdk/tables.md
+      - Views: plugins/dtable-sdk/views.md
+      - Columns: plugins/dtable-sdk/columns.md
+      - Rows: plugins/dtable-sdk/rows.md
+      - Plugins: plugins/dtable-sdk/plugins.md
+      - Links: plugins/dtable-sdk/links.md
+    - dtable-utils:
+      - Tables: plugins/dtable-utils/tables.md
+      - Views: plugins/dtable-utils/views.md
+      - Columns: plugins/dtable-utils/columns.md
+      - Rows: plugins/dtable-utils/rows.md
+      - Cells: plugins/dtable-utils/cells.md
+      - Constants: plugins/dtable-utils/constants.md
+
 
 

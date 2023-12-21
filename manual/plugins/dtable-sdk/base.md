@@ -14,26 +14,15 @@
 ```javascript
 import DTable from 'dtable-sdk';
 
-const dtable = new DTable();
+const dtableSDK = new DTable();
 const settings = {
   "server": "https://cloud.seatable.cn",
   "APIToken": "50c17897ae8b1c7c428d459fc2c379a9bc3806cc",
 }
-await dtable.init(config);
+await dtableSDK.init(config);
+await dtableSDK.syncWithServer();
+window.dtableSDK = dtableSDK;
 ```
-
-#### initBrowser
-
-生产环境下初始化插件
-
-```javascript
-import DTable from 'dtable-sdk';
-
-const dtable = new Dtable();
-const dtableStore = window.app.dtableStore; // 从集成环境中读取初始化数据
-await dtable.initBrowser(dtableStore);
-```
-
 
 ### 监听事件变化
 
@@ -48,10 +37,10 @@ await dtable.initBrowser(dtableStore);
 ```javascript
 import DTable from 'dtable-sdk';
 
-const dtable = new Dtable();
-dtable.subscribe('dtable-connect', () => {...});
-dtable.subscribe('local-dtable-changed', () => {...});
-dtable.subscribe('remote-dtable-changed', () => {...});
+const dtableSDK = new Dtable();
+dtableSDK.subscribe('dtable-connect', () => {...});
+dtableSDK.subscribe('local-dtable-changed', () => {...});
+dtableSDK.subscribe('remote-dtable-changed', () => {...});
 ```
 
 ## 插件开发初始化例子
@@ -78,18 +67,16 @@ class App extends React.Component {
     this.state = {
       isLoading: true
     };
-    this.dtable = new Dtable();
   }
 
   async componentDidMount() {
     const { isDevelopment } = this.props;
     if (isDevelopment) {
-      await dtable.init(settings);
-      await this.dtable.syncWithServer();
+      const dtableSDK = new Dtable();
+      await dtableSDK.init(settings);
+      await dtableSDK.syncWithServer();
+      widow.dtableSDK = dtableSDK;
       this.dtable.subscribe('dtable-connect', this.resetData);
-    } else {
-      const dtableStore = window.app.dtableStore;
-      dtable.initBrowser(dtableStore);
     }
 
     this.dtable.subscribe('local-dtable-changed', this.resetData);

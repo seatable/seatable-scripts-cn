@@ -7,7 +7,7 @@
 列类型，当插入/追加列、更改列类型, 获取 formatter 等情况需要使用到
 
 ```javascript
-import { CELL_TYPE } from 'dtable-sdk';
+import { CellType as CELL_TYPE } from 'dtable-utils';
 
 CELL_TYPE.NUMBER              // 数字
 CELL_TYPE.TEXT                // 文本
@@ -39,7 +39,7 @@ CELL_TYPE.RATE                // 等级
 列类型对应的图标配置信息
 
 ```javascript
-import { CELL_TYPE, COLUMNS_ICON_CONFIG } from 'dtable-store';
+import { CellType as CELL_TYPE, COLUMNS_ICON_CONFIG } from 'dtable-utils';
 
 const text = CELL_TYPE.TEXT;
 // value: 'dtable-font dtable-icon-single-line-text'
@@ -60,7 +60,7 @@ const singleSelectIconClass = COLUMNS_ICON_CONFIG[single_select];
 列的基本配置信息, 获取列的 icon 配置和不同列类型的提示信息时需要使用到
 
 ```javascript
-import { CELL_TYPE, COLUMN_OPTIONS } from 'dtable-sdk';
+import { CellType as CELL_TYPE, COLUMN_OPTIONS } from 'dtable-utils';
 
 const text = CELL_TYPE.TEXT;
 // textOption : 
@@ -93,7 +93,7 @@ const singleSelectOption = COLUMN_OPTIONS.find(option => option.type === singleS
 
 ```javascript
 
-import { FORMULA_RESULT_TYPE } from 'dtable-sdk';
+import { FORMULA_RESULT_TYPE } from 'dtable-utils';
 
 FORMULA_RESULT_TYPE.NUMBER     // number
 FORMULA_RESULT_TYPE.STRING     // string
@@ -109,7 +109,7 @@ FORMULA_RESULT_TYPE.ARRAY      // array
 
 ```javascript
 
-import { SELECT_OPTION_COLORS } from 'dtable-sdk';
+import { SELECT_OPTION_COLORS } from 'dtable-utils';
 
 // const SELECT_OPTION_COLORS = [
 //   {COLOR: '#FFFCB5', BORDER_COLOR: '#E8E79D', TEXT_COLOR: '#202428'},
@@ -151,7 +151,7 @@ const selectColor = SELECT_OPTION_COLORS[colorIndex];
 
 ```javascript
 
-import { TABLE_PERMISSION_TYPE } from 'dtable-sdk';
+import { TABLE_PERMISSION_TYPE } from 'dtable-utils';
 
 TABLE_PERMISSION_TYPE.DEFAULT              // default 默认权限
 TABLE_PERMISSION_TYPE.ADMINS               // admins  有管理权限的人
