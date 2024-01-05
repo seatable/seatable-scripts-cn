@@ -1,6 +1,6 @@
 # Base 对象
 
-Base 对象提供了一些操作数据的方法, 其中以下有些函数对于同一个功能实现了 2 个是为了尽量与 JS API 中相关的接口名称保持一致， 两种方法返回的结果都是相同的，用户可以根据自己的需要进行选择使用。
+Base 对象提供了一些操作数据的方法
 
 ## 子表
 
@@ -106,7 +106,7 @@ output.text(view._id);
 
 ```
 
-#### listViews / getViews
+#### listViews / getViews(deprecated)
 
 获取当前表格的所有视图，并以一个数组的形式返回所有的视图
 
@@ -115,12 +115,6 @@ const views = base.listViews(table: Object/String);
 ```
 
 ##### 例子
-
-```javascript
-const table  = base.getTableByName('Table1');
-const views = base.getViews(table);
-output.text(views.length);
-```
 
 ```javascript
 const views = base.listViews('Table1');
