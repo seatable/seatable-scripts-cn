@@ -19,6 +19,45 @@ base.list_columns('Table1')
 base.list_columns('Table1', view_name='default')
 ```
 
+#### Get column by name
+
+通过名称获取列
+
+```python
+base.get_column_by_name(table_name, colume_name)
+```
+
+其中
+
+* table_name: 子表名称或id
+* column_name： 需要获取的列名
+
+##### 例子
+
+```python
+base.get_column_by_name('Table1', 'Name')
+```
+
+#### Get columns by type
+
+通过列的类型来获取列
+
+```python
+base.get_columns_by_type(table_name, column_type)
+```
+
+其中
+
+* table_name: 子表名称或 id
+* column_type: 需要获取的列的类型，ColumnTypes 类，请参考 [constants](../constants)
+
+##### 例子
+
+```python
+from seatable_api.constants import ColumnTypes
+base.get_columns_by_type('Table1', ColumnTypes.TEXT)
+```
+
 #### Insert column
 
 插入/追加列

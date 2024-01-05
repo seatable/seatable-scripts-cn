@@ -1,6 +1,6 @@
 # Base 对象
 
-Base 对象提供了一些操作数据的方法
+Base 对象提供了一些操作数据的方法, 其中以下有些函数对于同一个功能实现了 2 个是为了尽量与 JS API 中相关的接口名称保持一致， 两种方法返回的结果都是相同的，用户可以根据自己的需要进行选择使用。
 
 ## 子表
 
@@ -106,12 +106,12 @@ output.text(view._id);
 
 ```
 
-#### getViews
+#### listViews / getViews
 
 获取当前表格的所有视图，并以一个数组的形式返回所有的视图
 
 ```javascript
-const views = base.getViews(table: Object/String);
+const views = base.listViews(table: Object/String);
 ```
 
 ##### 例子
@@ -123,7 +123,7 @@ output.text(views.length);
 ```
 
 ```javascript
-const views = base.getViews('Table1');
+const views = base.listViews('Table1');
 output.text(views.length);
 ```
 
@@ -252,6 +252,20 @@ column.forEach((column) => {
 
 ```javascript
 const columns = base.getShownColumns('Table1', 'view 1');
+```
+
+### listColumns
+
+获取表格的所有的列, 通过表格名称和 视图名称获取
+
+```javascript
+const columns = base.listColumns(table_name, view_name=null)
+```
+
+##### 例子
+
+```
+const view_cols = base.listColumns('Table1', 'My_view')
 ```
 
 #### getColumnByName

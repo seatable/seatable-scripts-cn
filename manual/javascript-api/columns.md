@@ -2,7 +2,7 @@
 
 #### List columns
 
-列出表/视图所有行
+列出表/视图所有列
 
 ```javascript
 base.listColumns(table_name, view_name='')
@@ -13,6 +13,34 @@ base.listColumns(table_name, view_name='')
 ```javascript
 const columns1 = await base.listColumns('Table1')
 const columns2 = await base.listColumns('Table1', view_name='default')
+```
+
+#### Get columns by name
+
+根据列名称来获取列
+
+```javascript
+base.getColumnByName(table_name, column_name);
+```
+
+###### 例子
+
+```javascript
+const col = await base.getColumnsByName('Table1', 'Name');
+```
+
+#### Get columns by type
+
+根据列的类型来获取列
+
+```javascript
+base.getColumnsByType(table_name, col_type);
+```
+
+##### 例子
+
+```javascript
+const cols = await base.getColumnsByType('Table1', 'number')
 ```
 
 #### Insert column

@@ -104,7 +104,33 @@ base.get_metadata()
 
 ## Table
 
-#### add table
+#### List tables
+
+获取 base 中的子表
+
+```python
+base.list_tables()
+```
+
+#### Get a table by name
+
+通过名称获取 base 的子表
+
+```python
+base.get_table_by_name(table_name)
+```
+
+其中
+
+* table_name: 需要获取的子表名称
+
+##### 例子
+
+```python
+base.get_table_by_name('Table1')
+```
+
+#### Add table
 
 在 base 中添加子表
 
@@ -123,7 +149,44 @@ base.add_table(table_name, lang='en')
 base.add_table('项目调查表', lang='zh-cn')
 ```
 
-#### 
+#### Rename table
+
+重命名一个子表
+
+```python
+base.rename_table(table_name, new_table_name)
+```
+
+其中
+
+* table_name: 当前子表名称
+* new_table_name: 子表 的新名词
+
+##### 例子
+
+```python
+base.rename_table('Table1', 'Table11')
+```
+
+#### Delete table
+
+删除 base 中的子表
+
+```python
+base.delete_table(table_name)
+```
+
+其中
+
+* table_name: 需要删除的子表名称
+
+##### 例子
+
+```python
+base.delete_table('Table1')
+```
+
+
 
 ## Base 上的操作
 
