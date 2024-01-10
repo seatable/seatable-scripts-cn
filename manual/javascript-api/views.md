@@ -25,7 +25,7 @@ base.getViewByName(table_name, view_name);
 ##### 例子
 
 ```javascript
-base.getViewByName('Table1', 'MyView');
+const view = await base.getViewByName('Table1', 'MyView');
 ```
 
 #### Add view
@@ -40,7 +40,7 @@ base.addView(table_name, new_view_name);
 ##### 例子
 
 ```javascript
-base.addView('Table1', 'new_view');
+await base.addView('Table1', 'new_view');
 ```
 
 #### Raname view
@@ -68,6 +68,6 @@ base.deleteView(table_name, view_name);
 ##### 例子
 
 ```javascript
-base.deleteView('Table1', 'MyView');
+await base.deleteView('Table1', 'MyView');
 ```
 
