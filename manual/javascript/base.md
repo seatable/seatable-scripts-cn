@@ -106,24 +106,18 @@ output.text(view._id);
 
 ```
 
-#### getViews
+#### listViews / getViews(deprecated)
 
-获取当前表格的所有视图，并以一个数组的形式返回所有的视图
+获取当前表格的所有视图，并以一个数组的形式返回所有的视图,  其中 getViews 函数已经过期， 新的代码里面可以使用 listViews。
 
 ```javascript
-const views = base.getViews(table: Object/String);
+const views = base.listViews(table_name);
 ```
 
 ##### 例子
 
 ```javascript
-const table  = base.getTableByName('Table1');
-const views = base.getViews(table);
-output.text(views.length);
-```
-
-```javascript
-const views = base.getViews('Table1');
+const views = base.listViews('Table1');
 output.text(views.length);
 ```
 
@@ -254,6 +248,20 @@ column.forEach((column) => {
 const columns = base.getShownColumns('Table1', 'view 1');
 ```
 
+### listColumns
+
+获取表格的所有的列, 通过表格名称和 视图名称获取
+
+```javascript
+const columns = base.listColumns(table_name, view_name=null)
+```
+
+##### 例子
+
+```
+const view_cols = base.listColumns('Table1', 'My_view')
+```
+
 #### getColumnByName
 
 通过列的名称获取该列对象
@@ -301,7 +309,7 @@ output.text(column.length);
 获取一个视图所有的行，返回一个数组
 
 ```javascript
-const rows = base.getRows(table: Object/String, view: Object/String);
+const rows = base.getRows(table_name， view_name);
 ```
 
 ##### 例子
@@ -337,83 +345,68 @@ const groupViewRows = base.getGroupedRows(table, view);
 const groupViewRows = base.getGroupedRows('Table1', '分组视图');
 ```
 
-#### getRowById
+#### getRow / getRowById(deprecated)
 
-通过一个行的 id 获取行，返回一个行对象
+通过一个行的 id 获取行，返回一个行对象，  其中 getRowById 函数已经过期， 新的代码里面可以使用 getRow。
 
 ```javascript
-const row = base.getRowById(table: Object/String, rowId: String);
+const row = base.getRow(table: Object/String, rowId: String);
 ```
 
 ##### 例子
 
 ```javascript
-const table = base.getTableByName('Table1');
-const row = base.getRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
+const row = base.getRow('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
-```javascript
-const row = base.getRowById('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
-```
+#### deleteRow / deleteRowById(deprecated)
 
-#### deleteRowById
-
-通过一个行的 id 删除当前表格中的该行
+通过一个行的 id 删除当前表格中的该行，其中 deleteRowById 函数已经过期， 新的代码里面可以使用 deleteRow。
 
 ```javascript
-base.deleteRowById(table: Object/String, rowId: String);
+base.deleteRow(table_name, row_id)
 ```
 
 ##### 例子
 
 ```javascript
-const table = base.getTableByName('Table1');
-base.deleteRowById(table, 'M_lSEOYYTeuKTaHCEOL7nw');
+base.deleteRow('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
-```javascript
-base.deleteRowById('Table1', 'M_lSEOYYTeuKTaHCEOL7nw');
-```
+#### appendRow / addRow(deprecated)
 
-#### addRow
-
-在一个子表中添加一行
+在一个子表中添加一行， 其中 addRow 函数已经过期， 新的代码里面可以使用 appendRow。
 
 ```javascript
-base.addRow(table: Object/String, rowData: Object, viewName?: String)
+base.appendRow(table_name, row_data)
 ```
 
 ##### 例子
 ```javascript
-const table = base.getTableByName('Table1');
-base.addRow(table, {'名称': '小强', '年龄': '18'});
-base.addRow(table, {'名称': '小强', '年龄': '18'}, 'Default View');
+row_data = {
+    "Name": "I am new Row"
+}
+base.appendRow('Table1', row_data)
 ```
 
-```javascript
-base.addRow('Table1', {'名称': '小强', '年龄': '18'});
-base.addRow('Table1', {'名称': '小强', '年龄': '18'}, 'Default View');
-```
+#### updateRow / modifyRow(deprecated)
 
-#### modifyRow
-
-修改表格中的某一行
+修改表格中的某一行， 其中 modifyRow 函数已经过期， 新的代码里面可以使用 updateRow。
 
 ```javascript
-base.modifyRow(table: Object/String, row: Object, updateRowData: Object);
+base.updateRow(table_name, row_id, row_data)
 ```
 
 ##### 例子
 
 ```javascript
-const table = base.getTableByName('Table1');
-const row = base.getRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
-base.modifyRow(table, row, {'Name': 'new name', 'number': 100});
-```
+base.updateRow(table_name, row_id, row_data)
+// example
+row_data = {
+    "Name": "T"
+}
+base.updateRow('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
 
-```javascript
-const row = base.getRowById('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
-base.modifyRow('Table1', row, {'Name': 'new name', 'number': 100});
 ```
 
 #### modifyRows

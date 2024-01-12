@@ -65,6 +65,7 @@ nav:
   - Python 脚本和 API:
     - 引言: python/README.md
     - Base: python/base.md
+    - Views: python/views.md
     - Rows: python/rows.md
     - Links: python/links.md
     - Columns: python/columns.md
@@ -83,6 +84,7 @@ nav:
   - JavaScript API:
     - 引言: javascript-api/README.md
     - Base: javascript-api/base.md
+    - Views: javascript-api/views.md
     - Rows: javascript-api/rows.md
     - Links: javascript-api/links.md
     - Columns: javascript-api/columns.md

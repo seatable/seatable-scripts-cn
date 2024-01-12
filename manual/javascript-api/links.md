@@ -64,14 +64,14 @@ await base.addLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g'
 更新链接信息
 
 ```javascript
-base.updateLink(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
+base.updateLink(self, link_id, table_name, other_table_name, row_id, other_rows_ids)
 ```
 
 其中
 
 * link_id: 链接列 data 属性下的 link_id 
-* table_id: 链接表的 id
-* other_table_id: 被链接表的 id
+* table_name: 链接表的 名称
+* other_table_name: 被链接表的 名称
 * row_id: 链接行 id
 * other_rows_ids: 被链接行的 id 列表
 
@@ -81,8 +81,8 @@ base.updateLink(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
 ```javascript
 await base.updateLink(
         link_id='r4IJ',
-        table_id='0000',
-        other_table_id='kFoO',
+        table_name='Table1',
+        other_table_name='Table2',
         row_id='BXhEm9ucTNu3FjupIk7Xug',
         other_rows_ids=[
           'exkb56fAT66j8R0w6wD9Qg',
@@ -96,15 +96,15 @@ await base.updateLink(
 批量更新链接信息
 
 ```javascript
-base.batchUpdateLinks(link_id, table_id, other_table_id, row_id_list, other_rows_ids_map)
+base.batchUpdateLinks(link_id, table_name, other_table_name, row_id_list, other_rows_ids_map)
 ```
 
 ##### 例子
 
 ```javascript
 link_id = "WaW5"
-table_id ="0000"
-other_table_id = "jtsf"
+table_name ="Table1"
+other_table_id = "Table2"
 row_id_list = ["fRLglslWQYSGmkU7o6KyHw","eSQe9OpPQxih8A9zPXdMVA","FseN8ygVTzq1CHDqI4NjjQ"]
 other_rows_ids_map = {
     	"FseN8ygVTzq1CHDqI4NjjQ":["OcCE8aX8T7a4dvJr-qNh3g","JckTyhN0TeS8yvH8D3EN7g"],
@@ -134,12 +134,11 @@ await base.removeLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J
 通过列名来获取链接的id
 
 ```javascript
-base.getColumnLinkId(columns, column_name)
+base.getColumnLinkId(table_name, column_name)
 ```
 
 ##### 例子
 
 ```javascript
-const columns = await base.listColumns('Table1') # 获取当前表格的列数据信息
-const linkId = await base.getColumnLinkId(columns, '记录') # 返回链接的id，如‘aHL2’
+const linkId = await base.getColumnLinkId('TableLink', '记录') # 返回链接的id，如‘aHL2’
 ```

@@ -92,7 +92,35 @@ const metadata = await base.getMetadata();
 
 ## Table
 
-#### add table
+####  Get tables
+
+获取 base 中的表格信息
+
+```javascript
+base.getTables()
+```
+
+##### 例子
+
+```javascript
+const tables = await base.getTables();
+```
+
+####  Get table by name
+
+通过名称获取子表
+
+```javascript
+base.getTableByName(table_name);
+```
+
+##### 例子
+
+```javascript
+const table = await base.getTableByName('Table1')
+```
+
+#### Add table
 
 在 base 中添加子表
 
@@ -102,7 +130,6 @@ base.addTable(table_name, lang='en')
 
 其中
 
-* table_name: 需要添加的子表名称
 * lang：语言， 默认 en ， 目前支持英文 ( en )和中文 ( zh-cn )
 
 ##### 例子
@@ -111,7 +138,33 @@ base.addTable(table_name, lang='en')
 await base.addTable('项目调查表', lang='zh-cn')
 ```
 
-#### 
+####  Rename table
+
+获取 base 中的表格信息
+
+```javascript
+base.renameTable(old_name, new_name)
+```
+
+##### 例子
+
+```javascript
+await base.renameTable('Table_Add1', 'New_Table_Add1');
+```
+
+####  Delete table
+
+删除一个子表
+
+```javascript
+base.deleteTable(table_name)
+```
+
+##### 例子
+
+```javascript
+await base.deleteTable('Table1')
+```
 
 ## Base 上的操作
 
