@@ -37,7 +37,7 @@ JOIN 查询存在以下限制：
 * `GROUP BY` 语法比较严格。除了聚合函数的关键字（`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`）以及公式（细节请查看本文档的扩展语法）之外，所选字段也必须同样也要出现在 group by 的语句中。
 * `HAVING` 过滤经 group by 聚合后的行。只有 group by 语句中的字段或者聚合函数能被 having 语句引用，其它语法和 where 语句相同。
 * "order by" 语句表示根据某字段排序，该字段必须出现在 select 表达式中。比如：`select a from table order by b`是无效语句；而 `select a from table order by a` 或者 `select abs(a), b from table order by abs(a)` 则可以运行。
-* Limit 语句和 MySQL 格式一样，语法是 `OFFSET ... LIMIT ...`。
+* Limit 语句和 MySQL 格式一样，语法是 `LIMIT ... OFFSET ...`。
 * 支持通过 AS 语法对返回的字段指定别名（alias）。例如 `select table.a as a from table`，则返回结果中的列名称为 "a"。有两点需要注意：
     * 一个返回字段的别名，可以在 group by, order by, having 语句中被引用。比如 `select t.registration as r, count(*) as c from t group by r having c > 100`。
     * 一个返回字段的别名，不能在 where 语句中被引用。比如 `select t.registration as r, count(*) from t group by r where r > "2020-01-01"` 会报告语法错误。
