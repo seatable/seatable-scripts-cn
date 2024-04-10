@@ -72,8 +72,12 @@ row = base.get_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 追加行
 
 ```python
-base.append_row(table_name, row_data)
+base.append_row(table_name, row_data, apply_default=False)
 ```
+
+其中
+
+* apply_default:  是否使用表格列中设置的默认值，如果设置为 True，那么这一列在 row_data 中没有指定的情况下，会使用默认值。默认为 False。
 
 例子
 
@@ -90,7 +94,7 @@ base.append_row('Table1', row_data)
 插入行
 
 ```python
-base.insert_row(table_name, row_data, anchor_row_id)
+base.insert_row(table_name, row_data, anchor_row_id, apply_default=False)
 ```
 
 * anchor_row_id: 锚定的行的 id，将会把新行插入到这行下方
@@ -103,7 +107,7 @@ row_data = {
     "Name": "I am new Row"
 }
 
-base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
+base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw', apply_default=True)
 ```
 
 #### Batch append rows
@@ -111,7 +115,7 @@ base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
 批量追加行
 
 ```python
-base.batch_append_rows(table_name, rows_data)
+base.batch_append_rows(table_name, rows_data, apply_default=False)
 ```
 
 ##### 例子
