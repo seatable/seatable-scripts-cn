@@ -77,7 +77,7 @@ base.append_row(table_name, row_data, apply_default=False)
 
 其中
 
-* apply_default:  是否使用表格列中设置的默认值， 默认为 False
+* apply_default:  是否使用表格列中设置的默认值，如果设置为 True，那么这一列在 row_data 中没有指定的情况下，会使用默认值。默认为 False。
 
 例子
 
