@@ -127,9 +127,9 @@ row['file_col'] = [info_dict]
 base.update_row('Table1', row['_id'], row)
 
 # 如果 row 中已经有图片/文件， 则
-row['img_col'].append([img_url])
+row['img_col'].append(img_url)
 base.update_row('TableName', row['_id'], row)
-row['file_col'].append([info_dict])
+row['file_col'].append(info_dict)
 base.update_row('Table1', row['_id'], row)
 ```
 
