@@ -60,7 +60,7 @@ DELETE FROM table_name [WhereClause]
 * 多值列（如多选类型）需要使用括号包围值列表，例如 `(1, "2", 3.0, ("foo", "bar"))` 。
 * 单选和多选类型的列需要使用选项名称，而不是选项 key。
 * `WhereClause` 是一个可选的 where 语句，如果没有指定，则包含所有行。
-* `INSERT` 语句仅支持已经归档过的 base 使用，数据会被直接插入大数据存储中。如果 base 未归档过，则会报错。如果需要往未归档过的 base 中插入数据，可以使用 dtable-server 提供的 API。
+* `INSERT` 语句仅支持已经归档过的 base 使用，数据会被直接插入大数据存储中。如果 base 未归档过，则会报错。如果需要往未归档过的 base 中插入数据，可以使用添加行的 API（比如 [Python API](../python/rows.md)）。
 * `UPDATE` 和 `DELETE` 语句支持同时修改已归档和未归档的数据。
 
 注意：以下列类型不支持插入和更新：
@@ -77,7 +77,7 @@ DELETE FROM table_name [WhereClause]
 | 文本              | String     |                | 支持               | 支持                  |
 | 长文本            | String     | 返回 Markdown 格式的原始字符串 | 支持                | 支持                  |
 | 数字              | Float      |                | 支持               | 支持                  |
-| 单选              | String     | 查询结果默认返回的是选项的 key ，如需返回选项的名称，则应把查询请求中的 `convert_key` 参数设置为 TRUE | 在 where 表达式中，常量需要使用选项的名称，如：`where single_select = "New York"` | 按照选项的 key 进行排序 |
+| 单选              | String     | 查询结果默认返回的是选项的 key ，如需返回选项的名称，则应把查询请求中的 `convert_key` 参数设置为 TRUE | 在 where 表达式中，常量需要使用选项的名称，如：`where single_select = "New York"` | 按照选项的定义顺序进行排序 |
 | 多选              | 包含 string 的列表 | 查询结果默认返回的是选项的 key，如需返回选项的名称，则应把查询请求中的 `convert_key` 参数设置为 TRUE | 在 where 表达式中，需要使用选项的名称。具体的匹配规则参考下面关于列表类型的说明。 | 支持，参考下面关于列表类型的说明 |
 | 勾选              | Bool       |                | 支持               | 支持                  |
 | 日期              | Datetime   | 返回符合 RFC 3339 规范的字符串 | 查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串，例如 "2020-12-31T23:59:60Z" | 支持 |
