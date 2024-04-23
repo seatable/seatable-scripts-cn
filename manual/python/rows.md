@@ -89,9 +89,9 @@ row_data = {
 base.append_row('Table1', row_data)
 ```
 
-#### Insert row
+#### Insert row (deprecated)
 
-插入行
+插入行（seatable-api 2.7.0 版本以后将不再支持改方法）
 
 ```python
 base.insert_row(table_name, row_data, anchor_row_id, apply_default=False)
