@@ -32,15 +32,13 @@ rows_data = [{
 获取表格的行
 
 ```python
-base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None, limit=None)
+base.list_rows(table_name, view_name=None, start=None, limit=None)
 ```
 
 其中
 
 * table_name: 子表名称或 id
 * view_name: 视图名称或 id， 如果设定， 会返回满足视图设定条件的行数据
-* order_by: 按照某列排序的列名
-* desc:  是否是降序， 默认为 False
 * start: 索引的起始位置， 行号
 * limit: 数据的显示数量， 最大返回 1000 行 (即使设定值超过 1000 行)
 
@@ -50,7 +48,7 @@ base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None
 
 ```python
 rows = base.list_rows('Table1')
-rows = base.list_rows('Table1', view_name='default', order_by='年龄', desc=True, start=5, limit=20)
+rows = base.list_rows('Table1', view_name='default', start=5, limit=20)
 ```
 
 #### Get row
