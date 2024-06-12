@@ -43,7 +43,7 @@ const row = await base.getRow('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 追加行
 
 ```javascript
-base.appendRow(table_name, row_data)
+base.appendRow(table_name, row_data, apply_default = false)
 ```
 
 ##### 例子
@@ -61,7 +61,7 @@ await base.appendRow('Table1', row_data)
 插入行
 
 ```javascript
-base.insertRow(table_name, row_data, anchor_row_id)
+base.insertRow(table_name, row_data, anchor_row_id, apply_default = false)
 ```
 
 其中
@@ -83,7 +83,7 @@ await base.insertRow('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
 批量追加行
 
 ```javascript
-base.batchAppendRows(table_name, rows_data)
+base.batchAppendRows(table_name, rows_data, apply_default = false)
 ```
 
 ##### 例子
