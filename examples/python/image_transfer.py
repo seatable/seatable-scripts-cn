@@ -12,11 +12,9 @@ import os
 SERVER_URL      = context.server_url or 'https://cloud.seatable.cn/'
 API_TOKEN       = context.api_token  or 'cacc42497886e4d0aa8ac0531bdcccb1c93bd0f5'
 TABLE_NAME      = 'Table1'
-IMAGE_FILE_TYPE = ['jpg', 'png', 'jpeg', 'bmp', 'gif']      # 图片的格式
+IMAGE_FILE_TYPE = ['jpg', 'png', 'jpeg', 'bmp', 'gif','webp']      # 图片的格式
 
-IMG_URL_COL     = '图片链接'                                 # 包含图片链接的列名，需要是 URL 或者文本类型 
-IMG_COL         = 'img'                                     # 用于存储图片的列名，需要是图片类型
-
+IMG_URL_DICT    = {'图片链接':'图片','图标链接':'图标'}       # 包含图片链接的列名，需要是 URL 或者文本类型 ，多列情况下{链接:存储图片的列名}
 IMG_NAME_PRE    = 'image'                                   # 图片上传后使用的文件名称前缀
 ###################---基本信息配置---###################
 
@@ -57,35 +55,37 @@ def img_transfer():
     count = 0
     #3. 遍历每一行，获取‘图片链接‘列的信息
     for row in rows:
-        time_stamp = get_time_stamp()
-        img_url    = row.get(IMG_URL_COL, None)
-        img        = row.get(IMG_COL, None)
-        try:
-            #若无图片链接或者img列有数据的话跳过，防止重复添加
-            if (not img_url) or img:
-                continue
-            #通过url链接获取文件扩展名
-            img_name_extend = img_url.strip().split('.')[-1]
-            img_name_extend = img_name_extend in IMAGE_FILE_TYPE and img_name_extend or 'jpg'
-            #通过uuid对下载的文件进行重命名 IMG_NAME_PRE + 时间戳 + 扩展名
-            img_name     = "/tmp/image-%s.%s"%(time_stamp, img_name_extend)
-            #下载文件
-            response = requests.get(img_url)
-            if response.status_code != 200:
-                raise Exception('download file error')
-            with open(img_name, 'wb') as f:
-                f.write(response.content)
-            #文件上传
-            info_dict    = base.upload_local_file(img_name, name=None, relative_path=None, file_type='image', replace=True)
-            row[IMG_COL] = [info_dict.get('url')]
-            base.update_row('Table1', row['_id'], row)
-            #上传完成之后删除
-            os.remove(img_name)
+        for IMG_URL_COL in IMG_URL_DICT.keys():
+            IMG_COL = IMG_URL_DICT[IMG_URL_COL]
+            time_stamp = get_time_stamp()
+            img_url    = row.get(IMG_URL_COL, None)
+            img        = row.get(IMG_COL, None)
+            try:
+                #若无图片链接或者img列有数据的话跳过，防止重复添加
+                if (not img_url) or img:
+                    continue
+                #通过url链接获取文件扩展名
+                img_name_extend = img_url.strip().split('.')[-1]
+                img_name_extend = img_name_extend in IMAGE_FILE_TYPE and img_name_extend or 'jpg'
+                #通过uuid对下载的文件进行重命名 IMG_NAME_PRE + 时间戳 + 扩展名
+                img_name     = "/tmp/image-%s.%s"%(time_stamp, img_name_extend)
+                #下载文件
+                response = requests.get(img_url)
+                if response.status_code != 200:
+                    raise Exception('download file error')
+                with open(img_name, 'wb') as f:
+                    f.write(response.content)
+                #文件上传
+                info_dict    = base.upload_local_file(img_name, name=None, relative_path=None, file_type='image', replace=True)
+                row[IMG_COL] = [info_dict.get('url')]
+                base.update_row('Table1', row['_id'], row)
+                #上传完成之后删除
+                os.remove(img_name)
 
-        except Exception as err_msg:
-            print('count%s-%s-%s-message: %s' % (count, row['_id'], img_url, err_msg))      #发现异常打印行数等信息方便回查
-            continue
-        count += 1
+            except Exception as err_msg:
+                print('count%s-%s-%s-message: %s' % (count, row['_id'], img_url, err_msg))      #发现异常打印行数等信息方便回查
+                continue
+            count += 1
         
 if __name__ == "__main__":
     img_transfer()
