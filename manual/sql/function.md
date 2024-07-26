@@ -148,6 +148,7 @@ _自版本 2.7.0 起支持地理位置函数_
 | province(geolocation) | 返回地理位置列的省份值。（仅当地理位置列设置成 “省份”、“省份/城市”、“省/市/区” 或 “省/市/区及详情” 格式时） | province(column_name) | 北京市 |
 | city(geolocation)     | 返回地理位置列的城市值。（仅当地理位置列设置成 “省份/城市”、“省/市/区” 或 “省/市/区及详情” 格式时）        | city(column_name)     | 北京市 |
 | district(geolocation) | 返回地理位置列的区县值。（仅当地理位置列设置成 “省/市/区” 或 “省/市/区及详情” 格式时）                   | district(column_name) | 朝阳区 |
+| country(geolocation)  | 返回地理位置列的国家或地区值。（仅当地理位置列设置成 “国家和地区” 格式时,自 5.1.0 版本开始支持）               | country(column_name) | 中国 |
 
 ### 逻辑函数
 
