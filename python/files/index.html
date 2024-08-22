@@ -1,0 +1,2204 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="seatable">
+      
+      
+        <link rel="canonical" href="https://seatable.github.io/seatable-scripts-cn/python/files/">
+      
+      
+        <link rel="prev" href="../columns/">
+      
+      
+        <link rel="next" href="../query/">
+      
+      
+      <link rel="icon" href="../../assets/seatable-favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>Files - SeaTable 编程手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#files" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SeaTable 编程手册" class="md-header__button md-logo" aria-label="SeaTable 编程手册" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SeaTable 编程手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Files
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/seatable/seatable-scripts-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SeaTable 编程手册" class="md-nav__button md-logo" aria-label="SeaTable 编程手册" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    SeaTable 编程手册
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/seatable/seatable-scripts-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对象数据结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript 脚本
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript 脚本
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python 脚本和 API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python 脚本和 API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Files
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Files
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件下载
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件下载">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      便捷方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      分步方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件上传
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件上传">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      便捷方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="便捷方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      把内存中的内容上传为一个文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      用文件路径上传本地的一个文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      更新表格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      分步方式上传文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      自定义目录操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="自定义目录操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      列出文件夹中的文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      获取文件信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      下载文件到本地
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      上传本地文件到文件夹
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../big_data_storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Big data storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dateutils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日期操作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云端环境下支持的库
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../websocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时获取数据更新通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL 语法参考
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL 函数参考
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    插件开发流程和 API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            插件开发流程和 API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    插件开发流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    dtable-sdk
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            dtable-sdk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    dtable-utils
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            dtable-utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/cells/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cells
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件下载
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件下载">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      便捷方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      分步方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件上传
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件上传">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      便捷方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="便捷方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      把内存中的内容上传为一个文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      用文件路径上传本地的一个文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      更新表格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      分步方式上传文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      自定义目录操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="自定义目录操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      列出文件夹中的文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      获取文件信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      下载文件到本地
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      上传本地文件到文件夹
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h1>
+<p>文件操作包括文件的下载和上传，其分别都有两种方式的 API 调用，一种方式是便捷方式，而另一种方式是分步方式即将下载/上传的过程： 1. 获取链接， 2. 请求该链接进行下载/上传， 进行拆分，适用于复杂的场景，比如文件批量下载、大文件上传等。下面分别对以上两种方式 API 的使用方法进行详细说明。</p>
+<h2 id="_1">文件下载<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">便捷方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>下载文件</p>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+</code></pre></div>
+<p>其中</p>
+<ul>
+<li>file_url: 文件的 URL, 可以从文件单元格中获取</li>
+<li>save_path: 文件下载后保存的本地路径</li>
+</ul>
+<p>例子如下</p>
+<div class="highlight"><pre><span></span><code><span class="n">file_url</span> <span class="o">=</span> <span class="s2">&quot;https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip&quot;</span>
+<span class="n">save_path</span> <span class="o">=</span> <span class="s2">&quot;/tmp/files/custom.zip&quot;</span>
+<span class="n">base</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_3">分步方式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>1) 通过文件的 URL 获取下载链接</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 假如您从Base的数据中获取到一个文件url为</span>
+<span class="c1"># https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip</span>
+<span class="c1"># 则截取链接后半部分调用api</span>
+<span class="n">download_link</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">get_file_download_link</span><span class="p">(</span><span class="s1">&#39;files/2020-10/aur7e-jqc19.zip&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>2) 使用下载链接获取文件内容</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">download_link</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_4">文件上传<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">便捷方式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">把内存中的内容上传为一个文件<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">upload_bytes_file</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>其中</p>
+<ul>
+<li>name: 上传之后的文件名</li>
+<li>content: 文件的内容，是一个 bytes 对象</li>
+<li>file_type: image 或者 file，若不设置则默认是 file</li>
+<li>replace: 是否替换同名文件，默认为 False</li>
+</ul>
+<p>返回内容为文件的字典信息</p>
+<div class="highlight"><pre><span></span><code>{
+    &#39;type&#39;: str, 文件类型
+     &#39;size&#39;: int, 文件大小
+     &#39;name&#39;: str, 文件名
+    &#39;url&#39;: str, 文件url路径
+}
+</code></pre></div>
+<p>例子 1, 上传网络上的一个文件</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">file_url</span> <span class="o">=</span> <span class="s1">&#39;http://www.baidu.com/xxx/xxx/xxx.txt&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">upload_bytes_file</span><span class="p">(</span><span class="s1">&#39;my_uploaded_file.txt&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div>
+<p>例子 2, 上传本地的图片</p>
+<div class="highlight"><pre><span></span><code><span class="n">local_img_file</span> <span class="o">=</span> <span class="s1">&#39;/Users/Desktop/a.png&#39;</span>
+<span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">local_img_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">upload_bytes_file</span><span class="p">(</span><span class="s1">&#39;my_uploaded_img.png&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="_7">用文件路径上传本地的一个文件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">upload_local_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>其中</p>
+<ul>
+<li>file_path: 本地的文件路径</li>
+<li>name: 上传之后的文件名， 若为 None 则默认用本地文件名</li>
+</ul>
+<p>其他参数以及返回值格式同 upload_bytes_file</p>
+<p>例子：</p>
+<div class="highlight"><pre><span></span><code><span class="n">local_file</span> <span class="o">=</span> <span class="s1">&#39;/Users/Desktop/a.png&#39;</span>
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">upload_local_file</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_uploaded_img.png&#39;</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_8">更新表格<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>上面的步骤只是上传了文件，我们还需要利用上述的返回字典 info_dict， 将文件/图片更新到表格中指定文件/图片列中</p>
+<p>以更新到 base 子表名称为 “Table1” 的子表中为例</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 更新到图片单元格, 列名为 img_col</span>
+<span class="n">img_url</span> <span class="o">=</span> <span class="n">info_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;img_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">img_url</span><span class="p">]</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># 更新文件单元格, 列名为 file_col</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;file_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">info_dict</span><span class="p">]</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># 如果 row 中已经有图片/文件， 则</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;img_col&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_url</span><span class="p">)</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;TableName&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">)</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;file_col&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">info_dict</span><span class="p">)</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_9">分步方式上传文件<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>获取文件上传链接以及上传路径</p>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">get_file_upload_link</span><span class="p">()</span>
+</code></pre></div>
+<p>返回一个字典如</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;parent_path&quot;: &quot;/asset/3a9d8266-78.....&quot;,     
+  &quot;upload_link&quot;: &quot;http://..../upload-api/ea44c4f4...../&quot;
+}
+</code></pre></div>
+<p>其中</p>
+<ul>
+<li>upload_link: 上传链接</li>
+<li>parent_path: 服务器分配的相对目录，上传文件时需要使用该路径</li>
+</ul>
+<p>以将本地 /User/Desktop/file.txt 文件上传至服务器为例</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 获取文件上传链接以及服务器分配的相对目录</span>
+<span class="n">upload_link_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">get_file_upload_link</span><span class="p">()</span>
+<span class="n">parent_dir</span> <span class="o">=</span> <span class="n">upload_link_dict</span><span class="p">[</span><span class="s1">&#39;parent_path&#39;</span><span class="p">]</span>
+<span class="n">upload_link</span> <span class="o">=</span> <span class="n">upload_link_dict</span><span class="p">[</span><span class="s1">&#39;upload_link&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;?ret-json=1&#39;</span>
+
+<span class="c1"># 往上传链接中上传文件</span>
+<span class="n">upload_file_name</span> <span class="o">=</span> <span class="s2">&quot;file_uploaded.txt&quot;</span> <span class="c1"># 上传之后的文件名</span>
+<span class="n">replace</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># 若上传同名文件则替换</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">upload_link</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;parent_dir&#39;</span><span class="p">:</span> <span class="n">parent_dir</span><span class="p">,</span>
+    <span class="s1">&#39;replace&#39;</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">replace</span> <span class="k">else</span> <span class="mi">0</span>  <span class="c1"># 如果上传过同名文件是否要替换</span>
+<span class="p">},</span> <span class="n">files</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">upload_file_name</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/User/Desktop/file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>  <span class="c1"># 要上传的文件</span>
+<span class="p">})</span>
+</code></pre></div>
+<h2 id="_10">自定义目录操作<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>除了 Base 表格中的附件的上传和下载外， 一个 Base 中有一个自定义的文件系统叫做 自定义目录， 通过 Base 的文件管理功能模块打开。 以下定义了一些用于操作该自定义目录的 API。</p>
+<h4 id="_11">列出文件夹中的文件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">list_custom_assets</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="_12">例子<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="n">folder_dir</span> <span class="o">=</span> <span class="s2">&quot;/Main/photos&quot;</span>
+
+<span class="n">base</span><span class="o">.</span><span class="n">list_custom_assets</span><span class="p">(</span><span class="n">folder_dir</span><span class="p">)</span>
+<span class="c1"># 返回的一个字典， 包括 dir，和 file 两个字段， dir 表示目录， file 表示文件</span>
+<span class="p">{</span>
+  <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s2">&quot;MyDir&quot;</span><span class="p">},</span> <span class="o">...</span><span class="p">]</span>
+  <span class="s2">&quot;file&quot;</span><span class="p">:[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s2">&quot;sky.png&quot;</span><span class="p">},</span> <span class="o">....</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_13">获取文件信息<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>返回的信息与表格文件列存储的信息有相同的数据结构， 因此可以直接将该信息更新到表格的文件列</p>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">get_custom_file_info</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="_14">例子<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="n">folder_dir</span> <span class="o">=</span> <span class="s2">&quot;/Main/&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sky.png&quot;</span>
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">get_custom_file_info</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="c1"># 获取信息</span>
+<span class="n">row_id</span> <span class="o">=</span> <span class="s2">&quot;xxxx&quot;</span>
+<span class="n">file_col_name</span> <span class="o">=</span> <span class="s2">&quot;File&quot;</span>
+<span class="c1"># 更新文件单元格</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;File&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">info_dict</span><span class="p">]})</span>
+</code></pre></div>
+<h4 id="_15">下载文件到本地<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">download_custom_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>path: 自定义目录中的文件路径</li>
+<li>save_path:  文件保存的本地路径</li>
+</ul>
+<h5 id="_16">例子<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="n">custom_file_path</span> <span class="o">=</span> <span class="s2">&quot;/Main/sky.png&quot;</span>
+<span class="n">local_path</span> <span class="o">=</span> <span class="s2">&quot;/Users/Desktop/sky.png&quot;</span>
+<span class="n">base</span><span class="o">.</span><span class="n">download_custom_file</span><span class="p">(</span><span class="n">custom_file_path</span><span class="p">,</span> <span class="n">local_path</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="_17">上传本地文件到文件夹<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>返回的文件信息可以直接更新到表格的附件列</p>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">upload_local_file_to_custom_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">local_path</span><span class="p">,</span> <span class="n">custom_folder_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>local_path: 本地的文件路径</li>
+<li>custom_folder_path: 自定义目录的路径， 默认为 ‘/’</li>
+<li>name: 自定义目录中保存的文件名， 默认与在本地的文件名一致</li>
+</ul>
+<h5 id="_18">例子<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="n">local_path</span> <span class="o">=</span> <span class="s2">&quot;/Users/Desktop/sky.png&quot;</span>
+<span class="n">custom_path</span> <span class="o">=</span> <span class="s2">&quot;/Main/&quot;</span>
+
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">upload_local_file_to_custom_folder</span><span class="p">(</span><span class="n">local_path</span><span class="err">，</span> <span class="n">custom_path</span><span class="p">)</span>
+<span class="n">row_id</span> <span class="o">=</span> <span class="s2">&quot;xxxx&quot;</span>
+<span class="n">file_col_name</span> <span class="o">=</span> <span class="s2">&quot;File&quot;</span>
+<span class="c1"># 更新文件单元格</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;File&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">info_dict</span><span class="p">]})</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 seatable
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/seatable/seatable-scripts-cn/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+    
+  </body>
+</html>

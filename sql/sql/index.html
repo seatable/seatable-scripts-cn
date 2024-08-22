@@ -1,0 +1,2250 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="seatable">
+      
+      
+        <link rel="canonical" href="https://seatable.github.io/seatable-scripts-cn/sql/sql/">
+      
+      
+        <link rel="prev" href="../../javascript-api/constants/">
+      
+      
+        <link rel="next" href="../function/">
+      
+      
+      <link rel="icon" href="../../assets/seatable-favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>SQL 语法参考 - SeaTable 编程手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SeaTable 编程手册" class="md-header__button md-logo" aria-label="SeaTable 编程手册" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SeaTable 编程手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQL 语法参考
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/seatable/seatable-scripts-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SeaTable 编程手册" class="md-nav__button md-logo" aria-label="SeaTable 编程手册" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    SeaTable 编程手册
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/seatable/seatable-scripts-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对象数据结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript 脚本
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript 脚本
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python 脚本和 API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python 脚本和 API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/big_data_storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Big data storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/dateutils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日期操作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/libs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云端环境下支持的库
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/notifications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/websocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时获取数据更新通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SQL 语法参考
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SQL 语法参考
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      语法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表类型的处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">
+      NULL 值
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      扩展语法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="扩展语法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL 查询中使用公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表扩展语法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      索引
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL 函数参考
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    插件开发流程和 API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            插件开发流程和 API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    插件开发流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    dtable-sdk
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            dtable-sdk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    dtable-utils
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            dtable-utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/cells/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cells
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      语法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表类型的处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">
+      NULL 值
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      扩展语法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="扩展语法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL 查询中使用公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表扩展语法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      索引
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sql">SQL 支持<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h1>
+<p>SeaTable 中数据查询支持 SQL 语句。使用 SQL 语句会检索完整的数据集，也就是包括归档和非归档的数据。</p>
+<h2 id="_1">语法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>目前只支持基本的 SELECT，INSERT，UPDATE，DELETE 语句。（INSERT，UPDATE，DELETE 语句于 2.7 版本起支持）</p>
+<p>SELECT 语句的语法如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="p">[</span><span class="k">DISTINCT</span><span class="p">]</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">[</span><span class="n">WhereClause</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">GroupByClause</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">HavingClause</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">OrderByClause</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="k">Limit</span><span class="w"> </span><span class="k">Option</span><span class="p">]</span>
+</code></pre></div>
+<p>从 4.3 版本起，支持基本的 JOIN 查询，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="p">,</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="n">column1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="n">column2</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+<p>JOIN 查询存在以下限制：</p>
+<ul>
+<li>只支持 INNER JOIN 查询，不支持 LEFT JOIN，RIGHT JOIN，FULL JOIN 等。</li>
+<li><code>FROM</code> 子句中的表不能重复。</li>
+<li><code>FROM</code> 子句中的每个表必须至少关联一个 JOIN 条件。</li>
+<li>JOIN 条件需要放在 <code>WHERE</code> 子句里，并且用 <code>AND</code> 连接。</li>
+<li>JOIN 条件只能是两个列的相等比较，例如 <code>table1.column1 = table2.column2</code>。</li>
+<li>JOIN 条件中的列需要存在索引，除非这个子表未归档。</li>
+</ul>
+<p>说明：</p>
+<ul>
+<li>where 语句中支持大部分的表达式（算数表达式，比较表达式等），关键字包括： <code>[NOT] LIKE</code>, <code>IN</code>, <code>BETWEEN ... AND ...</code>, <code>AND</code>, <code>OR</code>, <code>NOT</code>, <code>IS [NOT] TRUE</code>, <code>IS [NOT] NULL</code>. 其中：<ul>
+<li>算术表达式只支持数字。</li>
+<li><code>LIKE</code> 语句只支持字符串。支持使用 <code>ILIKE</code> 关键字替代 <code>LIKE</code>，从而在匹配中不区分大小写。</li>
+<li><code>BETWEEN ... AND ...</code> 语句只支持数字与时间</li>
+<li>时间常量应该是 ISO 格式的字符串（如: "2020-09-08 00:11:23"）。从 2.8 版本开始，还支持符合 RFC 3339 标准的时间字符串，例如 "2020-12-31T23:59:60Z"。</li>
+</ul>
+</li>
+<li><code>GROUP BY</code> 语法比较严格。除了聚合函数的关键字（<code>COUNT</code>, <code>SUM</code>, <code>MAX</code>, <code>MIN</code>, <code>AVG</code>）以及公式（细节请查看本文档的扩展语法）之外，所选字段也必须同样也要出现在 group by 的语句中。</li>
+<li><code>HAVING</code> 过滤经 group by 聚合后的行。只有 group by 语句中的字段或者聚合函数能被 having 语句引用，其它语法和 where 语句相同。</li>
+<li>"order by" 语句表示根据某字段排序，该字段必须出现在 select 表达式中。比如：<code>select a from table order by b</code>是无效语句；而 <code>select a from table order by a</code> 或者 <code>select abs(a), b from table order by abs(a)</code> 则可以运行。</li>
+<li>Limit 语句和 MySQL 格式一样，语法是 <code>LIMIT ... OFFSET ...</code>。</li>
+<li>支持通过 AS 语法对返回的字段指定别名（alias）。例如 <code>select table.a as a from table</code>，则返回结果中的列名称为 "a"。有两点需要注意：<ul>
+<li>一个返回字段的别名，可以在 group by, order by, having 语句中被引用。比如 <code>select t.registration as r, count(*) as c from t group by r having c &gt; 100</code>。</li>
+<li>一个返回字段的别名，不能在 where 语句中被引用。比如 <code>select t.registration as r, count(*) from t group by r where r &gt; "2020-01-01"</code> 会报告语法错误。</li>
+</ul>
+</li>
+</ul>
+<p>查询结果是以 JSON 的格式进行返回，每一行是一个 JSON 对象。默认情况下，对象的 key 是对应的列的 key，而不是列名。不过在 JOIN 查询里，对象的 key 对应 "id" 字段，而不是 "key" 字段。上述 "id", "key" 字段都存在于返回结果的 "metadata" 数组中。</p>
+<p>INSERT，UPDATE，DELETE 语句的语法如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">[</span><span class="n">column_list</span><span class="p">]</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="n">value_list</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="p">...]</span>
+
+<span class="k">UPDATE</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="n">WhereClause</span><span class="p">]</span>
+
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">[</span><span class="n">WhereClause</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li><code>column_list</code> 是一个由括号包围逗号分隔的列名列表，如果没有指定，则默认为所有可更新的列。</li>
+<li><code>value_list</code> 是一个由括号包围逗号分隔的值列表，值必须和 <code>column_list</code> 中的列名一一对应。例如：<code>(1, "2", 3.0)</code> 。</li>
+<li>多值列（如多选类型）需要使用括号包围值列表，例如 <code>(1, "2", 3.0, ("foo", "bar"))</code> 。</li>
+<li>单选和多选类型的列需要使用选项名称，而不是选项 key。</li>
+<li><code>WhereClause</code> 是一个可选的 where 语句，如果没有指定，则包含所有行。</li>
+<li><code>INSERT</code> 语句仅支持已经归档过的 base 使用，数据会被直接插入大数据存储中。如果 base 未归档过，则会报错。如果需要往未归档过的 base 中插入数据，可以使用添加行的 API（比如 <a href="../../python/rows/">Python API</a>）。</li>
+<li><code>UPDATE</code> 和 <code>DELETE</code> 语句支持同时修改已归档和未归档的数据。</li>
+</ul>
+<p>注意：以下列类型不支持插入和更新：</p>
+<ul>
+<li>系统列（如 <code>_id</code>，<code>_ctime</code>）</li>
+<li>图片，文件，公式，链接，链接公式，地理位置，自动序号，按钮</li>
+</ul>
+<h2 id="_2">数据类型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>以下表格列出了 SeaTable 表格中的数据与 SQL 语句字段中数据类型的对应情况</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">SeaTable 数据类型</th>
+<th style="text-align: left;">SQL 字段类型</th>
+<th style="text-align: left;">返回结果格式说明</th>
+<th style="text-align: left;">用于 where/having</th>
+<th style="text-align: left;">用于 group by/order by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">文本</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">长文本</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">返回 Markdown 格式的原始字符串</td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">数字</td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">单选</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">查询结果默认返回的是选项的 key ，如需返回选项的名称，则应把查询请求中的 <code>convert_key</code> 参数设置为 TRUE</td>
+<td style="text-align: left;">在 where 表达式中，常量需要使用选项的名称，如：<code>where single_select = "New York"</code></td>
+<td style="text-align: left;">按照选项的定义顺序进行排序</td>
+</tr>
+<tr>
+<td style="text-align: left;">多选</td>
+<td style="text-align: left;">包含 string 的列表</td>
+<td style="text-align: left;">查询结果默认返回的是选项的 key，如需返回选项的名称，则应把查询请求中的 <code>convert_key</code> 参数设置为 TRUE</td>
+<td style="text-align: left;">在 where 表达式中，需要使用选项的名称。具体的匹配规则参考下面关于列表类型的说明。</td>
+<td style="text-align: left;">支持，参考下面关于列表类型的说明</td>
+</tr>
+<tr>
+<td style="text-align: left;">勾选</td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">日期</td>
+<td style="text-align: left;">Datetime</td>
+<td style="text-align: left;">返回符合 RFC 3339 规范的字符串</td>
+<td style="text-align: left;">查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串，例如 "2020-12-31T23:59:60Z"</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">地理位置</td>
+<td style="text-align: left;">查询结果以 json 的格式进行返回。数据根据设置的格式不同返回结果有差异，如设置经纬度，返回经纬度的数字，设置省市等，返回省，市，其他细节信息等。</td>
+<td style="text-align: left;">不支持直接使用 where 语句查询，但是可以通过地理位置函数提取省市等细节信息进行过滤</td>
+<td style="text-align: left;">不支持</td>
+<td style="text-align: left;">不支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">图片</td>
+<td style="text-align: left;">图片的 URL 的列表</td>
+<td style="text-align: left;">JSON 字符串数组，元素为 URL</td>
+<td style="text-align: left;">支持，参考下面关于列表类型的说明</td>
+<td style="text-align: left;">支持，参考下面关于列表类型的说明</td>
+</tr>
+<tr>
+<td style="text-align: left;">文件</td>
+<td style="text-align: left;">查询结果将以 JSON 的格式进行返回，返回包含名称，类型，url等信息的列表</td>
+<td style="text-align: left;">不支持</td>
+<td style="text-align: left;">不支持</td>
+<td style="text-align: left;">不支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">协作人</td>
+<td style="text-align: left;">包含用户 ID 的列表</td>
+<td style="text-align: left;">格式如 5758ecdce3e741ad81293a304b6d3388@auth.local, 如果用到用户名称，需要通过 SeaTable 的相关 API 进行转换</td>
+<td style="text-align: left;">支持，参考下面关于列表类型的说明</td>
+<td style="text-align: left;">支持，参考下面关于列表类型的说明</td>
+</tr>
+<tr>
+<td style="text-align: left;">链接其他记录</td>
+<td style="text-align: left;">包含链接行的列表</td>
+<td style="text-align: left;">支持，参考下面关于列表类型的说明</td>
+<td style="text-align: left;">支持，参考下面关于列表类型的说明</td>
+<td style="text-align: left;">支持，参考下面关于列表类型的说明</td>
+</tr>
+<tr>
+<td style="text-align: left;">公式</td>
+<td style="text-align: left;">数据类型根据通过该公式计算得到的返回值类型而定</td>
+<td style="text-align: left;">根据通过该公式计算得到的返回值类型而定，具体参考返回类型对应的 SQL 类型的说明</td>
+<td style="text-align: left;">根据通过该公式计算得到的返回值类型而定，具体参考返回类型对应的 SQL 类型的说明</td>
+<td style="text-align: left;">根据通过该公式计算得到的返回值类型而定，具体参考返回类型对应的 SQL 类型的说明</td>
+</tr>
+<tr>
+<td style="text-align: left;">创建者</td>
+<td style="text-align: left;">用户 ID, string</td>
+<td style="text-align: left;">格式如 5758ecdce3e741ad81293a304b6d3388@auth.local, 如果用到用户名称，需要通过 SeaTable 的相关 API 进行转换</td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">创建时间</td>
+<td style="text-align: left;">Datetime</td>
+<td style="text-align: left;">返回符合 RFC 3339 规范的字符串</td>
+<td style="text-align: left;">查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串，例如 "2020-12-31T23:59:60Z"</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">修改者</td>
+<td style="text-align: left;">用户 ID, string</td>
+<td style="text-align: left;">格式如 5758ecdce3e741ad81293a304b6d3388@auth.local, 如果用到用户名称，需要通过 SeaTable 的相关 API 进行转换</td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">修改时间</td>
+<td style="text-align: left;">Datetime</td>
+<td style="text-align: left;">返回符合 RFC 3339 规范的字符串</td>
+<td style="text-align: left;">查询时，常量使用 ISO 格式的时间字符串，如:  "2006-1-2"，"2006-1-2 15:04:05"。2.8 版本起，支持符合 RFC 3339 规范的字符串，例如 "2020-12-31T23:59:60Z"</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">自动序号</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">URL</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">邮箱</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">时长</td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">数据换算成秒返回，如数据是3:43，换算成秒为3 * 3600 + 43 * 60 = 13380</td>
+<td style="text-align: left;">支持</td>
+<td style="text-align: left;">支持</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">列表类型的处理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>SeaTable 中有两类列会产生列表数据类型：</p>
+<ul>
+<li>本身就是列表类型的列：包括多选、图片、协作人、链接其他记录。</li>
+<li>链接公式的返回结果：公式列中的公式为 <code>{link.column}</code> 以及 lookup 公式；链接公式列中的公式为 lookup, findmin, findmax。</li>
+</ul>
+<p>当在 where 条件中使用一个类型为列表的列时，根据列表元素的 SQL 类型不同，规则如下：（如果没有列出则表示不支持）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">元素类型</th>
+<th style="text-align: left;">操作符</th>
+<th style="text-align: left;">规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">IN, 列表扩展语法（比如 has any of）</td>
+<td style="text-align: left;">按照相应的操作符规则处理</td>
+</tr>
+<tr>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">LIKE, ILIKE</td>
+<td style="text-align: left;">始终取出第一个元素来比较；如果没有元素，按照 "" 来处理。</td>
+</tr>
+<tr>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">IS NULL</td>
+<td style="text-align: left;">没有数据或者空列表判断为 NULL</td>
+</tr>
+<tr>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">=, !=</td>
+<td style="text-align: left;">始终取出第一个元素来比较；如果没有元素，按照 "" 来处理。</td>
+</tr>
+<tr>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">IN, 列表扩展语法（比如 has any of）</td>
+<td style="text-align: left;">按照相应的操作符规则处理</td>
+</tr>
+<tr>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">=, !=, \&lt;, \&lt;=, &gt;, &gt;=, between</td>
+<td style="text-align: left;">如果只有一个元素，取出第一个元素来比较；如果有多于一个元素，只有在 != 的时候返回 true；如果没有元素，只有在 != 的时候返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">IS NULL</td>
+<td style="text-align: left;">没有数据或者空列表的时候判断为 NULL</td>
+</tr>
+<tr>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">+/-/*// 等运算</td>
+<td style="text-align: left;">取出第一个元素参与运算</td>
+</tr>
+<tr>
+<td style="text-align: left;">Datetime</td>
+<td style="text-align: left;">IN, 列表扩展语法（比如 has any of）</td>
+<td style="text-align: left;">按照相应的操作符规则处理</td>
+</tr>
+<tr>
+<td style="text-align: left;">Datetime</td>
+<td style="text-align: left;">=, !=, \&lt;, \&lt;=, &gt;, &gt;=, between</td>
+<td style="text-align: left;">如果只有一个元素，取出第一个元素来比较；如果有多于一个元素，只有在 != 的时候返回 true；如果没有元素，只有在 != 的时候返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Datetime</td>
+<td style="text-align: left;">IS NULL</td>
+<td style="text-align: left;">没有数据或者空列表的时候判断为 NULL</td>
+</tr>
+<tr>
+<td style="text-align: left;">bool</td>
+<td style="text-align: left;">IS TRUE</td>
+<td style="text-align: left;">始终取出第一个元素来比较；如果没有元素返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left;">链接记录</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">根据链接列设置的显示列的类型，结合上述每种类型的规则来处理</td>
+</tr>
+</tbody>
+</table>
+<p>作为 select fields 返回的时候，只返回列表的前十个元素。</p>
+<p>在 group by 和 order by 中使用时，会对每个列表内部的元素先进行从小到大的排序，然后在列表之间排序按照以下规则进行：</p>
+<ul>
+<li>从第一个元素开始逐一比较大小，元素小的列表排在元素大的列表前面</li>
+<li>如果之前遍历的元素都相等，则长度较小的列表排在长度大的列表前面</li>
+<li>如果长度也相等，则两个列表相等</li>
+</ul>
+<p>在公式中使用时，如果列表传入作为一个参数，而参数需要一个单值，则取出列表的第一个元素。如果列表的元素是一个链接记录，取出其显示列的值。</p>
+<p>在聚合函数（min, max, sum, avg）中使用，如果列表只有一个元素，取出第一个元素来计算；其他情况，该行不参与计算。</p>
+<h3 id="null">NULL 值<a class="headerlink" href="#null" title="Permanent link">&para;</a></h3>
+<p>NULL 值不同于 0，它代表一个空值。以下的值会被看做空值：</p>
+<ul>
+<li>表格中的空的单元格会被看做 NULL 值。</li>
+<li>无法被转换为当前列类型的值，当作 NULL 值处理。</li>
+<li>空字符串（""）会被看做 NULL 值。这与标准的 SQL 不一样。</li>
+<li>列表类型的值根据“列表类型”一节中的规则被判断为 NULL。</li>
+<li>公式列或函数如果返回了错误，会当作 NULL 值处理。</li>
+</ul>
+<p>在 WHERE 条件中：</p>
+<ul>
+<li>算术运算中存在 NULL 值，则结果为 NULL。</li>
+<li><code>!=</code>，<code>NOT LIKE</code>，<code>NOT IN</code>，<code>NOT BETWEEN</code>，<code>HAS NONE OF</code>，<code>IS NOT TRUE</code> 和 <code>IS NULL</code> 遇到 NULL 值时结果是 TRUE。</li>
+<li><code>AND</code>，<code>OR</code>，<code>NOT</code> 会把 NULL 值当作 FALSE 处理。</li>
+<li>聚合函数（min，max，sum，avg）会忽略 NULL 值。</li>
+</ul>
+<p>在公式中，NULL 值会被转换为 0 或者空字符串。</p>
+<h2 id="_4">扩展语法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="sql_1">SQL 查询中使用公式<a class="headerlink" href="#sql_1" title="Permanent link">&para;</a></h3>
+<p>SeaTable 中的一些公式也可以用于 SQL 查询当中，以下有几点说明：</p>
+<ul>
+<li>链接公式暂不支持，如 {link.age}，这种查询无效。</li>
+<li>查询的列名不支持使用大括号(“{}”)来修饰，如：<code>select abs({column}) from talbe;</code> 属于无效查询，应该写成：<code>select abs(column) from table;</code>，此规则同 SQL 语法一致。</li>
+<li>如果字段名称中包含空格或连接符“-”，可是使用左引号("``")来进行修饰，如: select abs `column-a` from table。</li>
+<li>不支持给子段起别名，如：<code>select abs(t.column) from table as t;</code> 为无效查询。</li>
+<li>公式可以用在 group by 以及 order by 表达语句当中。</li>
+</ul>
+<p>额外支持的公式函数：</p>
+<ul>
+<li><code>STARTOFWEEK(date, weekStart)</code>：返回包含 “date” 的星期的第一天的日期，“weekstart” 可选 “sunday” 或者 “monday” 来作为一周的第一天</li>
+<li><code>Quarter(date)</code>：返回第几个季度，包括1，2，3，4。</li>
+<li><code>ISODate(date)</code>：返回 ISO 格式的日期，如: "2020-09-08"</li>
+<li><code>ISOMonth(date)</code>：返回 ISO 格式的月份，如: "2020-07"</li>
+</ul>
+<p>以上的公式可以用于 group by 分组，按星期，月，季度，日期等， 如：<code>select sum(sale) from SalesRecord group by ISODate(SalesTime)</code>，返回每天的总销量。</p>
+<p>更多支持的公式函数请参考<a href="../function/">SQL函数参考</a></p>
+<h3 id="_5">列表扩展语法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>SeaTable 中部分的列类型数据格式为一个列表， SeaTable 从 UI 层面上提供了特殊的函数来过滤这些列， 包括<code>HAS ANY OF</code>, <code>HAS ALL OF</code>, <code>HAS NONE OF</code>, <code>IS EXACTLY</code>.  这些关键字同样也适用于 SQL 查询语法中。比如：名为 “city” 的列属于多选类型，我们想查询出所有包含 “New York” 和  “Paris” 的行，可以做如下查询：<code>select * from table where city has any of ("New York", "Paris");</code>，其中，用括号修饰的城市列表，相当于 <code>IN</code> 语法。</p>
+<h2 id="_6">索引<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>为了提高查询效率，SeaTable 会为存储到大数据存储中的行自动创建索引。目前，文本、数字、单选、多选、协作人、日期、创建者、创建时间、修改者、修改时间列会创建索引。</p>
+<p>当您在一个子表中新增或者删除一列时，对应的索引并不会立即自动创建或者删除。索引的创建和删除操作可以通过两种方式触发：</p>
+<ol>
+<li>在下次执行“归档”操作的时候，会自动为新增的列创建索引，并删除不存在的列的索引。</li>
+<li>用户可以通过“大数据管理” -&gt; “索引管理” 界面来管理索引。</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 seatable
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/seatable/seatable-scripts-cn/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+    
+  </body>
+</html>

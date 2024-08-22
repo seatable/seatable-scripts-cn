@@ -1,0 +1,2069 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="seatable">
+      
+      
+        <link rel="canonical" href="https://seatable.github.io/seatable-scripts-cn/javascript-api/columns/">
+      
+      
+        <link rel="prev" href="../links/">
+      
+      
+        <link rel="next" href="../query/">
+      
+      
+      <link rel="icon" href="../../assets/seatable-favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>Columns - SeaTable 编程手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#column" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SeaTable 编程手册" class="md-header__button md-logo" aria-label="SeaTable 编程手册" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SeaTable 编程手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Columns
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/seatable/seatable-scripts-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SeaTable 编程手册" class="md-nav__button md-logo" aria-label="SeaTable 编程手册" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    SeaTable 编程手册
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/seatable/seatable-scripts-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对象数据结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript 脚本
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript 脚本
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python 脚本和 API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python 脚本和 API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/big_data_storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Big data storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/dateutils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日期操作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/libs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云端环境下支持的库
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/notifications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/websocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时获取数据更新通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    引言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#list-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      List columns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-columns-by-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get columns by name
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-columns-by-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get columns by type
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insert column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rename-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rename column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resize-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resize column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#freeze-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Freeze column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#move-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Move column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-column-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modify column type
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-column-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add column options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-column-cascade-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add column cascade settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete column
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL 语法参考
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL 函数参考
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    插件开发流程和 API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            插件开发流程和 API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    插件开发流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    dtable-sdk
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            dtable-sdk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-sdk/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    dtable-utils
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            dtable-utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/cells/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cells
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/dtable-utils/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#list-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      List columns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-columns-by-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get columns by name
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-columns-by-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get columns by type
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insert column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rename-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rename column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resize-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resize column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#freeze-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Freeze column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#move-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Move column
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-column-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modify column type
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-column-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add column options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-column-cascade-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add column cascade settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete column
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="column">Column<a class="headerlink" href="#column" title="Permanent link">&para;</a></h1>
+<h4 id="list-columns">List columns<a class="headerlink" href="#list-columns" title="Permanent link">&para;</a></h4>
+<p>列出表/视图所有列</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">listColumns</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">view_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="_1">例子<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">columns1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">listColumns</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">columns2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">listColumns</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">view_name</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="get-columns-by-name">Get columns by name<a class="headerlink" href="#get-columns-by-name" title="Permanent link">&para;</a></h4>
+<p>根据列名称来获取列</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">getColumnByName</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_name</span><span class="p">);</span>
+</code></pre></div>
+<h6 id="_2">例子<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">getColumnsByName</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Name&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="get-columns-by-type">Get columns by type<a class="headerlink" href="#get-columns-by-type" title="Permanent link">&para;</a></h4>
+<p>根据列的类型来获取列</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">getColumnsByType</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">col_type</span><span class="p">);</span>
+</code></pre></div>
+<h5 id="_3">例子<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">getColumnsByType</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="insert-column">Insert column<a class="headerlink" href="#insert-column" title="Permanent link">&para;</a></h4>
+<p>插入/追加列</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">insertColumn</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_type</span><span class="p">,</span><span class="w"> </span><span class="nx">column_key</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">column_data</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>其中</p>
+<ul>
+<li>column_key：要插入的位置的前一列的 key，如若省略则默认追加为最后一列</li>
+<li>column_type：请参考 <a href="constants">constants</a></li>
+<li>column_data: 一个列的 config 信息，创建链接列时需要指定， 其他类型选择性制定</li>
+</ul>
+<h5 id="_4">例子<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ColumnTypes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;seatable-api&#39;</span><span class="p">;</span>
+
+<span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">insertColumn</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;seatable-api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ColumnTypes</span><span class="p">.</span><span class="nx">TEXT</span><span class="p">)</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">insertColumn</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;seatable-api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ColumnTypes</span><span class="p">.</span><span class="nx">TEXT</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0000&#39;</span><span class="p">)</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">insertColumn</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Link1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ColumnTypes</span><span class="p">.</span><span class="nx">LINK</span><span class="p">,</span><span class="w"> </span><span class="nx">column_data</span><span class="o">=</span><span class="p">{</span>
+<span class="w">        </span><span class="s1">&#39;table&#39;</span><span class="o">:</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;other_table&#39;</span><span class="o">:</span><span class="s1">&#39;Test_User&#39;</span>
+<span class="w">    </span><span class="p">})</span>
+</code></pre></div>
+<h4 id="rename-column">Rename column<a class="headerlink" href="#rename-column" title="Permanent link">&para;</a></h4>
+<p>重命名列</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">renameColumn</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_key</span><span class="p">,</span><span class="w"> </span><span class="nx">new_column_name</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="_5">例子<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">renameColumn</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;kSiR&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;new-seatable-api&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="resize-column">Resize column<a class="headerlink" href="#resize-column" title="Permanent link">&para;</a></h4>
+<p>设置列宽</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">resizeColumn</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_key</span><span class="p">,</span><span class="w"> </span><span class="nx">new_column_width</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="_6">例子<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
+<p>列的默认宽度为200，如果需要调整列宽比如调整为500，则</p>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">resizeColumn</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;asFV&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="freeze-column">Freeze column<a class="headerlink" href="#freeze-column" title="Permanent link">&para;</a></h4>
+<p>冻结列</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">freezeColumn</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_key</span><span class="p">,</span><span class="w"> </span><span class="nx">frozen</span><span class="p">)</span>
+</code></pre></div>
+<p>frozen: true/false</p>
+<h5 id="_7">例子<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">freezeColumn</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0000&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="move-column">Move column<a class="headerlink" href="#move-column" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">moveColumn</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_key</span><span class="p">,</span><span class="w"> </span><span class="nx">target_column_key</span><span class="p">)</span>
+</code></pre></div>
+<p>其中</p>
+<ul>
+<li>
+<p>column_key：要移动的列的 key</p>
+</li>
+<li>
+<p>target_column_key： 锚定列的 key，被移动的列将会被移动到该列右边</p>
+</li>
+</ul>
+<h5 id="_8">例子<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">moveColumn</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;loPx&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0000&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>此例中，<code>loPx</code>列将会被移动到<code>0000</code>列的右边</p>
+<h4 id="modify-column-type">Modify column type<a class="headerlink" href="#modify-column-type" title="Permanent link">&para;</a></h4>
+<p>转换列类型</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">modifyColumnType</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_key</span><span class="p">,</span><span class="w"> </span><span class="nx">new_column_type</span><span class="p">)</span>
+</code></pre></div>
+<p>其中</p>
+<ul>
+<li>column_type：请参考 <a href="./constants">constants</a></li>
+</ul>
+<h5 id="_9">例子<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ColumnTypes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;seatable-api&#39;</span><span class="p">;</span>
+
+<span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">modifyColumnType</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;nePI&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ColumnTypes</span><span class="p">.</span><span class="nx">NUMBER</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="add-column-options">Add column options<a class="headerlink" href="#add-column-options" title="Permanent link">&para;</a></h4>
+<p>单选，多选列专用，添加选项</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addColumnOptions</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="_10">例子<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">addColumnOptions</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;My choices&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ddd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#aaa&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;textColor&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#000000&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;eee&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#aaa&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;textColor&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#000000&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fff&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#aaa&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;textColor&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#000000&quot;</span><span class="p">},</span>
+<span class="p">])</span>
+</code></pre></div>
+<h4 id="add-column-cascade-settings">Add column cascade settings<a class="headerlink" href="#add-column-cascade-settings" title="Permanent link">&para;</a></h4>
+<p>单选列专用，添加单选选项的父子及联关系，达到子列的单选选项条目根据父列的选项而定的效果</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">addColumnCascadeSettings</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">child_column</span><span class="p">,</span><span class="w"> </span><span class="nx">parent_column</span><span class="p">,</span><span class="w"> </span><span class="nx">cascade_settings</span><span class="p">)</span>
+</code></pre></div>
+<p>其中</p>
+<ul>
+<li>child_column: 单选子列的名称</li>
+<li>parent_column: 单选父列的名称</li>
+<li>cascade_settings: 及联关系设置数据</li>
+</ul>
+<h5 id="_11">例子<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">addColumnCascadeSettings</span><span class="p">(</span><span class="s2">&quot;Table1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;single-op-col-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;single-op-col&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;aaa&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;aaa-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;aaa-2&quot;</span><span class="p">],</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="nx">如果父列选择</span><span class="w"> </span><span class="err">“</span><span class="nx">aaa</span><span class="err">”，</span><span class="w"> </span><span class="nx">子列只有</span><span class="w"> </span><span class="err">“</span><span class="nx">aaa</span><span class="o">-</span><span class="mf">1</span><span class="err">”</span><span class="w"> </span><span class="nx">和</span><span class="w"> </span><span class="err">“</span><span class="nx">aaa</span><span class="o">-</span><span class="mf">2</span><span class="err">”</span><span class="w"> </span><span class="nx">可选</span><span class="w"> </span>
+<span class="w">  </span><span class="s2">&quot;bbb&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;bbb-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bbb-2&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="s2">&quot;ccc&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ccc-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ccc-2&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div>
+<h4 id="delete-column">Delete column<a class="headerlink" href="#delete-column" title="Permanent link">&para;</a></h4>
+<p>删除列</p>
+<div class="highlight"><pre><span></span><code><span class="nx">base</span><span class="p">.</span><span class="nx">deleteColumn</span><span class="p">(</span><span class="nx">table_name</span><span class="p">,</span><span class="w"> </span><span class="nx">column_key</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="_12">例子<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">deleteColumn</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bsKL&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 seatable
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/seatable/seatable-scripts-cn/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+    
+  </body>
+</html>
